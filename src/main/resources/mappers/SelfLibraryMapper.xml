@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.tmw.booksharing.dao.SelfLibraryMapper" >
+  <resultMap id="BaseResultMap" type="pers.tmw.booksharing.pojo.SelfLibrary" >
+    <constructor >
+      <idArg column="ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="BOOK_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="USER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="STATUS" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, BOOK_ID, USER_ID, STATUS, UPDATE_TIME, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOOK_SELF_LIBRARY
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from BOOK_SELF_LIBRARY
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pers.tmw.booksharing.pojo.SelfLibrary" >
+    <selectKey resultType="long" keyProperty="id" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_SELF_LIBRARY (ID, BOOK_ID, USER_ID, 
+      STATUS, UPDATE_TIME, CREATE_TIME
+      )
+    values (#{id,jdbcType=DECIMAL}, #{bookId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, 
+      #{status,jdbcType=DECIMAL}, sysdate, sysdate
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pers.tmw.booksharing.pojo.SelfLibrary" >
+    <selectKey resultType="long" keyProperty="id" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_SELF_LIBRARY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="bookId != null" >
+        BOOK_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME,
+      </if>
+      <if test="1 == 1" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="bookId != null" >
+        #{bookId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.tmw.booksharing.pojo.SelfLibrary" >
+    update BOOK_SELF_LIBRARY
+    <set >
+      <if test="bookId != null" >
+        BOOK_ID = #{bookId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME = sysdate,
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.tmw.booksharing.pojo.SelfLibrary" >
+    update BOOK_SELF_LIBRARY
+    set BOOK_ID = #{bookId,jdbcType=DECIMAL},
+      USER_ID = #{userId,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      UPDATE_TIME = sysdate
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+
+
+  <select id="selectSelfLibraryList" parameterType="map" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_SELF_LIBRARY WHERE USER_ID=#{userId} and STATUS=#{status}
+  </select>
+
+  <select id="selectSelfLibraryIdUserId" resultMap="BaseResultMap" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_SELF_LIBRARY WHERE ID=#{id} and USER_ID=#{userId}
+  </select>
+
+
+  <select id="selectLibraryByUserIdBookId" resultMap="BaseResultMap" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_SELF_LIBRARY WHERE USER_ID=#{userId} and BOOK_ID=#{bookId}
+  </select>
+
+  <select id="getUserIdByBookId" resultType="long" parameterType="long">
+    SELECT USER_ID FROM BOOK_SELF_LIBRARY WHERE BOOK_ID=#{bookId}
+    and status='1'
+  </select>
+  
+  <select id="getBookIdByUserId" resultType="long" parameterType="long">
+    SELECT BOOK_ID FROM BOOK_SELF_LIBRARY WHERE USER_ID=#{userId}
+    AND STATUS='5'
+  </select>
+
+  <select id="getBookIdBySelfUserId" resultType="long" parameterType="long">
+    SELECT BOOK_ID FROM BOOK_SELF_LIBRARY WHERE USER_ID=#{userId}
+    AND (STATUS='1' OR STATUS='2')
+  </select>
+
+  <select id="getUserIdByAllBookId" resultType="long" parameterType="long">
+    SELECT USER_ID FROM BOOK_SELF_LIBRARY WHERE BOOK_ID=#{bookId}
+    and status='2'
+  </select>
+
+
+</mapper>

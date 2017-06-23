@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.tmw.booksharing.dao.ApplyMapper" >
+  <resultMap id="BaseResultMap" type="pers.tmw.booksharing.pojo.Apply" >
+    <constructor >
+      <idArg column="APPLY_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="APPLY_USER" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="APPLY_BOOK" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="APPLIED_USER" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="APPLIED_BOOK" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="STATUS" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="REASON" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    APPLY_ID, APPLY_USER, APPLY_BOOK, APPLIED_USER, APPLIED_BOOK, STATUS, REASON, UPDATE_TIME, 
+    CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOOK_APPLY
+    where APPLY_ID = #{applyId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from BOOK_APPLY
+    where APPLY_ID = #{applyId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pers.tmw.booksharing.pojo.Apply" >
+    <selectKey resultType="long" keyProperty="applyId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_APPLY (APPLY_ID, APPLY_USER, APPLY_BOOK, 
+      APPLIED_USER, APPLIED_BOOK, STATUS, 
+      REASON, UPDATE_TIME, CREATE_TIME
+      )
+    values (#{applyId,jdbcType=DECIMAL}, #{applyUser,jdbcType=DECIMAL}, #{applyBook,jdbcType=DECIMAL}, 
+      #{appliedUser,jdbcType=DECIMAL}, #{appliedBook,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, 
+      #{reason,jdbcType=VARCHAR}, sysdate,sysdate
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pers.tmw.booksharing.pojo.Apply" >
+    <selectKey resultType="long" keyProperty="applyId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_APPLY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="applyId != null" >
+        APPLY_ID,
+      </if>
+      <if test="applyUser != null" >
+        APPLY_USER,
+      </if>
+      <if test="applyBook != null" >
+        APPLY_BOOK,
+      </if>
+      <if test="appliedUser != null" >
+        APPLIED_USER,
+      </if>
+      <if test="appliedBook != null" >
+        APPLIED_BOOK,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="reason != null" >
+        REASON,
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME,
+      </if>
+      <if test="1 == 1" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="applyId != null" >
+        #{applyId,jdbcType=DECIMAL},
+      </if>
+      <if test="applyUser != null" >
+        #{applyUser,jdbcType=DECIMAL},
+      </if>
+      <if test="applyBook != null" >
+        #{applyBook,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedUser != null" >
+        #{appliedUser,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedBook != null" >
+        #{appliedBook,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.tmw.booksharing.pojo.Apply" >
+    update BOOK_APPLY
+    <set >
+      <if test="applyUser != null" >
+        APPLY_USER = #{applyUser,jdbcType=DECIMAL},
+      </if>
+      <if test="applyBook != null" >
+        APPLY_BOOK = #{applyBook,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedUser != null" >
+        APPLIED_USER = #{appliedUser,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedBook != null" >
+        APPLIED_BOOK = #{appliedBook,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="reason != null" >
+        REASON = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME = sysdate,
+      </if>
+    </set>
+    where APPLY_ID = #{applyId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.tmw.booksharing.pojo.Apply" >
+    update BOOK_APPLY
+    set APPLY_USER = #{applyUser,jdbcType=DECIMAL},
+      APPLY_BOOK = #{applyBook,jdbcType=DECIMAL},
+      APPLIED_USER = #{appliedUser,jdbcType=DECIMAL},
+      APPLIED_BOOK = #{appliedBook,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      REASON = #{reason,jdbcType=VARCHAR},
+      UPDATE_TIME = sysdate
+    where APPLY_ID = #{applyId,jdbcType=DECIMAL}
+  </update>
+
+  <select id="getApplyListByAppliedUserIdStatus" parameterType="map" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_APPLY WHERE APPLIED_USER=#{appliedUserId}
+    <if test="status != null">
+      AND STATUS=#{status}
+    </if>
+  </select>
+
+  <select id="getApplyListByApplyUserIdStatus" parameterType="map" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_APPLY WHERE APPLY_USER=#{applyUserId}
+    <if test="status != null">
+      AND STATUS=#{status}
+    </if>
+  </select>
+
+  <select id="selectByApplyIdAndAppliedUserId" resultMap="BaseResultMap" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_APPLY WHERE APPLY_ID=#{applyId} AND APPLIED_USER=#{appliedUserId} AND STATUS='1'
+  </select>
+</mapper>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.tmw.booksharing.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="pers.tmw.booksharing.pojo.Order" >
+    <constructor >
+      <idArg column="ORDER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="ORDER_NUMBER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="ORDER_MONEY" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="OLD_MONEY" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="NEW_MONEY" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="STATUS" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="PAYMENT_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ORDER_ID, ORDER_NUMBER, USER_ID, ORDER_MONEY, OLD_MONEY, NEW_MONEY, UPDATE_TIME, 
+    CREATE_TIME, STATUS, PAYMENT_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOOK_ORDER
+    where ORDER_ID = #{orderId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from BOOK_ORDER
+    where ORDER_ID = #{orderId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pers.tmw.booksharing.pojo.Order" >
+    <selectKey resultType="long" keyProperty="orderId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_ORDER (ORDER_ID, ORDER_NUMBER, USER_ID, 
+      ORDER_MONEY, OLD_MONEY, NEW_MONEY, 
+      UPDATE_TIME, CREATE_TIME, STATUS, 
+      PAYMENT_TIME)
+    values (#{orderId,jdbcType=DECIMAL}, #{orderNumber,jdbcType=VARCHAR}, #{userId,jdbcType=DECIMAL}, 
+      #{orderMoney,jdbcType=DECIMAL}, #{oldMoney,jdbcType=DECIMAL}, #{newMoney,jdbcType=DECIMAL}, 
+      sysdate, sysdate, #{status,jdbcType=DECIMAL},
+      #{paymentTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="pers.tmw.booksharing.pojo.Order" >
+    <selectKey resultType="long" keyProperty="orderId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_ORDER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="orderNumber != null" >
+        ORDER_NUMBER,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="orderMoney != null" >
+        ORDER_MONEY,
+      </if>
+      <if test="oldMoney != null" >
+        OLD_MONEY,
+      </if>
+      <if test="newMoney != null" >
+        NEW_MONEY,
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME,
+      </if>
+      <if test="1 == 1" >
+        CREATE_TIME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="paymentTime != null" >
+        PAYMENT_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=DECIMAL},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="orderMoney != null" >
+        #{orderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="oldMoney != null" >
+        #{oldMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="newMoney != null" >
+        #{newMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentTime != null" >
+        #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.tmw.booksharing.pojo.Order" >
+    update BOOK_ORDER
+    <set >
+      <if test="orderNumber != null" >
+        ORDER_NUMBER = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="orderMoney != null" >
+        ORDER_MONEY = #{orderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="oldMoney != null" >
+        OLD_MONEY = #{oldMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="newMoney != null" >
+        NEW_MONEY = #{newMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME = sysdate,
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentTime != null" >
+        PAYMENT_TIME = #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ORDER_ID = #{orderId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.tmw.booksharing.pojo.Order" >
+    update BOOK_ORDER
+    set ORDER_NUMBER = #{orderNumber,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=DECIMAL},
+      ORDER_MONEY = #{orderMoney,jdbcType=DECIMAL},
+      OLD_MONEY = #{oldMoney,jdbcType=DECIMAL},
+      NEW_MONEY = #{newMoney,jdbcType=DECIMAL},
+      UPDATE_TIME = sysdate,
+      STATUS = #{status,jdbcType=DECIMAL},
+      PAYMENT_TIME = #{paymentTime,jdbcType=TIMESTAMP}
+    where ORDER_ID = #{orderId,jdbcType=DECIMAL}
+  </update>
+
+  <select id="selectByOrderNo" resultMap="BaseResultMap" parameterType="string">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_ORDER
+    WHERE ORDER_NUMBER=#{orderNo}
+  </select>
+
+  <select id="selectByUserIdOderNo" resultMap="BaseResultMap" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_ORDER
+    WHERE USER_ID=#{userId} and ORDER_NUMBER=#{orderNo}
+  </select>
+
+  <select id="getOrderListByUserId" resultMap="BaseResultMap" parameterType="long">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_ORDER
+    WHERE USER_ID=#{userId}
+  </select>
+
+  <select id="getAllOrder" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_ORDER
+  </select>
+
+</mapper>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.tmw.booksharing.dao.ComplanMapper">
+  <resultMap id="BaseResultMap" type="pers.tmw.booksharing.pojo.Complan">
+    <constructor>
+      <idArg column="COMPLAN_ID" javaType="java.lang.Long" jdbcType="DECIMAL" />
+      <arg column="REPLACE_ID" javaType="java.lang.Long" jdbcType="DECIMAL" />
+      <arg column="USER_ID" javaType="java.lang.Long" jdbcType="DECIMAL" />
+      <arg column="REASON" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UPDATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="STATUS" javaType="java.lang.Short" jdbcType="DECIMAL" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    COMPLAN_ID, REPLACE_ID, USER_ID, REASON, UPDATE_TIME, CREATE_TIME, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from BOOK_COMPLAN
+    where COMPLAN_ID = #{complanId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from BOOK_COMPLAN
+    where COMPLAN_ID = #{complanId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pers.tmw.booksharing.pojo.Complan">
+    <selectKey keyProperty="complanId" order="BEFORE" resultType="long">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_COMPLAN (COMPLAN_ID, REPLACE_ID, USER_ID, 
+      REASON, UPDATE_TIME, CREATE_TIME, 
+      STATUS)
+    values (#{complanId,jdbcType=DECIMAL}, #{replaceId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, 
+      #{reason,jdbcType=VARCHAR}, sysdate, sysdate,
+      #{status,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="pers.tmw.booksharing.pojo.Complan">
+    <selectKey keyProperty="complanId" order="BEFORE" resultType="long">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_COMPLAN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="complanId != null">
+        COMPLAN_ID,
+      </if>
+      <if test="replaceId != null">
+        REPLACE_ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="reason != null">
+        REASON,
+      </if>
+      <if test="1 == 1">
+        UPDATE_TIME,
+      </if>
+      <if test="1 == 1">
+        CREATE_TIME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="complanId != null">
+        #{complanId,jdbcType=DECIMAL},
+      </if>
+      <if test="replaceId != null">
+        #{replaceId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="1 == 1">
+        sysdate,
+      </if>
+      <if test="1 == 1">
+        sysdate,
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="pers.tmw.booksharing.pojo.Complan">
+    update BOOK_COMPLAN
+    <set>
+      <if test="replaceId != null">
+        REPLACE_ID = #{replaceId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="reason != null">
+        REASON = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="1 == 1">
+        UPDATE_TIME = sysdate,
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where COMPLAN_ID = #{complanId,jdbcType=DECIMAL}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="pers.tmw.booksharing.pojo.Complan">
+    update BOOK_COMPLAN
+    set REPLACE_ID = #{replaceId,jdbcType=DECIMAL},
+      USER_ID = #{userId,jdbcType=DECIMAL},
+      REASON = #{reason,jdbcType=VARCHAR},
+      UPDATE_TIME = sysdate,
+      STATUS = #{status,jdbcType=DECIMAL}
+    where COMPLAN_ID = #{complanId,jdbcType=DECIMAL}
+  </update>
+
+  <select id="getListByUserIdAndStatus" resultMap="BaseResultMap" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_COMPLAN WHERE USER_ID=#{userId}
+    <if test="status == 1">
+      AND STATUS=#{status}
+    </if>
+    <if test="status != 1">
+      AND STATUS!=#{status}
+    </if>
+  </select>
+
+  <select id="getListByStatus" resultMap="BaseResultMap" parameterType="short">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_COMPLAN WHERE
+    <if test="status == 1">
+      STATUS=#{status}
+    </if>
+    <if test="status != 1">
+      STATUS!=#{status}
+    </if>
+  </select>
+
+
+</mapper>

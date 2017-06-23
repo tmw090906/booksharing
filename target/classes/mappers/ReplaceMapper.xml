@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.tmw.booksharing.dao.ReplaceMapper" >
+  <resultMap id="BaseResultMap" type="pers.tmw.booksharing.pojo.Replace" >
+    <constructor >
+      <idArg column="REPLACE_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="APPLY_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="APPLY_USER" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="APPLY_SHIPPING" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="APPLY_DELIVER_NO" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="APPLIED_USER" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="APPLIED_SHIPPING" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="APPLIED_DELIVER_NO" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="APPLY_STATUS" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="APPLIED_STATUS" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="STATUS" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    REPLACE_ID, APPLY_ID, APPLY_USER, APPLY_SHIPPING, APPLY_DELIVER_NO, APPLIED_USER, 
+    APPLIED_SHIPPING, APPLIED_DELIVER_NO, APPLY_STATUS, APPLIED_STATUS, STATUS, UPDATE_TIME, 
+    CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOOK_REPLACE
+    where REPLACE_ID = #{replaceId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from BOOK_REPLACE
+    where REPLACE_ID = #{replaceId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pers.tmw.booksharing.pojo.Replace" >
+    <selectKey resultType="long" keyProperty="replaceId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_REPLACE (REPLACE_ID, APPLY_ID, APPLY_USER, 
+      APPLY_SHIPPING, APPLY_DELIVER_NO, APPLIED_USER, 
+      APPLIED_SHIPPING, APPLIED_DELIVER_NO, APPLY_STATUS, 
+      APPLIED_STATUS, STATUS, UPDATE_TIME, 
+      CREATE_TIME)
+    values (#{replaceId,jdbcType=DECIMAL}, #{applyId,jdbcType=DECIMAL}, #{applyUser,jdbcType=DECIMAL}, 
+      #{applyShipping,jdbcType=DECIMAL}, #{applyDeliverNo,jdbcType=DECIMAL}, #{appliedUser,jdbcType=DECIMAL}, 
+      #{appliedShipping,jdbcType=DECIMAL}, #{appliedDeliverNo,jdbcType=DECIMAL}, #{applyStatus,jdbcType=DECIMAL}, 
+      #{appliedStatus,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, sysdate,
+      sysdate)
+  </insert>
+  <insert id="insertSelective" parameterType="pers.tmw.booksharing.pojo.Replace" >
+    <selectKey resultType="long" keyProperty="replaceId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_REPLACE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="replaceId != null" >
+        REPLACE_ID,
+      </if>
+      <if test="applyId != null" >
+        APPLY_ID,
+      </if>
+      <if test="applyUser != null" >
+        APPLY_USER,
+      </if>
+      <if test="applyShipping != null" >
+        APPLY_SHIPPING,
+      </if>
+      <if test="applyDeliverNo != null" >
+        APPLY_DELIVER_NO,
+      </if>
+      <if test="appliedUser != null" >
+        APPLIED_USER,
+      </if>
+      <if test="appliedShipping != null" >
+        APPLIED_SHIPPING,
+      </if>
+      <if test="appliedDeliverNo != null" >
+        APPLIED_DELIVER_NO,
+      </if>
+      <if test="applyStatus != null" >
+        APPLY_STATUS,
+      </if>
+      <if test="appliedStatus != null" >
+        APPLIED_STATUS,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME,
+      </if>
+      <if test="1 == 1" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="replaceId != null" >
+        #{replaceId,jdbcType=DECIMAL},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=DECIMAL},
+      </if>
+      <if test="applyUser != null" >
+        #{applyUser,jdbcType=DECIMAL},
+      </if>
+      <if test="applyShipping != null" >
+        #{applyShipping,jdbcType=DECIMAL},
+      </if>
+      <if test="applyDeliverNo != null" >
+        #{applyDeliverNo,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedUser != null" >
+        #{appliedUser,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedShipping != null" >
+        #{appliedShipping,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedDeliverNo != null" >
+        #{appliedDeliverNo,jdbcType=DECIMAL},
+      </if>
+      <if test="applyStatus != null" >
+        #{applyStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedStatus != null" >
+        #{appliedStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.tmw.booksharing.pojo.Replace" >
+    update BOOK_REPLACE
+    <set >
+      <if test="applyId != null" >
+        APPLY_ID = #{applyId,jdbcType=DECIMAL},
+      </if>
+      <if test="applyUser != null" >
+        APPLY_USER = #{applyUser,jdbcType=DECIMAL},
+      </if>
+      <if test="applyShipping != null" >
+        APPLY_SHIPPING = #{applyShipping,jdbcType=DECIMAL},
+      </if>
+      <if test="applyDeliverNo != null" >
+        APPLY_DELIVER_NO = #{applyDeliverNo,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedUser != null" >
+        APPLIED_USER = #{appliedUser,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedShipping != null" >
+        APPLIED_SHIPPING = #{appliedShipping,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedDeliverNo != null" >
+        APPLIED_DELIVER_NO = #{appliedDeliverNo,jdbcType=DECIMAL},
+      </if>
+      <if test="applyStatus != null" >
+        APPLY_STATUS = #{applyStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="appliedStatus != null" >
+        APPLIED_STATUS = #{appliedStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME = sysdate,
+      </if>
+    </set>
+    where REPLACE_ID = #{replaceId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.tmw.booksharing.pojo.Replace" >
+    update BOOK_REPLACE
+    set APPLY_ID = #{applyId,jdbcType=DECIMAL},
+      APPLY_USER = #{applyUser,jdbcType=DECIMAL},
+      APPLY_SHIPPING = #{applyShipping,jdbcType=DECIMAL},
+      APPLY_DELIVER_NO = #{applyDeliverNo,jdbcType=DECIMAL},
+      APPLIED_USER = #{appliedUser,jdbcType=DECIMAL},
+      APPLIED_SHIPPING = #{appliedShipping,jdbcType=DECIMAL},
+      APPLIED_DELIVER_NO = #{appliedDeliverNo,jdbcType=DECIMAL},
+      APPLY_STATUS = #{applyStatus,jdbcType=DECIMAL},
+      APPLIED_STATUS = #{appliedStatus,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      UPDATE_TIME = sysdate
+    where REPLACE_ID = #{replaceId,jdbcType=DECIMAL}
+  </update>
+
+  <select id="getListByUserId" resultMap="BaseResultMap" parameterType="long">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_REPLACE WHERE APPLY_USER=#{userId} OR APPLIED_USER=#{userId}
+  </select>
+
+</mapper>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>图书交换平台登陆页</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/vue/1.0.7/vue.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.7/vue.min.js"></script>
+</head>
+<body>
+<h2>Hello World!</h2>
+<div id="app" class="inner">
+    <ul v-for = "pep in peps ">
+        <li><a href="{{pep.Url}}" rel="external nofollow" > {{pep.name}}  2</a></li>
+    </ul>
+</div>
+</body>
+<script>
+    var data1 = {
+        "msg": "ok",
+        "data":[
+            {
+                "ID":"1",
+                "name": "地产",
+                "Url":"/Category/List/1"
+            },
+            {
+                "ID":"2",
+                "name": "科技",
+                "Url":"/Category/List/2"
+            },
+            {
+                "ID":"3",
+                "name": "医药",
+                "Url":"/Category/List/3"
+            },
+            {
+                "ID":"4",
+                "name": "其他",
+                "Url":"/Category/List/4"
+            }
+        ]
+    };
+    var vm = new Vue({ el: '#app', data: { peps:data1.data } });
+</script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</html>

@@ -1,0 +1,19 @@
+.btn:link{
+    color: #6a96ff;
+}
+.btn:active{
+    color:#ff0000;
+}
+.btn:visited{
+    color:#6a96ff;
+}
+.btn:hover{
+    color: #ffef52;
+}
+
+.head_left{
+    float: left;
+}
+.head_right{
+    float: right;
+}

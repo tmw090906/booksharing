@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.tmw.booksharing.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="pers.tmw.booksharing.pojo.User" >
+    <constructor >
+      <idArg column="USER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="USERNAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PWD" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TRUE_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IDCARD" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="EMAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PHONE" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="ROLE" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="WECHART" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="QQ" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="QUESTION" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ANWSER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DEPOSIT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="APPROVE_DEPOSIT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_ID, USERNAME, PWD, TRUE_NAME, IDCARD, EMAIL, PHONE, ROLE, WECHART, QQ, QUESTION, 
+    ANWSER, DEPOSIT, APPROVE_DEPOSIT, UPDATE_TIME, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOOK_USER
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from BOOK_USER
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pers.tmw.booksharing.pojo.User" >
+    <selectKey resultType="long" keyProperty="userId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_USER (USER_ID, USERNAME, PWD, 
+      TRUE_NAME, IDCARD, EMAIL, 
+      PHONE, ROLE, WECHART, 
+      QQ, QUESTION, ANWSER, 
+      DEPOSIT, APPROVE_DEPOSIT, UPDATE_TIME, 
+      CREATE_TIME)
+    values (#{userId,jdbcType=DECIMAL}, #{username,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
+      #{trueName,jdbcType=VARCHAR}, #{idcard,jdbcType=DECIMAL}, #{email,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=DECIMAL}, #{role,jdbcType=DECIMAL}, #{wechart,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=DECIMAL}, #{question,jdbcType=VARCHAR}, #{anwser,jdbcType=VARCHAR}, 
+      #{deposit,jdbcType=DECIMAL}, #{approveDeposit,jdbcType=DECIMAL}, sysdate,
+      sysdate)
+  </insert>
+  <insert id="insertSelective" parameterType="pers.tmw.booksharing.pojo.User" >
+    <selectKey resultType="long" keyProperty="userId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="pwd != null" >
+        PWD,
+      </if>
+      <if test="trueName != null" >
+        TRUE_NAME,
+      </if>
+      <if test="idcard != null" >
+        IDCARD,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="role != null" >
+        ROLE,
+      </if>
+      <if test="wechart != null" >
+        WECHART,
+      </if>
+      <if test="qq != null" >
+        QQ,
+      </if>
+      <if test="question != null" >
+        QUESTION,
+      </if>
+      <if test="anwser != null" >
+        ANWSER,
+      </if>
+      <if test="deposit != null" >
+        DEPOSIT,
+      </if>
+      <if test="approveDeposit != null" >
+        APPROVE_DEPOSIT,
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME,
+      </if>
+      <if test="1 == 1" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=DECIMAL},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=DECIMAL},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=DECIMAL},
+      </if>
+      <if test="wechart != null" >
+        #{wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=DECIMAL},
+      </if>
+      <if test="question != null" >
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="anwser != null" >
+        #{anwser,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null" >
+        #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="approveDeposit != null" >
+        #{approveDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.tmw.booksharing.pojo.User" >
+    update BOOK_USER
+    <set >
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        PWD = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        TRUE_NAME = #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        IDCARD = #{idcard,jdbcType=DECIMAL},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=DECIMAL},
+      </if>
+      <if test="role != null" >
+        ROLE = #{role,jdbcType=DECIMAL},
+      </if>
+      <if test="wechart != null" >
+        WECHART = #{wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        QQ = #{qq,jdbcType=DECIMAL},
+      </if>
+      <if test="question != null" >
+        QUESTION = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="anwser != null" >
+        ANWSER = #{anwser,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null" >
+        DEPOSIT = #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="approveDeposit != null" >
+        APPROVE_DEPOSIT = #{approveDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME = sysdate,
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.tmw.booksharing.pojo.User" >
+    update BOOK_USER
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      PWD = #{pwd,jdbcType=VARCHAR},
+      TRUE_NAME = #{trueName,jdbcType=VARCHAR},
+      IDCARD = #{idcard,jdbcType=DECIMAL},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=DECIMAL},
+      ROLE = #{role,jdbcType=DECIMAL},
+      WECHART = #{wechart,jdbcType=VARCHAR},
+      QQ = #{qq,jdbcType=DECIMAL},
+      QUESTION = #{question,jdbcType=VARCHAR},
+      ANWSER = #{anwser,jdbcType=VARCHAR},
+      DEPOSIT = #{deposit,jdbcType=DECIMAL},
+      APPROVE_DEPOSIT = #{approveDeposit,jdbcType=DECIMAL},
+      UPDATE_TIME = sysdate
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="string">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_USER WHERE USERNAME=#{username}
+  </select>
+
+  <select id="checkUsername" resultType="int" parameterType="string">
+    SELECT count(1) FROM BOOK_USER
+    WHERE USERNAME=#{username}
+  </select>
+
+  <select id="checkEmail" resultType="int" parameterType="string">
+    SELECT count(1) FROM BOOK_USER
+    WHERE EMAIL=#{email}
+  </select>
+
+  <select id="selectQuestionByUsername" parameterType="string" resultType="string">
+    SELECT QUESTION FROM BOOK_USER
+    WHERE USERNAME=#{username}
+  </select>
+
+  <select id="checkAnswer" resultType="int" parameterType="map">
+    SELECT count(1) FROM BOOK_USER
+    WHERE USERNAME=#{username} and QUESTION=#{question} and ANWSER=#{answer}
+  </select>
+
+  <update id="resetPasswordByForget" parameterType="map">
+    UPDATE BOOK_USER SET PWD=#{passwordNew}
+    WHERE USERNAME=#{username}
+  </update>
+
+  <select id="checkPassword" parameterType="map" resultType="int">
+    SELECT count(1) FROM BOOK_USER
+    WHERE USER_ID=#{userId} and PWD=#{passwordOld}
+  </select>
+
+  <select id="checkEmailByUserId" parameterType="map" resultType="int">
+    SELECT count(1) FROM BOOK_USER
+    WHERE EMAIL=#{email} and USER_ID!=#{userId}
+  </select>
+
+  <select id="getUserNameByUserId" resultType="string" parameterType="long">
+    SELECT USERNAME FROM BOOK_USER WHERE USER_ID=#{userId}
+  </select>
+
+  <update id="subMoneyByIllegal" parameterType="map">
+    UPDATE BOOK_USER
+    SET
+    DEPOSIT=DEPOSIT-#{deposit},
+    APPROVE_DEPOSIT=APPROVE_DEPOSIT-#{deposit}
+    WHERE USER_ID=#{userId}
+  </update>
+
+  <update id="addMoneyByIllegal" parameterType="map">
+    UPDATE BOOK_USER
+    SET
+    DEPOSIT=DEPOSIT+#{deposit},
+    APPROVE_DEPOSIT=APPROVE_DEPOSIT+#{deposit}
+    WHERE USER_ID=#{userId}
+  </update>
+
+  <update id="subApproveDeposit" parameterType="map">
+    UPDATE BOOK_USER
+    SET APPROVE_DEPOSIT=APPROVE_DEPOSIT-#{deposit} WHERE USER_ID=#{userId}
+  </update>
+
+  <update id="addApproveDeposit" parameterType="map">
+    UPDATE BOOK_USER
+    SET APPROVE_DEPOSIT=APPROVE_DEPOSIT+#{deposit} WHERE USER_ID=#{userId}
+  </update>
+
+</mapper>

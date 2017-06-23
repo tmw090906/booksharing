@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--  如果使用注解开发SpringMVC的话
+            则处理器适配器和处理器映射器都不需要在配置文件中配置出来
+            将直接使用注解映射器代替 处理适配器和处理映射器
+            使用注解时，直接使用标签<mvc:annotation-driven>可代替上述配置 -->
+    <mvc:annotation-driven />
+
+    <!-- 扫描controller注解,多个包中间使用半角逗号分隔 -->
+    <context:component-scan base-package="pers.tmw.booksharing.controller"/>
+    <!--
+        2.the default servlet configuration static resources
+            (1).add handle static resource:js.gif.png
+            (2).allow use "/" as global mapping
+    -->
+    <mvc:default-servlet-handler/>
+
+    <!-- ViewResolver:配置试图解析器 -->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!-- 图片上传 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10485760"/>
+        <property name="maxInMemorySize" value="4096"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+
+</beans>

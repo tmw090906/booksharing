@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.tmw.booksharing.dao.IllegalMapper" >
+  <resultMap id="BaseResultMap" type="pers.tmw.booksharing.pojo.Illegal" >
+    <constructor >
+      <idArg column="ILLEGAL_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="USER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="REPLACE_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="VICTIM_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="DEPOSIT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="MANAGER" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ILLEGAL_ID, USER_ID, REPLACE_ID, VICTIM_ID, DEPOSIT, MANAGER, UPDATE_TIME, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOOK_ILLEGAL
+    where ILLEGAL_ID = #{illegalId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from BOOK_ILLEGAL
+    where ILLEGAL_ID = #{illegalId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pers.tmw.booksharing.pojo.Illegal" >
+    <selectKey resultType="long" keyProperty="illegalId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_ILLEGAL (ILLEGAL_ID, USER_ID, REPLACE_ID, 
+      VICTIM_ID, DEPOSIT, MANAGER, 
+      UPDATE_TIME, CREATE_TIME)
+    values (#{illegalId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, #{replaceId,jdbcType=DECIMAL}, 
+      #{victimId,jdbcType=DECIMAL}, #{deposit,jdbcType=DECIMAL}, #{manager,jdbcType=DECIMAL}, 
+      sysdate, sysdate)
+  </insert>
+  <insert id="insertSelective" parameterType="pers.tmw.booksharing.pojo.Illegal" >
+    <selectKey resultType="long" keyProperty="illegalId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_ILLEGAL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="illegalId != null" >
+        ILLEGAL_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="replaceId != null" >
+        REPLACE_ID,
+      </if>
+      <if test="victimId != null" >
+        VICTIM_ID,
+      </if>
+      <if test="deposit != null" >
+        DEPOSIT,
+      </if>
+      <if test="manager != null" >
+        MANAGER,
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME,
+      </if>
+      <if test="1 == 1" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="illegalId != null" >
+        #{illegalId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="replaceId != null" >
+        #{replaceId,jdbcType=DECIMAL},
+      </if>
+      <if test="victimId != null" >
+        #{victimId,jdbcType=DECIMAL},
+      </if>
+      <if test="deposit != null" >
+        #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="manager != null" >
+        #{manager,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.tmw.booksharing.pojo.Illegal" >
+    update BOOK_ILLEGAL
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="replaceId != null" >
+        REPLACE_ID = #{replaceId,jdbcType=DECIMAL},
+      </if>
+      <if test="victimId != null" >
+        VICTIM_ID = #{victimId,jdbcType=DECIMAL},
+      </if>
+      <if test="deposit != null" >
+        DEPOSIT = #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="manager != null" >
+        MANAGER = #{manager,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME = sysdate,
+      </if>
+    </set>
+    where ILLEGAL_ID = #{illegalId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.tmw.booksharing.pojo.Illegal" >
+    update BOOK_ILLEGAL
+    set USER_ID = #{userId,jdbcType=DECIMAL},
+      REPLACE_ID = #{replaceId,jdbcType=DECIMAL},
+      VICTIM_ID = #{victimId,jdbcType=DECIMAL},
+      DEPOSIT = #{deposit,jdbcType=DECIMAL},
+      MANAGER = #{manager,jdbcType=DECIMAL},
+      UPDATE_TIME = sysdate
+    where ILLEGAL_ID = #{illegalId,jdbcType=DECIMAL}
+  </update>
+
+  <select id="getIllegalListByUserId" resultMap="BaseResultMap" parameterType="long">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_ILLEGAL WHERE USER_ID=#{userId}
+  </select>
+</mapper>

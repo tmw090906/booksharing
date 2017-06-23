@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.tmw.booksharing.dao.ShippingMapper" >
+  <resultMap id="BaseResultMap" type="pers.tmw.booksharing.pojo.Shipping" >
+    <constructor >
+      <idArg column="SHIPPING_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="USER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="RECEIVE_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RECEIVE_PHONE" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="RECEIVE_PROVINCE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RECEIVE_CITY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RECEIVE_BLOCK" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RECEIVE_ADDRESS" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RECEIVE_ZIP" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SHIPPING_ID, USER_ID, RECEIVE_NAME, RECEIVE_PHONE, RECEIVE_PROVINCE, RECEIVE_CITY, 
+    RECEIVE_BLOCK, RECEIVE_ADDRESS, RECEIVE_ZIP, UPDATE_TIME, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOOK_SHIPPING
+    where SHIPPING_ID = #{shippingId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from BOOK_SHIPPING
+    where SHIPPING_ID = #{shippingId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pers.tmw.booksharing.pojo.Shipping" >
+    <selectKey resultType="long" keyProperty="shippingId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_SHIPPING (SHIPPING_ID, USER_ID, RECEIVE_NAME, 
+      RECEIVE_PHONE, RECEIVE_PROVINCE, RECEIVE_CITY, 
+      RECEIVE_BLOCK, RECEIVE_ADDRESS, RECEIVE_ZIP, 
+      UPDATE_TIME, CREATE_TIME)
+    values (#{shippingId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, #{receiveName,jdbcType=VARCHAR}, 
+      #{receivePhone,jdbcType=DECIMAL}, #{receiveProvince,jdbcType=VARCHAR}, #{receiveCity,jdbcType=VARCHAR}, 
+      #{receiveBlock,jdbcType=VARCHAR}, #{receiveAddress,jdbcType=VARCHAR}, #{receiveZip,jdbcType=DECIMAL}, 
+      sysdate, sysdate)
+  </insert>
+  <insert id="insertSelective" parameterType="pers.tmw.booksharing.pojo.Shipping" >
+    <selectKey resultType="long" keyProperty="shippingId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_SHIPPING
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shippingId != null" >
+        SHIPPING_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="receiveName != null" >
+        RECEIVE_NAME,
+      </if>
+      <if test="receivePhone != null" >
+        RECEIVE_PHONE,
+      </if>
+      <if test="receiveProvince != null" >
+        RECEIVE_PROVINCE,
+      </if>
+      <if test="receiveCity != null" >
+        RECEIVE_CITY,
+      </if>
+      <if test="receiveBlock != null" >
+        RECEIVE_BLOCK,
+      </if>
+      <if test="receiveAddress != null" >
+        RECEIVE_ADDRESS,
+      </if>
+      <if test="receiveZip != null" >
+        RECEIVE_ZIP,
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME,
+      </if>
+      <if test="1 == 1" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shippingId != null" >
+        #{shippingId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveName != null" >
+        #{receiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="receivePhone != null" >
+        #{receivePhone,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveProvince != null" >
+        #{receiveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCity != null" >
+        #{receiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveBlock != null" >
+        #{receiveBlock,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddress != null" >
+        #{receiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveZip != null" >
+        #{receiveZip,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.tmw.booksharing.pojo.Shipping" >
+    update BOOK_SHIPPING
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveName != null" >
+        RECEIVE_NAME = #{receiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="receivePhone != null" >
+        RECEIVE_PHONE = #{receivePhone,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveProvince != null" >
+        RECEIVE_PROVINCE = #{receiveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCity != null" >
+        RECEIVE_CITY = #{receiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveBlock != null" >
+        RECEIVE_BLOCK = #{receiveBlock,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddress != null" >
+        RECEIVE_ADDRESS = #{receiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveZip != null" >
+        RECEIVE_ZIP = #{receiveZip,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+    </set>
+    where SHIPPING_ID = #{shippingId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.tmw.booksharing.pojo.Shipping" >
+    update BOOK_SHIPPING
+    set USER_ID = #{userId,jdbcType=DECIMAL},
+      RECEIVE_NAME = #{receiveName,jdbcType=VARCHAR},
+      RECEIVE_PHONE = #{receivePhone,jdbcType=DECIMAL},
+      RECEIVE_PROVINCE = #{receiveProvince,jdbcType=VARCHAR},
+      RECEIVE_CITY = #{receiveCity,jdbcType=VARCHAR},
+      RECEIVE_BLOCK = #{receiveBlock,jdbcType=VARCHAR},
+      RECEIVE_ADDRESS = #{receiveAddress,jdbcType=VARCHAR},
+      RECEIVE_ZIP = #{receiveZip,jdbcType=DECIMAL},
+      UPDATE_TIME = sysdate
+    where SHIPPING_ID = #{shippingId,jdbcType=DECIMAL}
+  </update>
+
+  <delete id="deleteByUserIdShippingId" parameterType="map">
+    DELETE FROM BOOK_SHIPPING WHERE
+    SHIPPING_ID=#{shippingId} and USER_ID=#{userId}
+  </delete>
+
+  <update id="updateByShipping" parameterType="pers.tmw.booksharing.pojo.Shipping">
+    update BOOK_SHIPPING
+    set RECEIVE_NAME = #{receiveName,jdbcType=VARCHAR},
+      RECEIVE_PHONE = #{receivePhone,jdbcType=DECIMAL},
+      RECEIVE_PROVINCE = #{receiveProvince,jdbcType=VARCHAR},
+      RECEIVE_CITY = #{receiveCity,jdbcType=VARCHAR},
+      RECEIVE_BLOCK = #{receiveBlock,jdbcType=VARCHAR},
+      RECEIVE_ADDRESS = #{receiveAddress,jdbcType=VARCHAR},
+      RECEIVE_ZIP = #{receiveZip,jdbcType=DECIMAL},
+      UPDATE_TIME = sysdate
+    where SHIPPING_ID = #{shippingId,jdbcType=DECIMAL}
+    and USER_ID=#{userId}
+  </update>
+
+  <select id="selectByUserIdShippingId" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM BOOK_SHIPPING
+    WHERE user_id=#{userId} and SHIPPING_ID=#{shippingId}
+  </select>
+
+  <select id="selectShippingListByUserId" resultMap="BaseResultMap" parameterType="long">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM BOOK_SHIPPING
+    WHERE USER_ID=#{userId}
+  </select>
+
+</mapper>

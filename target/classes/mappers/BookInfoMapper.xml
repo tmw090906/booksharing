@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.tmw.booksharing.dao.BookInfoMapper" >
+  <resultMap id="BaseResultMap" type="pers.tmw.booksharing.pojo.BookInfo" >
+    <constructor >
+      <idArg column="BOOK_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="ISBN" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BOOK_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BOOK_AUTHOR" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CATEGORY_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="BOOK_PRICE" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="BOOK_DEPOSIT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="BOOK_DETAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PUBLISH_TIME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PUBLISH_EDITION" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="PUBLISH_TRIM" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CREATEDBY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="BOOK_IMAGE" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BOOK_ID, ISBN, BOOK_NAME, BOOK_AUTHOR, CATEGORY_ID, BOOK_PRICE, BOOK_DEPOSIT, BOOK_DETAIL, 
+    PUBLISH_TIME, PUBLISH_EDITION, PUBLISH_TRIM, CREATEDBY, UPDATE_TIME, CREATE_TIME, 
+    BOOK_IMAGE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOOK_INFO
+    where BOOK_ID = #{bookId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from BOOK_INFO
+    where BOOK_ID = #{bookId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pers.tmw.booksharing.pojo.BookInfo" >
+    <selectKey resultType="long" keyProperty="bookId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_INFO (BOOK_ID, ISBN, BOOK_NAME, 
+      BOOK_AUTHOR, CATEGORY_ID, BOOK_PRICE, 
+      BOOK_DEPOSIT, BOOK_DETAIL, PUBLISH_TIME, 
+      PUBLISH_EDITION, PUBLISH_TRIM, CREATEDBY, 
+      UPDATE_TIME, CREATE_TIME, BOOK_IMAGE
+      )
+    values (#{bookId,jdbcType=DECIMAL}, #{isbn,jdbcType=VARCHAR}, #{bookName,jdbcType=VARCHAR}, 
+      #{bookAuthor,jdbcType=VARCHAR}, #{categoryId,jdbcType=DECIMAL}, #{bookPrice,jdbcType=DECIMAL}, 
+      #{bookDeposit,jdbcType=DECIMAL}, #{bookDetail,jdbcType=VARCHAR}, #{publishTime,jdbcType=VARCHAR}, 
+      #{publishEdition,jdbcType=DECIMAL}, #{publishTrim,jdbcType=VARCHAR}, #{createdby,jdbcType=VARCHAR},
+      sysdate, sysdate, #{bookImage,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pers.tmw.booksharing.pojo.BookInfo" >
+    <selectKey resultType="long" keyProperty="bookId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bookId != null" >
+        BOOK_ID,
+      </if>
+      <if test="isbn != null" >
+        ISBN,
+      </if>
+      <if test="bookName != null" >
+        BOOK_NAME,
+      </if>
+      <if test="bookAuthor != null" >
+        BOOK_AUTHOR,
+      </if>
+      <if test="categoryId != null" >
+        CATEGORY_ID,
+      </if>
+      <if test="bookPrice != null" >
+        BOOK_PRICE,
+      </if>
+      <if test="bookDeposit != null" >
+        BOOK_DEPOSIT,
+      </if>
+      <if test="bookDetail != null" >
+        BOOK_DETAIL,
+      </if>
+      <if test="publishTime != null" >
+        PUBLISH_TIME,
+      </if>
+      <if test="publishEdition != null" >
+        PUBLISH_EDITION,
+      </if>
+      <if test="publishTrim != null" >
+        PUBLISH_TRIM,
+      </if>
+      <if test="createdby != null" >
+        CREATEDBY,
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME,
+      </if>
+      <if test="1 == 1" >
+        CREATE_TIME,
+      </if>
+      <if test="bookImage != null" >
+        BOOK_IMAGE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bookId != null" >
+        #{bookId,jdbcType=DECIMAL},
+      </if>
+      <if test="isbn != null" >
+        #{isbn,jdbcType=VARCHAR},
+      </if>
+      <if test="bookName != null" >
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null" >
+        #{bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="bookPrice != null" >
+        #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookDeposit != null" >
+        #{bookDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="bookDetail != null" >
+        #{bookDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="publishEdition != null" >
+        #{publishEdition,jdbcType=DECIMAL},
+      </if>
+      <if test="publishTrim != null" >
+        #{publishTrim,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null" >
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="bookImage != null" >
+        #{bookImage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.tmw.booksharing.pojo.BookInfo" >
+    update BOOK_INFO
+    <set >
+      <if test="isbn != null" >
+        ISBN = #{isbn,jdbcType=VARCHAR},
+      </if>
+      <if test="bookName != null" >
+        BOOK_NAME = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null" >
+        BOOK_AUTHOR = #{bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        CATEGORY_ID = #{categoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="bookPrice != null" >
+        BOOK_PRICE = #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookDeposit != null" >
+        BOOK_DEPOSIT = #{bookDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="bookDetail != null" >
+        BOOK_DETAIL = #{bookDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        PUBLISH_TIME = #{publishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="publishEdition != null" >
+        PUBLISH_EDITION = #{publishEdition,jdbcType=DECIMAL},
+      </if>
+      <if test="publishTrim != null" >
+        PUBLISH_TRIM = #{publishTrim,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null" >
+        CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME = sysdate,
+      </if>
+      <if test="bookImage != null" >
+        BOOK_IMAGE = #{bookImage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BOOK_ID = #{bookId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.tmw.booksharing.pojo.BookInfo" >
+    update BOOK_INFO
+    set ISBN = #{isbn,jdbcType=VARCHAR},
+      BOOK_NAME = #{bookName,jdbcType=VARCHAR},
+      BOOK_AUTHOR = #{bookAuthor,jdbcType=VARCHAR},
+      CATEGORY_ID = #{categoryId,jdbcType=DECIMAL},
+      BOOK_PRICE = #{bookPrice,jdbcType=DECIMAL},
+      BOOK_DEPOSIT = #{bookDeposit,jdbcType=DECIMAL},
+      BOOK_DETAIL = #{bookDetail,jdbcType=VARCHAR},
+      PUBLISH_TIME = #{publishTime,jdbcType=VARCHAR},
+      PUBLISH_EDITION = #{publishEdition,jdbcType=DECIMAL},
+      PUBLISH_TRIM = #{publishTrim,jdbcType=VARCHAR},
+      CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      UPDATE_TIME = sysdate,
+      BOOK_IMAGE = #{bookImage,jdbcType=VARCHAR}
+    where BOOK_ID = #{bookId,jdbcType=DECIMAL}
+  </update>
+
+  <select id="selectByNameAndCategoryIds" resultMap="BaseResultMap" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_INFO
+    <where>
+      <if test="textSearch != null">
+        (BOOK_NAME LIKE #{textSearch} OR BOOK_AUTHOR LIKE #{textSearch} OR ISBN LIKE #{textSearch})
+      </if>
+      <if test="categoryIdList != null" >
+        and CATEGORY_ID in
+        <foreach item="item" index="index" open="(" separator="," close=")" collection="categoryIdList">
+          #{item}
+        </foreach>
+      </if>
+    </where>
+  </select>
+
+
+  <select id="selectList" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_INFO
+  </select>
+
+  <select id="getBookNameByBookId" resultType="string" parameterType="long">
+    SELECT BOOK_NAME FROM BOOK_INFO WHERE BOOK_ID=#{bookId}
+  </select>
+</mapper>

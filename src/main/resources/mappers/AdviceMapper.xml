@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.tmw.booksharing.dao.AdviceMapper" >
+  <resultMap id="BaseResultMap" type="pers.tmw.booksharing.pojo.Advice" >
+    <constructor >
+      <idArg column="ADVICE_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="ISBN" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BOOK_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BOOKAUTHOR" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STATUS" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="USER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="MANAGER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ADVICE_ID, ISBN, BOOK_NAME, BOOKAUTHOR, STATUS, USER_ID, MANAGER_ID, UPDATE_TIME, 
+    CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOOK_ADVICE
+    where ADVICE_ID = #{adviceId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from BOOK_ADVICE
+    where ADVICE_ID = #{adviceId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pers.tmw.booksharing.pojo.Advice" >
+    <selectKey resultType="long" keyProperty="adviceId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_ADVICE (ADVICE_ID, ISBN, BOOK_NAME, 
+      BOOKAUTHOR, STATUS, USER_ID, 
+      MANAGER_ID, UPDATE_TIME, CREATE_TIME
+      )
+    values (#{adviceId,jdbcType=DECIMAL}, #{isbn,jdbcType=VARCHAR}, #{bookName,jdbcType=VARCHAR}, 
+      #{bookauthor,jdbcType=VARCHAR}, #{status,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, 
+      #{managerId,jdbcType=DECIMAL}, sysdate, sysdate
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pers.tmw.booksharing.pojo.Advice" >
+    <selectKey resultType="long" keyProperty="adviceId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_ADVICE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adviceId != null" >
+        ADVICE_ID,
+      </if>
+      <if test="isbn != null" >
+        ISBN,
+      </if>
+      <if test="bookName != null" >
+        BOOK_NAME,
+      </if>
+      <if test="bookauthor != null" >
+        BOOKAUTHOR,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="managerId != null" >
+        MANAGER_ID,
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME,
+      </if>
+      <if test="1 == 1" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adviceId != null" >
+        #{adviceId,jdbcType=DECIMAL},
+      </if>
+      <if test="isbn != null" >
+        #{isbn,jdbcType=VARCHAR},
+      </if>
+      <if test="bookName != null" >
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookauthor != null" >
+        #{bookauthor,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="managerId != null" >
+        #{managerId,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.tmw.booksharing.pojo.Advice" >
+    update BOOK_ADVICE
+    <set >
+      <if test="isbn != null" >
+        ISBN = #{isbn,jdbcType=VARCHAR},
+      </if>
+      <if test="bookName != null" >
+        BOOK_NAME = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookauthor != null" >
+        BOOKAUTHOR = #{bookauthor,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="managerId != null" >
+        MANAGER_ID = #{managerId,jdbcType=DECIMAL},
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME = sysdate,
+      </if>
+    </set>
+    where ADVICE_ID = #{adviceId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.tmw.booksharing.pojo.Advice" >
+    update BOOK_ADVICE
+    set ISBN = #{isbn,jdbcType=VARCHAR},
+      BOOK_NAME = #{bookName,jdbcType=VARCHAR},
+      BOOKAUTHOR = #{bookauthor,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=DECIMAL},
+      USER_ID = #{userId,jdbcType=DECIMAL},
+      MANAGER_ID = #{managerId,jdbcType=DECIMAL},
+      UPDATE_TIME = sysdate
+    where ADVICE_ID = #{adviceId,jdbcType=DECIMAL}
+  </update>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_ADVICE WHERE STATUS=1
+  </select>
+
+  <select id="selectListByManagerId" resultMap="BaseResultMap" parameterType="long">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_ADVICE WHERE  MANAGER_ID=#{userId}
+  </select>
+
+  <select id="selectListByUserId" resultMap="BaseResultMap" parameterType="long">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_ADVICE WHERE  USER_ID=#{userId}
+  </select>
+
+</mapper>

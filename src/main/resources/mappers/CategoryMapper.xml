@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.tmw.booksharing.dao.CategoryMapper" >
+  <resultMap id="BaseResultMap" type="pers.tmw.booksharing.pojo.Category" >
+    <constructor >
+      <idArg column="CATEGORY_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="CATEGORY_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PARENT_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="ORDERS" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="STATUS" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="CREATEDBY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CATEGORY_ID, CATEGORY_NAME, PARENT_ID, ORDERS, STATUS, CREATEDBY, UPDATE_TIME, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOOK_CATEGORY
+    where CATEGORY_ID = #{categoryId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from BOOK_CATEGORY
+    where CATEGORY_ID = #{categoryId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pers.tmw.booksharing.pojo.Category" >
+    <selectKey resultType="long" keyProperty="categoryId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_CATEGORY (CATEGORY_ID, CATEGORY_NAME, PARENT_ID, 
+      ORDERS, STATUS, CREATEDBY, 
+      UPDATE_TIME, CREATE_TIME)
+    values (#{categoryId,jdbcType=DECIMAL}, #{categoryName,jdbcType=VARCHAR}, #{parentId,jdbcType=DECIMAL}, 
+      #{orders,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, #{createdby,jdbcType=VARCHAR}, 
+      sysdate, sysdate)
+  </insert>
+  <insert id="insertSelective" parameterType="pers.tmw.booksharing.pojo.Category" >
+    <selectKey resultType="long" keyProperty="categoryId" order="BEFORE">
+      SELECT book_seq.nextval as id FROM dual
+    </selectKey>
+    insert into BOOK_CATEGORY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="categoryId != null" >
+        CATEGORY_ID,
+      </if>
+      <if test="categoryName != null" >
+        CATEGORY_NAME,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="orders != null" >
+        ORDERS,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createdby != null" >
+        CREATEDBY,
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME,
+      </if>
+      <if test="1 == 1" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=DECIMAL},
+      </if>
+      <if test="orders != null" >
+        #{orders,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null" >
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+      <if test="1 == 1" >
+        sysdate,
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.tmw.booksharing.pojo.Category" >
+    update BOOK_CATEGORY
+    <set >
+      <if test="categoryName != null" >
+        CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      </if>
+      <if test="orders != null" >
+        ORDERS = #{orders,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null" >
+        CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="1 == 1" >
+        UPDATE_TIME = sysdate,
+      </if>
+    </set>
+    where CATEGORY_ID = #{categoryId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.tmw.booksharing.pojo.Category" >
+    update BOOK_CATEGORY
+    set CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      ORDERS = #{orders,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      UPDATE_TIME = sysdate
+    where CATEGORY_ID = #{categoryId,jdbcType=DECIMAL}
+  </update>
+
+
+  <select id="selectCategoryChildrenByParentId" resultMap="BaseResultMap" parameterType="long">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_CATEGORY WHERE PARENT_ID=#{categoryId}
+  </select>
+</mapper>

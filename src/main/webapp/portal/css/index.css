@@ -1,0 +1,42 @@
+.btn:link{
+    color: #6a96ff;
+}
+.btn:active{
+    color:#ff0000;
+}
+.btn:visited{
+    color:#6a96ff;
+}
+.btn:hover{
+    color: #ffef52;
+}
+
+.head_left{
+    float: left;
+    color: #818181;
+    line-height: 31px;
+}
+.head_right{
+    float: right;
+    line-height: 31px;
+}
+.mainContainer{
+    width: 60%;
+    height: 2000px;
+    margin: auto;
+}
+.head{
+    background: url("../img/head.png") repeat-x;
+    height: 31px;
+}
+.search{
+    width: 100%;
+    height: 158px;
+}
+.logo{
+    height: 158px;
+    float: left;
+}
+#search_mid{
+    margin-bottom: 0px;
+}
