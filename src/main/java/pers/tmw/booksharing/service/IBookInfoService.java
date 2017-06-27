@@ -38,5 +38,7 @@ public interface IBookInfoService {
 
     ServerResponse getExchangeInfo(Long userId,Long bookId);
 
+    ServerResponse getSelfBookList(Long userId);
+
 
 }

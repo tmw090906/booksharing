@@ -24,4 +24,7 @@ public interface ApplyMapper {
 
     Apply selectByApplyIdAndAppliedUserId(@Param("applyId") Long applyId,@Param("appliedUserId") Long appliedUserId);
 
+    int repeatApplyTest(@Param("appliedUserId") Long appliedUserId,@Param("appliedBookId") Long appliedBookId,
+                        @Param("applyUserId") Long applyUserId,@Param("applyBookId") Long applyBookId);
+
 }

@@ -67,6 +67,11 @@ public class Const {
 
     public interface SelfLibraryStatus{
         Set<Short> STATUS = Sets.newHashSet((short)1,(short)2,(short)3,(short)4,(short)5);
+        Short EXCHANGE_ONE = (short)1;
+        Short EXCHANGE_ALL = (short)2;
+        Short EXCHANGED = (short)3;
+        Short NO_READE_HAD = (short)4;
+        Short NO_READE_NOT_HAD = (short)5;
     }
 
     public interface ApplyStatus{

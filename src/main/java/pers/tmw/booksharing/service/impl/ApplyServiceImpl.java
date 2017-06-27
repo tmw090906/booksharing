@@ -9,14 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import pers.tmw.booksharing.common.Const;
 import pers.tmw.booksharing.common.ResponseCode;
 import pers.tmw.booksharing.common.ServerResponse;
-import pers.tmw.booksharing.dao.ApplyMapper;
-import pers.tmw.booksharing.dao.BookInfoMapper;
-import pers.tmw.booksharing.dao.ReplaceMapper;
-import pers.tmw.booksharing.dao.UserMapper;
-import pers.tmw.booksharing.pojo.Apply;
-import pers.tmw.booksharing.pojo.BookInfo;
-import pers.tmw.booksharing.pojo.Replace;
-import pers.tmw.booksharing.pojo.User;
+import pers.tmw.booksharing.dao.*;
+import pers.tmw.booksharing.pojo.*;
 import pers.tmw.booksharing.service.IApplyService;
 import pers.tmw.booksharing.util.BigDecimalUtil;
 import pers.tmw.booksharing.vo.ApplyListVo;
@@ -38,6 +32,8 @@ public class ApplyServiceImpl implements IApplyService {
     private UserMapper userMapper;
     @Autowired
     private ReplaceMapper replaceMapper;
+    @Autowired
+    private SelfLibraryMapper selfLibraryMapper;
 
 
     @Override
@@ -47,7 +43,20 @@ public class ApplyServiceImpl implements IApplyService {
         }
         User user = userMapper.selectByPrimaryKey(exchangeUserId);
         BookInfo bookInfo = bookInfoMapper.selectByPrimaryKey(bookId);
-        //判断保证金是否足够
+        SelfLibrary selfLibrary = selfLibraryMapper.selectLibraryByUserIdBookId(exchangeUserId,bookId);
+        //若自图书库无此书，先将此书添加到  5 未读想读
+        if(selfLibrary == null){
+            selfLibrary = new SelfLibrary();
+            selfLibrary.setUserId(exchangeUserId);
+            selfLibrary.setStatus(Const.SelfLibraryStatus.NO_READE_NOT_HAD);
+            selfLibrary.setBookId(bookId);
+            selfLibraryMapper.insert(selfLibrary);
+        }
+        //若图书库中有此书，且已经读过或拥有则不能提交交换申请
+        if(selfLibrary.getStatus() != Const.SelfLibraryStatus.NO_READE_NOT_HAD){
+            return ServerResponse.createByErrorMessage("此书已读过或已经拥有");
+        }
+        //判断保证金是否足够，不足则无法提交申请
         if(bookInfo.getBookDeposit().compareTo(user.getApproveDeposit()) == 1){
             return ServerResponse.createByErrorMessage("可用保证金不足，无法提交申请");
         }
@@ -57,6 +66,10 @@ public class ApplyServiceImpl implements IApplyService {
         apply.setApplyBook(exchangeBookId);
         apply.setApplyUser(exchangeUserId);
         apply.setStatus(Const.ApplyStatus.SEND);
+        int repeatTest = applyMapper.repeatApplyTest(userId,bookId,exchangeUserId,exchangeBookId);
+        if(repeatTest > 0){
+            return ServerResponse.createByErrorMessage("无法重复发送申请");
+        }
         int resultCount = applyMapper.insert(apply);
         if(resultCount > 0){
             //足够则扣掉保证金

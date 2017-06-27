@@ -26,16 +26,11 @@ public class CategoryController {
 
     /**
      * 树形数据结构列表接口
-     * @param session
      * @return
      */
     @RequestMapping("get_tree_category.do")
     @ResponseBody
-    public ServerResponse getTreeCategory(HttpSession session){
-        User user = (User)session.getAttribute(Const.CURRENT_USER);
-        if(user == null){
-            return ServerResponse.createByErrorMessage("用户未登录,请登录");
-        }
+    public ServerResponse getTreeCategory(){
         return iCategoryService.getTreeCategory();
     }
 

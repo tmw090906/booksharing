@@ -7,6 +7,8 @@ import java.util.List;
  */
 public class CategoryTreeVo {
 
+    private Long categoryId;
+
     private String name;
 
     private String userLevel;
@@ -14,6 +16,14 @@ public class CategoryTreeVo {
     private String url;
 
     private List<CategoryTreeVo> list;
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
 
     public String getName() {
         return name;

@@ -15,6 +15,8 @@
     float: left;
     color: #818181;
     line-height: 31px;
+    display: inline-block;
+    width: 50%;
 }
 .head_right{
     float: right;
@@ -34,9 +36,40 @@
     height: 158px;
 }
 .logo{
+    clear: both;
     height: 158px;
     float: left;
 }
 #search_mid{
-    margin-bottom: 0px;
+    padding-top: 124px;
+}
+.content{
+    width: 100%;
+    height: auto;
+}
+#bookDetail table{
+    table-layout: fixed;
+}
+#bookDetail tr{
+    height: 30px;
+}
+
+#popWindow{
+    display: none;
+    width:350px;
+    height:250px;
+    border:1px solid #ccc;
+    position:absolute;
+    z-index:9999;
+    background:#fff;
+}
+
+#popSelfBookList{
+    display: none;
+    width:550px;
+    height:450px;
+    border:1px solid #ccc;
+    position:absolute;
+    z-index:9999;
+    background:#fff;
 }

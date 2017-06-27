@@ -164,4 +164,9 @@
     SELECT <include refid="Base_Column_List"/>
     FROM BOOK_APPLY WHERE APPLY_ID=#{applyId} AND APPLIED_USER=#{appliedUserId} AND STATUS='1'
   </select>
+
+  <select id="repeatApplyTest" resultType="int" parameterType="map">
+    SELECT COUNT(1) FROM BOOK_APPLY
+    WHERE APPLY_USER=#{applyUserId} AND APPLY_BOOK=#{applyBookId} AND APPLIED_USER=#{appliedUserId} AND APPLIED_BOOK=#{appliedBookId}
+  </select>
 </mapper>

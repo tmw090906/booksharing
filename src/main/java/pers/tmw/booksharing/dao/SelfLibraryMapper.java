@@ -32,4 +32,7 @@ public interface SelfLibraryMapper {
     Set<Long> getBookIdBySelfUserId(Long userId);
 
     List<Long> getUserIdByAllBookId(Long bookId);
+
+    List<Long> getSelfBookIdByHad(Long userId);
+
 }

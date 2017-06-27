@@ -145,7 +145,11 @@ public class CategoryServiceImpl implements ICategoryService {
         List<CategoryTreeVo> categoryTreeVoList = Lists.newArrayList();
         for(Category categoryTemp: categoryList){
             CategoryTreeVo categoryTreeVoItem = new CategoryTreeVo();
+            categoryTreeVoItem.setCategoryId(categoryTemp.getCategoryId());
             categoryTreeVoItem.setName(categoryTemp.getCategoryName());
+            String url = "javascript:";
+            categoryTreeVoItem.setUrl(url);
+            categoryTreeVoItem.setUserLevel("");
             categoryTreeVoList.add(categoryTreeVoItem);
             assembleCategoryTreeVo(categoryTreeVoItem,categoryTemp);
         }

@@ -240,4 +240,12 @@
   <select id="getBookNameByBookId" resultType="string" parameterType="long">
     SELECT BOOK_NAME FROM BOOK_INFO WHERE BOOK_ID=#{bookId}
   </select>
+
+  <select id="getBookListByBookIds" resultMap="BaseResultMap" parameterType="list">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_INFO WHERE BOOK_ID IN
+    <foreach item="item" index="index" open="(" separator="," close=")" collection="bookIdList">
+      #{item}
+    </foreach>
+  </select>
 </mapper>

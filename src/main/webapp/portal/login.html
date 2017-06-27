@@ -36,11 +36,11 @@
             </div>
         </div>
         <div align="center">
-            <a class="btn" href="#" target="_blank">忘记密码？</a>
+            <a class="btn" href="reset_pwd.html">忘记密码？</a>
             &nbsp &nbsp
-            <a class="btn" href="#" target="_blank">注册帐号</a>
+            <a class="btn" href="register.html">注册帐号</a>
             &nbsp &nbsp
-            <a class="btn" href="#" target="_blank">游客访问</a>
+            <a class="btn" href="index.html">游客访问</a>
         </div>
 
         <!-- Javascript -->
@@ -52,13 +52,20 @@
 <script>
     $("#login_btn").click(
         function () {
-            $.post('/book/user/login.do',$("#login").serialize(),function (date) {
-                if(date.status == 1){
-                    alert("111");
+            $.post('/book/user/login.do',$("#login").serialize(),function (flag) {
+                if(flag.status == 1){
+                    var customerId = flag.date.userId;
+                    sessionStorage.customerId = customerId;
+                    window.location.href = "index.html";
                 }else {
-                    alert(date.msg);
+                    alert(flag.msg);
                 }
             });
+    });
+    $("body").keydown(function() {
+        if (event.keyCode == "13") {//keyCode=13是回车键
+            $('#login_btn').click();
+        }
     });
 </script>
 </html>

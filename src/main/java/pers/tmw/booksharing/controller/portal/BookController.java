@@ -48,6 +48,18 @@ public class BookController {
 
 
     /**
+     * 得到图书详情接口
+     * @param bookId
+     * @return
+     */
+    @RequestMapping("get_book_detail.do")
+    @ResponseBody
+    public ServerResponse getBookDetail(Long bookId){
+        return iBookInfoService.manageBookDetail(bookId);
+    }
+
+
+    /**
      * 若书库中无想查询的书的信息，提交申请给管理员添加图书
      * @param session
      * @param advice
@@ -132,6 +144,17 @@ public class BookController {
         }
         return iBookInfoService.getExchangeInfo(user.getUserId(),bookId);
     }
+
+    @RequestMapping("self_list.do")
+    @ResponseBody
+    public ServerResponse getSelfBookList(HttpSession session){
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+        if(user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iBookInfoService.getSelfBookList(user.getUserId());
+    }
+
 
 
 

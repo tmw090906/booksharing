@@ -12,10 +12,7 @@ import pers.tmw.booksharing.common.Const;
 import pers.tmw.booksharing.common.ResponseCode;
 import pers.tmw.booksharing.common.ServerResponse;
 import pers.tmw.booksharing.dao.*;
-import pers.tmw.booksharing.pojo.Apply;
-import pers.tmw.booksharing.pojo.BookInfo;
-import pers.tmw.booksharing.pojo.Replace;
-import pers.tmw.booksharing.pojo.Shipping;
+import pers.tmw.booksharing.pojo.*;
 import pers.tmw.booksharing.service.IReplaceService;
 import pers.tmw.booksharing.vo.ReplaceListVo;
 
@@ -29,7 +26,6 @@ import java.util.List;
 @Service("iReplaceService")
 public class ReplaceServiceImpl implements IReplaceService {
 
-    private static final Logger logger = LoggerFactory.getLogger("ReplaceServiceImpl");
 
     @Autowired
     private ReplaceMapper replaceMapper;
@@ -41,6 +37,9 @@ public class ReplaceServiceImpl implements IReplaceService {
     private BookInfoMapper bookInfoMapper;
     @Autowired
     private ShippingMapper shippingMapper;
+    @Autowired
+    private SelfLibraryMapper selfLibraryMapper;
+
 
 
     @Override
@@ -215,7 +214,14 @@ public class ReplaceServiceImpl implements IReplaceService {
             }
             rowCount = replaceMapper.updateByPrimaryKeySelective(replace);
         }
+        //双方确认收货后，flag = 1
+        //上面把置换状态更新为SUCCESS
+        //释放双方保证金
+        //这里 将交换出去的书从 1 或 2设置为 3已经交换出去了
+        //把获得的书 添加到自己的图书库中的 4
         if(flag == 1 && rowCount > 0){
+
+            //释放双方保证金
             Apply apply = applyMapper.selectByPrimaryKey(replace.getApplyId());
             Long appliedUserId = apply.getAppliedUser();
             Long applyUserId = apply.getApplyUser();
@@ -225,6 +231,19 @@ public class ReplaceServiceImpl implements IReplaceService {
             BookInfo applyBook = bookInfoMapper.selectByPrimaryKey(applyBookId);
             userMapper.addApproveDeposit(appliedUserId,applyBook.getBookDeposit());
             userMapper.addApproveDeposit(applyUserId,appliedBook.getBookDeposit());
+
+
+            //更新双方图书库图书状态，具体如上
+            SelfLibrary applyUserApplyBook = selfLibraryMapper.selectLibraryByUserIdBookId(applyUserId,applyBookId);
+            SelfLibrary applyUserAppliedBook = selfLibraryMapper.selectLibraryByUserIdBookId(applyUserId,appliedBookId);
+            applyUserApplyBook.setStatus(Const.SelfLibraryStatus.EXCHANGED);
+            selfLibraryMapper.updateByPrimaryKey(applyUserApplyBook);
+            this.setSelfLibrary(applyUserAppliedBook,applyUserId,appliedBookId);
+            SelfLibrary appliedUserApplyBook = selfLibraryMapper.selectLibraryByUserIdBookId(appliedUserId,applyBookId);
+            SelfLibrary appliedUserAppliedBook = selfLibraryMapper.selectLibraryByUserIdBookId(appliedUserId,appliedBookId);
+            appliedUserAppliedBook.setStatus(Const.SelfLibraryStatus.EXCHANGED);
+            selfLibraryMapper.updateByPrimaryKey(appliedUserAppliedBook);
+            this.setSelfLibrary(appliedUserApplyBook,appliedUserId,applyBookId);
         }
         if(rowCount > 0){
             return ServerResponse.createBySuccessMessage("确认收货成功！");
@@ -232,6 +251,18 @@ public class ReplaceServiceImpl implements IReplaceService {
         return ServerResponse.createByErrorMessage("操作失败");
     }
 
+    private void setSelfLibrary(SelfLibrary selfLibrary , Long userId, Long bookId){
+        if(selfLibrary != null){
+            selfLibrary.setStatus(Const.SelfLibraryStatus.NO_READE_HAD);
+            selfLibraryMapper.updateByPrimaryKey(selfLibrary);
+        }else {
+            selfLibrary = new SelfLibrary();
+            selfLibrary.setStatus(Const.SelfLibraryStatus.NO_READE_HAD);
+            selfLibrary.setBookId(bookId);
+            selfLibrary.setUserId(userId);
+            selfLibraryMapper.insert(selfLibrary);
+        }
+    }
 
     @Override
     public ServerResponse cancelReplace(Long replaceId){

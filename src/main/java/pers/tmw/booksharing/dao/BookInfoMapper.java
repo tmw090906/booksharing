@@ -23,4 +23,6 @@ public interface BookInfoMapper {
     List<BookInfo> selectList();
 
     String getBookNameByBookId(Long bookId);
+
+    List<BookInfo> getBookListByBookIds(@Param("bookIdList")List<Long> bookIdList);
 }

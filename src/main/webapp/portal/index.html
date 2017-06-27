@@ -4,26 +4,232 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>图书交换平台</title>
     <link rel="stylesheet" href="css/index.css">
+    <style type="text/css">
+        .menuTree{ margin-left:0px;width: 21%;height: 1830px; float: left}
+        .menuTree div{ padding-left:1px;}
+        .menuTree div ul{ overflow:hidden; display:none; height:auto; margin:0;}
+        .menuTree span{ display:block; height:20px; line-height:25px; padding-left:5px; margin:1px 0; cursor:pointer; border-bottom:1px solid #CCC;}
+        .menuTree span:hover{ background-color:#e6e6e6; color:#cf0404;}
+        .menuTree a{ color:#333; text-decoration:none;}
+        .menuTree a:hover{ color:#06F;}
+        .menuTree span{height: 30px;font-size: small}
+    </style>
 </head>
 <body>
-<div class="mainContainer">
+<div class="mainContainer" id="mainContainer">
     <div class="head">
-        <div class="head_left">&nbsp &nbsp您好！欢迎光临图书分享平台<a class="btn">登陆</a><a class="btn">注册</a></div>
+        <div class="head_left"><span style="float: left">&nbsp &nbsp您好！欢迎光临图书分享平台</span>
+            <div id="login"><a class="btn" href="login.html" style="float: left" >登陆</a><a class="btn" href="register.html">注册</a></div>
+            <div id="noLogin"><a class="btn" href="self_page.html" style="float: left" >个人信息</a><a class="btn" href="javascript:logout()">注销</a></div>
+            <div style="clear: both"></div>
+        </div>
         <div class="head_right"><a>加入收藏</a>&nbsp &nbsp</div>
     </div>
     <div class="search">
         <div class="logo"><img src="img/logo.png"></div>
         <div id="search_mid">
-            <div class="col-lg-6">
+            <div class="col-lg-6" style="float: right">
+                <button type="button" class="btn btn-success" onclick="window.location.href = 'self_library.html'" style="margin-top: auto;float: right">查看个人图书库</button>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="ISBN,书名，作者">
+                    <input type="text" class="form-control" placeholder="ISBN,书名，作者" v-model="textSearch">
                     <span class="input-group-btn">
-                    <button class="btn btn-success" type="button">&nbsp &nbsp &nbsp &nbsp搜索&nbsp &nbsp &nbsp &nbsp</button>
+                    <button class="btn btn-success" type="button" @click="searchButton(textSearch)">&nbsp &nbsp &nbsp &nbsp搜索&nbsp &nbsp &nbsp &nbsp</button>
                 </span>
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
+
         </div>
     </div>
+    <div class="nav" style="clear: both">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="index.html">首页</a></li>
+            <li role="presentation"><a href="#">图书分类</a></li>
+            <li role="presentation"><a href="self_page.html">个人信息</a></li>
+            <li role="presentation"><a href="#">如何交换</a></li>
+            <li role="presentation"><a href="#">书库没有想分享的书？</a></li>
+        </ul>
+    </div>
+    <div class="content" id="content">
+        <div id="menuTree" class="menuTree" style="float: left;border-right: solid 1px;border-color: darkgray"></div>
+        <div id="pageList">
+            <div id="bookList" style="width: 79%;float: right">
+                <table class="table table-striped" id="bookTable">
+                    <tr>
+                        <th>书名</th>
+                        <th>封面</th>
+                        <th>作者</th>
+                        <th>查看详情</th>
+                    </tr>
+                    <tr v-for="book in books">
+                        <td style="line-height: 158px">{{book.bookName}}</td>
+                        <td style="background-size: cover"><img v-bind:src="'file:///D:/Development/javaTools/FTPFile/' + book.bookImage" width="129px" height="158px"></td>
+                        <td style="line-height: 158px">{{book.bookAuthor}}</td>
+                        <td style="line-height: 158px"><a class="btn" href="#" @click="getBookDetail(book.bookId)">查看详情</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isFirstPage}">
+                            <a href="#" @click="pageChoice(pageNum-1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pagination" v-for="n in lastPage">
+                        <li v-bind:class="{active : n == pageNum}"><a href="#" @click="pageChoice(n)">{{n}}</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isLastPage}">
+                            <a href="#" @click="pageChoice(pageNum+1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div id="bookDetail" style="width: 79%;float: right;" v-if="bookDetail != null">
+            <div style="text-align:center">
+                <h1 style="margin: 0 auto">
+                    <span>{{bookDetail.bookName}}</span>
+                </h1>
+                <p><hr/></p>
+            </div>
+            <div style="width: 28%;height: 358px;margin-top: 50px;margin-left: 5%;float: left">
+                <img src="img/logo.png" style="width: 100%;height: 100%;top: 100px">
+            </div>
+            <table width="66%"cellspacing="0" cellpadding="0" style="float: right;margin-top: 50px;">
+                <tr>
+                    <td width="65%">
+                        作 者：<span id="lb_author">{{bookDetail.bookAuthor}}</span>&nbsp;著</td>
+                    <td>
+                        版 次：<span id="lb_edition">{{bookDetail.publishEdition}}</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        出版社：<span id="lb_publisher">{{bookDetail.publishTrim}}</span></td>
+                    <td>
+                        &nbsp;<span id="lb_page">&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        ISBN：<span id="lb_isbn">{{bookDetail.isbn}}</span></td>
+                    <td>
+                        &nbsp;<span id="lb_bindid">&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        出版时间：<span id="lb_pdate">{{bookDetail.publishTime}}</span></td>
+                    <td>
+                        定 价：￥<span id="lb_format">{{bookDetail.bookPrice}}</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        分 类：<span>{{bookDetail.categoryName}}</span></td>
+                    <td>
+                        保证金：￥<span id="lb_price">{{bookDetail.bookDeposit}}</span></td>
+                </tr>
+            </table>
+            <div style="float:left;margin-left: 1%;margin-top: 1px">
+                <span><h5>简介：</h5></span>
+            </div>
+            <div style="width:61%;float: right" >
+                <h5 style="word-wrap: break-word;">{{bookDetail.bookDetail}}</h5>
+            </div>
+            <div style="width: 66%;float: right;margin-top: 120px">
+                <div style="float: right">
+                    <button class="btn btn-success" @click="getExchangeOneList(bookDetail.bookId)">指定交换列表</button>
+                    <button class="btn btn-success" @click="getExchangeList(bookDetail.bookId)">不指定交换列表</button>
+                    <button class="btn btn-success" onclick="showPopWindow()">添加到自建图书库</button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="exchangeOneList" style="width: 79%;float: right">
+            <table class="table table-striped">
+                <tr>
+                    <th>待换用户</th>
+                    <th>待换图书</th>
+                    <th>待换图书作者</th>
+                    <th>可换图书</th>
+                    <th>交换</th>
+                </tr>
+                <tr v-for="exchangeOne in exchangeOnes">
+                    <td>{{exchangeOne.userName}}</td>
+                    <td><a href="#" @click="getBookDetail(exchangeOne.bookId)">{{exchangeOne.bookName}}</a></td>
+                    <td>{{exchangeOne.bookAuthor}}</td>
+                    <td><a href="#" @click="getBookDetail(exchangeOne.exchangeBookId)">{{exchangeOne.exchangeBookName}}</a></td>
+                    <td><a href="#" @click="commitExchangeInfo(exchangeOne.bookId,exchangeOne.exchangeBookId,exchangeOne.userId)">交换</a></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="exchangeList" style="width: 79%;float: right">
+            <table class="table table-striped">
+                <tr>
+                    <th>待换用户</th>
+                    <th>待换图书</th>
+                    <th>待换图书作者</th>
+                    <th>点击选择交换图书</th>
+                </tr>
+                <tr v-for="exchange in exchanges">
+                    <td>{{exchange.userName}}</td>
+                    <td><a href="#" @click="getBookDetail(exchange.bookId)">{{exchange.bookName}}</a></td>
+                    <td>{{exchange.bookAuthor}}</td>
+                    <td><a href="#" @click="showSelfBook(exchange.bookId,exchange.userId,exchange.bookName,exchange.userName)">查看个人可交换图书</a></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+
+
+    <div id="popWindow">
+        <div style="margin-top: 20%;width: 80%;margin-left: 10%">
+            <select class="form-control" id="selfBookStatus">
+                <option value="1">添加到已阅，指定交换</option>
+                <option value="2">添加到已阅，不指定交换</option>
+                <option value="3">添加到已阅，已交换出</option>
+                <option value="4">添加到未阅，但拥有</option>
+                <option value="5">添加到未阅，想读</option>
+            </select>
+            <input v-if="bookDetail != null" type="hidden" id="bookId" v-bind:value="bookDetail.bookId"/>
+        </div>
+        <div style="margin-top: 10%;text-align: center">
+            <button class="btn btn-success" id="addSelfBook">确认</button>
+            <button class="btn btn-success" id="addCancel">取消</button>
+        </div>
+    </div>
+
+
+    <div id="popSelfBookList">
+        <div style="margin-top: 20%;text-align: center" id="bookMsg">
+            <span><h5>交换用户：</h5></span>
+            <span><h5>交换图书：</h5></span>
+        </div>
+        <input type="hidden" id="exchangeAllBookId"/>
+        <input type="hidden" id="userId"/>
+        <div style="margin-top: 20%;width: 80%;margin-left: 10%">
+            <label for="selfBookList">可交换图书</label>
+            <select class="form-control" id="selfBookList">
+                <option v-for="selfBook in selfHadBooks" v-bind:value="selfBook.bookId">书名：{{selfBook.bookName}}  &nbsp;&nbsp;&nbsp; 作者：{{selfBook.bookAuthor}}</option>
+            </select>
+        </div>
+        <div style="margin-top: 10%;text-align: center">
+            <button class="btn btn-success" id="choiceBook">确认</button>
+            <button class="btn btn-success" onclick="hideSelfList()">取消</button>
+        </div>
+        </table>
+    </div>
+
+
+
 </div>
 
 </body>
@@ -32,4 +238,7 @@
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- 新 Bootstrap 核心 CSS 文件 -->
 <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="js/lib/ngjstree.js"></script>
+<script src="js/lib/vue.min.js"></script>
+<script src="js/index.js"></script>
 </html>

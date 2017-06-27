@@ -269,16 +269,18 @@ public class BookInfoServiceImpl implements IBookInfoService {
         }
         List<Long> userIdList = selfLibraryMapper.getUserIdByBookId(bookId);
         if(userIdList == null || userIdList.size() == 0){
-            return ServerResponse.createBySuccess("此书暂无指定兑换信息");
+            return ServerResponse.createByErrorMessage("此书暂无指定兑换信息");
         }
         List<ExchangeOneListVo> exchangeOneListVoList = Lists.newArrayList();
         for(Long userIdTemp : userIdList){
-            User userTemp = userMapper.selectByPrimaryKey(userIdTemp);
-            List<Long> bookIdList = selfLibraryMapper.getBookIdByUserId(userIdTemp);
-            for(Long bookIdTemp : bookIdList){
-                 BookInfo bookInfo = bookInfoMapper.selectByPrimaryKey(bookIdTemp);
-                 ExchangeOneListVo exchangeOneListVo = this.assembleExchangeOneListVo(userTemp,bookInfo,bookId,userId);
-                 exchangeOneListVoList.add(exchangeOneListVo);
+            if(userIdTemp != userId){
+                User userTemp = userMapper.selectByPrimaryKey(userIdTemp);
+                List<Long> bookIdList = selfLibraryMapper.getBookIdByUserId(userIdTemp);
+                for(Long bookIdTemp : bookIdList){
+                    BookInfo bookInfo = bookInfoMapper.selectByPrimaryKey(bookIdTemp);
+                    ExchangeOneListVo exchangeOneListVo = this.assembleExchangeOneListVo(userTemp,bookInfo,bookId,userId);
+                    exchangeOneListVoList.add(exchangeOneListVo);
+                }
             }
         }
         Set<Long> bookIdList = selfLibraryMapper.getBookIdBySelfUserId(userId);
@@ -287,7 +289,9 @@ public class BookInfoServiceImpl implements IBookInfoService {
                 exchangeOneListVoList.remove(i);
             }
         }
-
+        if(exchangeOneListVoList.size() == 0 || exchangeOneListVoList ==null){
+            return ServerResponse.createByErrorMessage("没有匹配的指定兑换信息");
+        }
         return ServerResponse.createBySuccess(exchangeOneListVoList);
     }
 
@@ -311,8 +315,8 @@ public class BookInfoServiceImpl implements IBookInfoService {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
         }
         List<Long> userIdList = selfLibraryMapper.getUserIdByAllBookId(bookId);
-        if(userIdList == null){
-            return ServerResponse.createBySuccess("此书暂无非指定兑换信息");
+        if(userIdList == null || userIdList.size() == 0){
+            return ServerResponse.createByErrorMessage("此书暂无非指定兑换信息");
         }
         List<ExchangeListVo> exchangeListVoList = Lists.newArrayList();
         BookInfo bookInfo = bookInfoMapper.selectByPrimaryKey(bookId);
@@ -334,7 +338,27 @@ public class BookInfoServiceImpl implements IBookInfoService {
         return exchangeListVo;
     }
 
-
+    @Override
+    public ServerResponse getSelfBookList(Long userId){
+        List<Long> bookIdList = selfLibraryMapper.getSelfBookIdByHad(userId);
+        if(bookIdList == null || bookIdList.size() ==0){
+            return ServerResponse.createByErrorMessage("您当前没有可交换的图书,请先添加");
+        }
+        List<BookInfo> bookInfoList = bookInfoMapper.getBookListByBookIds(bookIdList);
+        List<HadBookListVo> hadBookListVoList = this.assembleHadBookListVoList(bookInfoList);
+        return ServerResponse.createBySuccess(hadBookListVoList);
+    }
+    private List<HadBookListVo> assembleHadBookListVoList(List<BookInfo> bookInfoList){
+        List<HadBookListVo> hadBookListVoList = Lists.newArrayList();
+        for(BookInfo bookInfo : bookInfoList){
+            HadBookListVo hadBookListVo = new HadBookListVo();
+            hadBookListVo.setBookAuthor(bookInfo.getBookAuthor());
+            hadBookListVo.setBookId(bookInfo.getBookId());
+            hadBookListVo.setBookName(bookInfo.getBookName());
+            hadBookListVoList.add(hadBookListVo);
+        }
+        return hadBookListVoList;
+    }
 
 
 
