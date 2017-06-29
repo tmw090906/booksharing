@@ -10,7 +10,7 @@
 <div class="mainContainer" id="mainContainer">
     <div class="head">
         <div class="head_left"><span style="float: left">&nbsp &nbsp您好！欢迎光临图书分享平台</span>
-            <div id="noLogin"><a class="btn" href="javascript:" style="float: left" >个人信息</a><a class="btn" href="javascript:logout()">注销</a></div>
+            <div id="noLogin"><a class="btn" href="self_page.html" style="float: left" >个人信息</a><a class="btn" href="javascript:logout()">注销</a></div>
             <div style="clear: both"></div>
         </div>
         <div class="head_right"><a>加入收藏</a>&nbsp &nbsp</div>
@@ -19,11 +19,11 @@
         <div class="logo"><img src="img/logo.png"></div>
         <div id="search_mid">
             <div class="col-lg-6" style="float: right">
-                <button class="btn btn-success" style="float: right" href="#" style="margin-top: auto">查看个人图书库</button>
+                <button class="btn btn-success" style="float: right" onclick="window.location.href = 'self_library.html'" style="margin-top: auto">查看个人图书库</button>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="ISBN,书名，作者" v-model="textSearch">
+                    <input type="text" class="form-control" placeholder="ISBN,书名，作者" >
                     <span class="input-group-btn">
-                    <button class="btn btn-success" type="button" @click="searchButton(textSearch)">&nbsp &nbsp &nbsp &nbsp搜索&nbsp &nbsp &nbsp &nbsp</button>
+                    <button class="btn btn-success" type="button" >&nbsp &nbsp &nbsp &nbsp搜索&nbsp &nbsp &nbsp &nbsp</button>
                 </span>
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
@@ -34,70 +34,920 @@
         <ul class="nav nav-tabs">
             <li role="presentation"><a href="index.html">首页</a></li>
             <li role="presentation"><a href="#">图书分类</a></li>
-            <li role="presentation"><a href="#">个人信息</a></li>
+            <li role="presentation"><a href="self_page.html">个人信息</a></li>
             <li role="presentation"><a href="#">如何交换</a></li>
-            <li role="presentation"><a href="#">书库没有想分享的书？</a></li>
+            <li role="presentation"><a href="#" onclick="window.location.href='index.html'">书库没有想分享的书？</a></li>
         </ul>
     </div>
-    <div class="content" id="content">
+    <div class="content" id="content" style="width: 100%;height: auto;">
         <div id="menuTree" style="float: left;border-right: solid silver 1px;width: 21%">
             <ul id="accordion" class="accordion">
                 <li>
                     <div class="link"><i class="fa fa-paint-brush"></i>个人信息管理<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="#">查看个人信息</a></li>
-                        <li><a href="#">修改密码</a></li>
+                        <li><a href="#" @click="getSelfInfo()">查看个人信息</a></li>
+                        <li><a href="#" onclick="showResetPwd()">修改密码</a></li>
                     </ul>
                 </li>
                 <li>
                     <div class="link"><i class="fa fa-code"></i>地址管理<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="#">查看地址列表</a></li>
-                        <li><a href="#">新增地址</a></li>
+                        <li><a href="#"  @click="firstGetShippingList()">查看地址列表</a></li>
+                        <li><a href="#" onclick="showAddShipping()">新增地址</a></li>
                     </ul>
                 </li>
                 <li>
                     <div class="link"><i class="fa fa-mobile"></i>保证金管理<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="#">保证金余额</a></li>
-                        <li><a href="#">保证金充值</a></li>
-                        <li><a href="#">保证金充值记录</a></li>
+                        <li><a href="#" @click="getDepositInfo()">保证金余额</a></li>
+                        <li><a href="#" onclick="openPayWindow()">保证金充值</a></li>
+                        <li><a href="#"  @click="firstGetPayList()">保证金充值记录</a></li>
                     </ul>
                 </li>
                 <li><div class="link"><i class="fa fa-globe"></i>图书添加申请管理<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="#">查看图书添加申请列表</a></li>
+                        <li><a href="#"  @click="firstGetSelfAdviceList()">查看图书添加申请列表</a></li>
                     </ul>
                 </li>
                 <li><div class="link"><i class="fa fa-globe"></i>图书置换申请管理<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="#">我的申请列表</a></li>
-                        <li><a href="#">查看申请</a></li>
+                        <li><a href="#"  @click="firstGetSelfApplyList()">我的申请列表</a></li>
+                        <li><a href="#"  @click="firstGetAppliedList()">查看申请</a></li>
                     </ul>
                 </li>
                 <li><div class="link"><i class="fa fa-globe"></i>图书置换管理<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="#">置换完成列表</a></li>
-                        <li><a href="#">置换进行中列表</a></li>
-                        <li><a href="#">问题置换</a></li>
+                        <li><a href="#" @click="firstGetReplaceList(2)">置换完成列表</a></li>
+                        <li><a href="#" @click="firstGetReplaceList(1)">置换进行中列表</a></li>
+                        <li><a href="#" @click="firstGetReplaceList(3)">问题置换</a></li>
                     </ul>
                 </li>
-                <li><div class="link"><i class="fa fa-globe"></i>我的违规记录<i class="fa fa-chevron-down"></i></div>
+                <li><div class="link"><i class="fa fa-globe"></i>违规管理<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="#">违规记录列表</a></li>
+                        <li><a href="#" @click="firstGetSelfComplanList()">我的投诉列表</a></li>
+                        <li><a href="#" @click="firstGetSelfIllegalList()">我的违规记录</a></li>
                     </ul>
                 </li>
 
             </ul>
         </div>
+
+        <div id="selfInfo" class="selfControl" style="width: 79%;float: right;margin-top: 5%">
+            <div style="width: 60%;margin-left: 15%">
+                <form class="form-horizontal" id="selfInfoForm">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{userInfo.username}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="trueName" class="col-sm-2 control-label">真实姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="trueName" name="trueName" placeholder="真实姓名" v-bind:value="userInfo.trueName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="idcard" class="col-sm-2 control-label">身份证号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="idcard" name="idcard" placeholder="身份证号码" v-bind:value="userInfo.idcard">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" v-bind:value="userInfo.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-sm-2 control-label">电话号码</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="电话号码" v-bind:value="userInfo.phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="wechart" class="col-sm-2 control-label">微信</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="wechart" name="wechart" placeholder="微信" v-bind:value="userInfo.wechart">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="qq" class="col-sm-2 control-label">qq</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="qq" name="qq" placeholder="qq" v-bind:value="userInfo.qq">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="question" class="col-sm-2 control-label">密码问题</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="question" name="question" placeholder="找密码问题" v-bind:value="userInfo.question">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="anwser" class="col-sm-2 control-label">密码答案</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="anwser" name="anwser" placeholder="找密码答案" v-bind:value="userInfo.anwser">
+                        </div>
+                    </div>
+                    <input type="hidden" value="1" id="userId" name="userId" v-bind:value="userInfo.userId">
+                    <div class="form-group" style="text-align: center;">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-success" onclick="saveUserInfo()">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="resetPassword" class="selfControl" style="width: 79%;float: right;margin-top: 5%">
+            <div style="width: 60%;margin-left: 25%;margin-top: 5%">
+                <form class="form-horizontal" id="resetPwdForm">
+                    <div class="form-group">
+                        <label for="passwordNow" class="col-sm-2 control-label">当前密码</label>
+                        <div class="col-xs-6">
+                            <input type="password" class="form-control" id="passwordNow" name="passwordNow" placeholder="当前密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordNew" class="col-sm-2 control-label">新密码</label>
+                        <div class="col-xs-6">
+                            <input type="password" class="form-control" id="passwordNew" name="passwordNew" placeholder="新密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordAgain" class="col-sm-2 control-label">重复输入</label>
+                        <div class="col-xs-6">
+                            <input type="password" class="form-control" id="passwordAgain" name="passwordAgain" placeholder="重复输入">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-success" onclick="resetPwd()">确认修改</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="shippingList" class="selfControl" style="width: 79%;float: right">
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>收货人</th>
+                        <th>电话</th>
+                        <th>地址</th>
+                        <th>查看详情</th>
+                        <th>删除</th>
+                    </tr>
+                    <tr v-for="shipping in shippingList">
+                        <td>{{shipping.receiveName}}</td>
+                        <td>{{shipping.receivePhone}}</td>
+                        <td>{{shipping.receiveAddress}}</td>
+                        <td><a href="#" @click="getShippingDetail(shipping.shippingId)">查看详情</a></td>
+                        <td><a href="#" @click="deleteShipping(shipping.shippingId)">删除</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isFirstPage}">
+                            <a href="#" @click="shippingListPageChoice(pageNum-1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pagination" v-for="n in lastPage">
+                        <li v-bind:class="{active : n == pageNum}"><a href="#" @click="shippingListPageChoice(n)">{{n}}</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isLastPage}">
+                            <a href="#" @click="shippingListPageChoice(pageNum+1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div id="shippingAdd" class="selfControl" style="width: 79%;float: right">
+            <div style="width: 60%;margin-left: 15%;margin-top: 5%">
+                <form class="form-horizontal" id="addShippingForm">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{userInfo.username}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiveName" class="col-sm-2 control-label">收货人</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="receiveName" name="receiveName" placeholder="收货人">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receivePhone" class="col-sm-2 control-label">联系电话</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="receivePhone" name="receivePhone" placeholder="联系电话">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiveProvince" class="col-sm-2 control-label">省份</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="receiveProvince" name="receiveProvince" placeholder="省份">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiveCity" class="col-sm-2 control-label">市</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="receiveCity" name="receiveCity" placeholder="市">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiveBlock" class="col-sm-2 control-label">区</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="receiveBlock" name="receiveBlock" placeholder="区">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiveAddress" class="col-sm-2 control-label">详细地址</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="receiveAddress" name="receiveAddress" placeholder="详细地址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiveZip" class="col-sm-2 control-label">邮编</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="receiveZip" name="receiveZip" placeholder="邮编">
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center;">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-success" onclick="addShippingInfo()">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="deposit" class="selfControl" style="width: 79%;float: right">
+            <div style="width: 65%;margin-left: 25%;margin-top: 5%" >
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">当前保证金</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{userInfo.deposit}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">可用保证金</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{userInfo.approveDeposit}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pay" class="selfControl" style="width: 79%;float: right">
+            <div id="inputMoney" style="width: 65%;margin-left: 25%;margin-top: 5%">
+                <form id="payInput"  class="form-horizontal">
+                    <div class="form-group">
+                        <label for="money" class="col-sm-2 control-label">充值金额：</label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" id="money" name="money" placeholder="充值金额">
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center">
+                        <div class="col-sm-offset-2 col-sm-6">
+                            <button type="button" class="btn btn-success" id="payMoney" name="payMoney" @click="pay()">充值</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="binaryImage" style="width: 65%;margin-left: 25%;margin-top: 5%;">
+                <div><h4>打开手机使用支付宝扫码支付：</h4></div>
+                <div><img class="form-control-static" v-bind:src="qrUrl"></div>
+            </div>
+
+            <div id="paySuccess" style="width: 65%;margin-left: 25%;margin-top: 5%;">
+                <div><img class="form-control-static" src="img/pay_success.png"></div>
+            </div>
+
+
+        </div>
+
+        <div id="payInfoList" class="selfControl" style="width: 79%;float: right">
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>充值订单号</th>
+                        <th>充值金额</th>
+                        <th>原保证金</th>
+                        <th>现保证金</th>
+                        <th>状态</th>
+                        <th>支付时间</th>
+                        <th>取消</th>
+                    </tr>
+                    <tr v-for="pay in payList">
+                        <td>{{pay.orderNumber}}</td>
+                        <td>{{pay.orderMoney}}</td>
+                        <td><span v-if="pay.oldMoney != null">{{pay.oldMoney}}</span></td>
+                        <td><span v-if="pay.newMoney != null">{{pay.newMoney}}</span></td>
+                        <td>{{pay.status}}</td>
+                        <td>{{pay.paymentTime}}</td>
+                        <td><a href="#" @click="cancelOrder(pay.orderNumber)">取消</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isFirstPage}">
+                            <a href="#" @click="payListPageChoice(pageNum-1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pagination" v-for="n in lastPage">
+                        <li v-bind:class="{active : n == pageNum}"><a href="#" @click="payListPageChoice(n)">{{n}}</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isLastPage}">
+                            <a href="#" @click="payListPageChoice(pageNum+1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div id="selfApplyList" class="selfControl" style="width: 79%;float: right">
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>被申请用户</th>
+                        <th>被申请图书</th>
+                        <th>用于交换的图书</th>
+                        <th>状态</th>
+                        <th>最后操作时间</th>
+                        <th>原因</th>
+                    </tr>
+                    <tr v-for="apply in applyList">
+                        <td>{{apply.appliedUserName}}</td>
+                        <td><a href="#" @click="getBookDetail(apply.appliedBookId)">{{apply.appliedBookName}}</a></td>
+                        <td><a href="#" @click="getBookDetail(apply.applyBookId)">{{apply.applyBookName}}</a></td>
+                        <td>{{apply.statusStr}}</span></td>
+                        <td>{{apply.updateTIme}}</td>
+                        <td>{{apply.reason}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isFirstPage}">
+                            <a href="#" @click="applyListPageChoice(pageNum-1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pagination" v-for="n in lastPage">
+                        <li v-bind:class="{active : n == pageNum}"><a href="#" @click="applyListPageChoice(n)">{{n}}</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isLastPage}">
+                            <a href="#" @click="applyListPageChoice(pageNum+1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div id="appliedList" class="selfControl" style="width: 79%;float: right">
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>申请用户</th>
+                        <th>申请图书</th>
+                        <th>对方用于交换的图书</th>
+                        <th>状态</th>
+                        <th>最后操作时间</th>
+                        <th>接受</th>
+                        <th>拒绝</th>
+                    </tr>
+                    <tr v-for="applied in appliedList">
+                        <td>{{applied.applyUserName}}</td>
+                        <td><a href="#" @click="getBookDetail(applied.appliedBookId)">{{applied.appliedBookName}}</a></td>
+                        <td><a href="#" @click="getBookDetail(applied.applyBookId)">{{applied.applyBookName}}</a></td>
+                        <td>{{applied.statusStr}}</span></td>
+                        <td>{{applied.updateTIme}}</td>
+                        <td><a href="#" v-if="applied.status == 1" @click="accessApply(applied.applyId)">接受</a></td>
+                        <td><a href="#" v-if="applied.status == 1" @click="refusedApply(applied.applyId)">拒绝</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isFirstPage}">
+                            <a href="#" @click="appliedListPageChoice(pageNum-1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pagination" v-for="n in lastPage">
+                        <li v-bind:class="{active : n == pageNum}"><a href="#" @click="appliedListPageChoice(n)">{{n}}</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isLastPage}">
+                            <a href="#" @click="appliedListPageChoice(pageNum+1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div id="replaceList" class="selfControl" style="width: 79%;float: right">
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>置换用户</th>
+                        <th>置换图书</th>
+                        <th>对方地址</th>
+                        <th>对方是否发货</th>
+                        <th>对方快递单号</th>
+                        <th>我的置换图书</th>
+                        <th>我的地址</th>
+                        <th>我是否发货</th>
+                        <th>我的快递单号</th>
+                        <th>发货</th>
+                        <th>确认收货</th>
+                        <th>选择收获地址</th>
+                        <th>投诉</th>
+                        <th>取消</th>
+                    </tr>
+                    <tr v-for="replace in replaceList">
+                        <td>{{replace.otherUserName}}</td>
+                        <td><a href="#" @click="getBookDetail(replace.otherBookId)">{{replace.otherBookName}}</a></td>
+                        <td><a href="#" v-if="replace.otherShippingId != null" @click="getShippingInfo(replace.otherShippingId)">点击查看</a></td>
+                        <td>
+                            <span v-if="replace.otherStatus == 1">未发货</span>
+                            <span v-if="replace.otherStatus == 2">已发货</span>
+                            <span v-if="replace.otherStatus == 3">确认收货</span>
+                        </td>
+                        <td>{{replace.otherDeliverNo}}</td>
+                        <td><a href="#" @click="getBookDetail(replace.bookId)">{{replace.bookName}}</a></td>
+                        <td><a href="#" v-if="replace.shippingId != null" @click="getShippingInfo(replace.shippingId)">点击查看</a></td>
+                        <td>
+                            <span v-if="replace.status == 1">未发货</span>
+                            <span v-if="replace.status == 2">已发货</span>
+                            <span v-if="replace.status == 3">确认收货</span>
+                        </td>
+                        <td>{{replace.deliverNo}}</td>
+                        <td><a href="#" v-if="replace.status == 1" @click="deliverNoPopWindowShow(replace.replaceId)">发货</a></td>
+                        <td><a href="#" v-if="replace.otherStatus == 2" @click="confirmDeliver(replace.replaceId)">确认收货</a></td>
+                        <td><a href="#" v-if="replace.status == 1" @click="firstGetShippingPopList(replace.replaceId)">选择收货地址</a></td>
+                        <td><a href="#" @click="complanReplace(replace.replaceId)">投诉</a></td>
+                        <td><a href="#" @click="cancelReplace(replace.replaceId)">取消</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isFirstPage}">
+                            <a href="#" @click="replacePageChoice(pageNum-1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pagination" v-for="n in lastPage">
+                        <li v-bind:class="{active : n == pageNum}"><a href="#" @click="replacePageChoice(n)">{{n}}</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isLastPage}">
+                            <a href="#" @click="replacePageChoice(pageNum+1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div id="selfComplanList" class="selfControl" style="width: 79%;float: right">
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>编号</th>
+                        <th>投诉时间</th>
+                        <th>管理员处理时间</th>
+                        <th>状态</th>
+                    </tr>
+                    <tr v-for="(complan,index) in complanList">
+                        <td>{{index}}</td>
+                        <td>{{complan.createTime}}</td>
+                        <td>{{complan.updateTime}}</td>
+                        <td>{{complan.statusStr}}</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isFirstPage}">
+                            <a href="#" @click="selfComplanListPageChoice(pageNum-1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pagination" v-for="n in lastPage">
+                        <li v-bind:class="{active : n == pageNum}"><a href="#" @click="selfComplanListPageChoice(n)">{{n}}</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isLastPage}">
+                            <a href="#" @click="selfComplanListPageChoice(pageNum+1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div id="selfIllegalList" class="selfControl" style="width: 79%;float: right">
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>编号</th>
+                        <th>受害人帐号</th>
+                        <th>赔偿保证金</th>
+                        <th>违规时间</th>
+                    </tr>
+                    <tr v-for="(illegal,index) in illegalList">
+                        <td>{{index}}</td>
+                        <td>{{illegal.victimUserName}}</td>
+                        <td>{{illegal.deposit}}</td>
+                        <td>{{applied.illegalTime}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isFirstPage}">
+                            <a href="#" @click="selfIllegalListPageChoice(pageNum-1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pagination" v-for="n in lastPage">
+                        <li v-bind:class="{active : n == pageNum}"><a href="#" @click="selfIllegalListPageChoice(n)">{{n}}</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isLastPage}">
+                            <a href="#" @click="selfIllegalListPageChoice(pageNum+1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div id="selfAdviceList" class="selfControl" style="width: 79%;float: right">
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>编号</th>
+                        <th>申请时间</th>
+                        <th>状态</th>
+                        <th>查看详情</th>
+                    </tr>
+                    <tr v-for="(advice,index) in adviceList">
+                        <td>{{index}}</td>
+                        <td>{{advice.createTime}}</td>
+                        <td>{{advice.statusStr}}</td>
+                        <td><a href="#" @click="getAdviceDetail(advice.adviceId)">查看详情</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isFirstPage}">
+                            <a href="#" @click="selfAdviceListPageChoice(pageNum-1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pagination" v-for="n in lastPage">
+                        <li v-bind:class="{active : n == pageNum}"><a href="#" @click="selfAdviceListPageChoice(n)">{{n}}</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isLastPage}">
+                            <a href="#" @click="selfAdviceListPageChoice(pageNum+1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </div> <!-- id=content -->
+
+    <div id="shippingInfo" style="width: 550px;height: 550px;z-index: 9999;position: absolute;background: white;border: solid 1px;display: none">
+        <div style="width: 100%;margin-left: 15%;margin-top: 5%">
+            <form class="form-horizontal" id="updateShippingForm">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{userInfo.username}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="receiveNameUpdate" class="col-sm-2 control-label">收货人</label>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" id="receiveNameUpdate" name="receiveName" placeholder="收货人" v-bind:value="shippingDetail.receiveName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="receivePhoneUpdate" class="col-sm-2 control-label">联系电话</label>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" id="receivePhoneUpdate" name="receivePhone" placeholder="联系电话" v-bind:value="shippingDetail.receivePhone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="receiveProvinceUpdate" class="col-sm-2 control-label">省份</label>
+                    <div class="col-xs-6">
+                        <input type="email" class="form-control" id="receiveProvinceUpdate" name="receiveProvince" placeholder="省份" v-bind:value="shippingDetail.receiveProvince">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="receiveCityUpdate" class="col-sm-2 control-label">市</label>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" id="receiveCityUpdate" name="receiveCity" placeholder="市" v-bind:value="shippingDetail.receiveCity">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="receiveBlockUpdate" class="col-sm-2 control-label">区</label>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" id="receiveBlockUpdate" name="receiveBlock" placeholder="区" v-bind:value="shippingDetail.receiveBlock">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="receiveAddressUpdate" class="col-sm-2 control-label">详细地址</label>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" id="receiveAddressUpdate" name="receiveAddress" placeholder="详细地址" v-bind:value="shippingDetail.receiveAddress">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="receiveZipUpdate" class="col-sm-2 control-label">邮编</label>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" id="receiveZipUpdate" name="receiveZip" placeholder="邮编" v-bind:value="shippingDetail.receiveZip">
+                    </div>
+                </div>
+                <input type="hidden" id="shippingId" name="shippingId" v-bind:value="shippingDetail.shippingId">
+                <div class="form-group" style="text-align: center;">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-success" onclick="updateShippingInfo()">&nbsp;&nbsp;修改&nbsp;&nbsp;</button>
+                        <button type="button" class="btn btn-success" onclick="hideShippingInfo()">&nbsp;&nbsp;关闭&nbsp;&nbsp;</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
+    <div id="shippingListPopWindow" style="width: 550px;height: 800px;z-index: 4999;position: absolute;background: white;border: solid 1px;display: none">
+        <div style="width: 100%">
+            <table class="table table-striped">
+                <tr>
+                    <th>收货人</th>
+                    <th>电话</th>
+                    <th>地址</th>
+                    <th>查看详情</th>
+                    <th>选择</th>
+                </tr>
+                <tr v-for="shipping in shippingList">
+                    <td>{{shipping.receiveName}}</td>
+                    <td>{{shipping.receivePhone}}</td>
+                    <td>{{shipping.receiveAddress}}</td>
+                    <td><a href="#" @click="getShippingInfo(shipping.shippingId)">查看详情</a></td>
+                    <td><a href="#" @click="choiceShipping(shipping.shippingId)">选择</a></td>
+                </tr>
+                <input type="hidden" id="replaceIdByShipping"/>
+            </table>
+        </div>
+        <div style="width: 100%">
+            <div style="float: right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isFirstPage}">
+                            <a href="#" @click="shippingPopListPageChoice(pageNum-1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pagination" v-for="n in lastPage">
+                        <li v-bind:class="{active : n == pageNum}"><a href="#" @click="shippingPopListPageChoice(n)">{{n}}</a></li>
+                    </ul>
+                    <ul class="pagination">
+                        <li v-bind:class="{disabled : isLastPage}">
+                            <a href="#" @click="shippingPopListPageChoice(pageNum+1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div style="width: 100%;text-align: center;position:absolute;bottom: 10px">
+            <button type="button" class="btn btn-success" onclick="hideShippingListInfo()">关闭</button>
+        </div>
+    </div>
+
+    <div id="bookDetailPopWindow" style="height:650px;width:900px;z-index: 9999;position: absolute;background: white;border: solid 1px;display: none">
+        <div style="text-align:center">
+            <h1 style="margin: 0 auto">
+                <span>{{bookDetail.bookName}}</span>
+            </h1>
+            <p><hr/></p>
+        </div>
+        <div style="width: 28%;height: 358px;margin-top: 50px;margin-left: 5%;float: left">
+            <img v-bind:src="bookDetail.imageHost + bookDetail.bookImage" style="width: 100%;height: 100%;top: 100px">
+        </div>
+        <table width="66%"cellspacing="0" cellpadding="0" style="float: right;margin-top: 50px;">
+            <tr>
+                <td width="65%">
+                    作 者：<span id="lb_author">{{bookDetail.bookAuthor}}</span>&nbsp;著</td>
+                <td>
+                    版 次：<span id="lb_edition">{{bookDetail.publishEdition}}</span></td>
+            </tr>
+            <tr>
+                <td>
+                    出版社：<span id="lb_publisher">{{bookDetail.publishTrim}}</span></td>
+                <td>
+                    &nbsp;<span id="lb_page">&nbsp;</span></td>
+            </tr>
+            <tr>
+                <td>
+                    ISBN：<span id="lb_isbn">{{bookDetail.isbn}}</span></td>
+                <td>
+                    &nbsp;<span id="lb_bindid">&nbsp;</span></td>
+            </tr>
+            <tr>
+                <td>
+                    出版时间：<span id="lb_pdate">{{bookDetail.publishTime}}</span></td>
+                <td>
+                    定 价：￥<span id="lb_format">{{bookDetail.bookPrice}}</span></td>
+            </tr>
+            <tr>
+                <td>
+                    分 类：<span>{{bookDetail.categoryName}}</span></td>
+                <td>
+                    保证金：￥<span id="lb_price">{{bookDetail.bookDeposit}}</span></td>
+            </tr>
+        </table>
+        <div style="float:left;margin-left: 1%;margin-top: 1px">
+            <span><h5>简介：</h5></span>
+        </div>
+        <div style="width:61%;float: right" >
+            <h5 style="word-wrap: break-word;">{{bookDetail.bookDetail}}</h5>
+        </div>
+        <div style="width: 100%;float: right;margin-top: 30px;text-align: center">
+            <div>
+                <button class="btn btn-success" onclick="hideBookDetailPop()">关闭</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="reasonPopWindow" style="width: 350px;height: 250px;z-index: 9999;position: absolute;background: white;border: solid 1px;display: none">
+        <div style="margin-top: 20%;width: 80%;margin-left: 10%">
+            <label for="reason">请输入拒绝原因</label>
+            <input type="text" class="form-control" id="reason">
+            <input type="hidden" id="applyId"/>
+        </div>
+        <div style="margin-top: 10%;text-align: center">
+            <button class="btn btn-success" onclick="confirmRefused()">确认拒绝</button>
+            <button class="btn btn-success" onclick="cancelRefused()">取消</button>
+        </div>
+    </div>
+
+    <div id="shippingInfoPop" style="width: 550px;height: 500px;z-index: 9999;position: absolute;background: white;border: solid 1px;display: none">
+        <div style="width: 100%;margin-left: 15%;margin-top: 5%">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">收货人</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{shippingDetail.receiveName}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">联系电话</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{shippingDetail.receivePhone}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">省份</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{shippingDetail.receiveProvince}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">市</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{shippingDetail.receiveCity}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">区</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{shippingDetail.receiveBlock}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">详细地址</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{shippingDetail.receiveAddress}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">邮编</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{shippingDetail.receiveZip}}</p>
+                    </div>
+                </div>
+                <div class="form-group" style="text-align: center;">
+                    <div class="col-sm-9">
+                        <button type="button" class="btn btn-success" onclick="hideShippingInfoPop()">&nbsp;&nbsp;关闭&nbsp;&nbsp;</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="deliverNoPopWindow" style="width: 350px;height: 250px;z-index: 9999;position: absolute;background: white;border: solid 1px;display:none">
+        <div style="margin-top: 20%;width: 80%;margin-left: 10%">
+            <label for="reason">请输入快运单号</label>
+            <input type="text" class="form-control" id="deliverNo">
+            <input type="hidden" id="replaceId"/>
+        </div>
+        <div style="margin-top: 10%;text-align: center">
+            <button class="btn btn-success" onclick="sendBook()">确认发货</button>
+            <button class="btn btn-success" onclick="deliverNoPopWindowHide()">取消</button>
+        </div>
+    </div>
+
+    <div id="adviceDetailPopWindow" style="width: 600px;height: 300px;z-index: 9999;position: absolute;background: white;border: solid 1px;display:none">
+        <div style="width: 80%;margin-top: 20px;margin-left: 10%">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">申请添加图书名</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{adviceDetail.bookName}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">申请添加图书作者</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{adviceDetail.bookauthor}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">申请添加图书ISBN号</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{adviceDetail.isbn}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">申请状态</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{adviceDetail.statusStr}}</p>
+                    </div>
+                </div>
+                <div class="form-group" style="text-align: center;">
+                    <div class="col-sm-10">
+                        <button type="button" class="btn btn-success" onclick="hideAdviceDetailPopWindow()">&nbsp;&nbsp;关闭&nbsp;&nbsp;</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div> <!-- id=mainContainer -->
 
 
-
-
-
-</div>
 
 </body>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
@@ -105,6 +955,6 @@
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- 新 Bootstrap 核心 CSS 文件 -->
 <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<script src="js/self_page.js"></script>
 <script src="js/lib/vue.min.js"></script>
+<script src="js/self_page.js"></script>
 </html>

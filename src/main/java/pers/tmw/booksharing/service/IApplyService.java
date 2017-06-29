@@ -9,9 +9,9 @@ public interface IApplyService {
 
     ServerResponse commitApply(Long exchangeUserId,Long userId,Long exchangeBookId,Long bookId);
 
-    ServerResponse getAppliedList(Long userId,Short status,int pageNum,int pageSize);
+    ServerResponse getAppliedList(Long userId,int pageNum,int pageSize);
 
-    ServerResponse getApplyList(Long userId,Short status,int pageNum,int pageSize);
+    ServerResponse getApplyList(Long userId,int pageNum,int pageSize);
 
     ServerResponse manageApply(Long userId,Long applyId,Short status,String reason);
 }

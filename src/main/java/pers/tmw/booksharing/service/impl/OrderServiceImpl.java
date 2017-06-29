@@ -10,6 +10,8 @@ import pers.tmw.booksharing.common.ServerResponse;
 import pers.tmw.booksharing.dao.OrderMapper;
 import pers.tmw.booksharing.pojo.Order;
 import pers.tmw.booksharing.service.IOrderService;
+import pers.tmw.booksharing.util.DateTimeUtil;
+import pers.tmw.booksharing.vo.OrderVo;
 
 import java.util.List;
 
@@ -22,17 +24,51 @@ public class OrderServiceImpl implements IOrderService{
     @Autowired
     private OrderMapper orderMapper;
 
+
+
     @Override
     public ServerResponse getOrderList(Long userId, int pageNum, int pageSize){
         PageHelper.startPage(pageNum, pageSize);
+        PageHelper.orderBy("UPDATE_TIME desc");
         List<Order> orderList = orderMapper.getOrderListByUserId(userId);
-        PageInfo pageInfo = new PageInfo(orderList);
+        if(orderList == null || orderList.size() == 0){
+            return ServerResponse.createByErrorMessage("没有充值记录");
+        }
+        List<OrderVo> orderVoList = this.assembleOrderVoList(orderList);
+        PageInfo pageInfo = new PageInfo(orderVoList);
         return ServerResponse.createBySuccess(pageInfo);
+    }
+
+    private List<OrderVo> assembleOrderVoList(List<Order> orderList){
+        List<OrderVo> orderVoList = Lists.newArrayList();
+        for(Order orderItem : orderList){
+            OrderVo orderVo = new OrderVo();
+            orderVo.setNewMoney(orderItem.getNewMoney());
+            orderVo.setOldMoney(orderItem.getOldMoney());
+            orderVo.setOrderId(orderItem.getOrderId());
+            orderVo.setOrderMoney(orderItem.getOrderMoney());
+            orderVo.setOrderNumber(orderItem.getOrderNumber());
+            orderVo.setPaymentTime(DateTimeUtil.dateToStr(orderItem.getPaymentTime()));
+            short status = orderItem.getStatus();
+            String statusStr;
+            if(status == 1){
+                statusStr = "未支付";
+            }else if(status == 2){
+                statusStr = "已支付";
+            }else {
+                statusStr = "已取消";
+            }
+            orderVo.setStatus(statusStr);
+            orderVoList.add(orderVo);
+        }
+        return orderVoList;
     }
 
     @Override
     public ServerResponse cancelOrderByOrderNo(Long userId,String orderNo){
+        System.out.println(111);
         Order order = orderMapper.selectByUserIdOderNo(userId,orderNo);
+        System.out.println(111);
         if(order == null){
             return ServerResponse.createByErrorMessage("找不到该订单");
         }

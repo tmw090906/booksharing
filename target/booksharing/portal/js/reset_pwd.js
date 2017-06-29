@@ -32,10 +32,8 @@ var vm = new Vue({
         confirmQuestion : function () {
             var anwser = $("#anwser").val();
             var jsonData = "username=" + this.username + "&answer=" + anwser + "&question=" + this.question;
-            alert(anwser);
             $.post('/book/user/forget_check_answer.do',jsonData,function (flag) {
                 if (flag.status == 1) {
-                    alert(flag.status);
                     $("#confirm").hide();
                     $("#inputUsername").hide();
                     $("#reset").show();

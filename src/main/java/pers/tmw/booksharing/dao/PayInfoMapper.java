@@ -2,6 +2,8 @@ package pers.tmw.booksharing.dao;
 
 import pers.tmw.booksharing.pojo.PayInfo;
 
+import java.util.List;
+
 public interface PayInfoMapper {
     int deleteByPrimaryKey(Long payId);
 
@@ -14,4 +16,5 @@ public interface PayInfoMapper {
     int updateByPrimaryKeySelective(PayInfo record);
 
     int updateByPrimaryKey(PayInfo record);
+
 }

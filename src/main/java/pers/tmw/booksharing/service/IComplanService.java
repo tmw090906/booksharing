@@ -11,7 +11,7 @@ public interface IComplanService {
 
     ServerResponse complan(Long userId,Long replaceId,String reason);
 
-    ServerResponse getList(Long userId,Short status,int pageNum,int pageSize);
+    ServerResponse getList(Long userId,int pageNum,int pageSize);
 
     ServerResponse manageGetList(Short status,int pageNum,int pageSize);
 

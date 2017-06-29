@@ -26,6 +26,16 @@ public class AdviceVo {
 
     private String updateTime;
 
+    private String stautsStr;
+
+    public String getStautsStr() {
+        return stautsStr;
+    }
+
+    public void setStautsStr(String stautsStr) {
+        this.stautsStr = stautsStr;
+    }
+
     public AdviceVo() {
     }
 

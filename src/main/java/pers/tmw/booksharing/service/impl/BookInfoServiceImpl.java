@@ -203,7 +203,7 @@ public class BookInfoServiceImpl implements IBookInfoService {
         if(userId==null || adviceId==null || status==null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
         }
-        if(status != Const.AdviceStatus.WORKING && status != Const.AdviceStatus.NOT_FIND && status != Const.AdviceStatus.SUCCESS){
+        if(status != Const.AdviceStatus.NOT_FIND && status != Const.AdviceStatus.SUCCESS){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
         }
         Advice advice = adviceMapper.selectByPrimaryKey(adviceId);
@@ -226,7 +226,17 @@ public class BookInfoServiceImpl implements IBookInfoService {
                 AdviceListVo adviceListVo = new AdviceListVo();
                 adviceListVo.setAdviceId(adviceItem.getAdviceId());
                 adviceListVo.setCreateTime(DateTimeUtil.dateToStr(adviceItem.getCreateTime()));
-                adviceListVo.setStatus(adviceItem.getStatus());
+                short status = adviceItem.getStatus();
+                adviceListVo.setStatus(status);
+                String statusStr;
+                if(status == 1){
+                    statusStr = "正在处理";
+                }else if(status == 2){
+                    statusStr = "找不到此书";
+                }else {
+                    statusStr = "成功添加";
+                }
+                adviceListVo.setStatusStr(statusStr);
                 adviceListVoList.add(adviceListVo);
             }
         }
@@ -240,6 +250,16 @@ public class BookInfoServiceImpl implements IBookInfoService {
             return ServerResponse.createByErrorMessage("找不到该申请");
         }
         AdviceVo adviceVo = new AdviceVo(advice);
+        short status = advice.getStatus();
+        String statusStr;
+        if(status == 1){
+            statusStr = "正在处理";
+        }else if(status == 2){
+            statusStr = "找不到此书";
+        }else {
+            statusStr = "成功添加";
+        }
+        adviceVo.setStautsStr(statusStr);
         return ServerResponse.createBySuccess(adviceVo);
     }
 

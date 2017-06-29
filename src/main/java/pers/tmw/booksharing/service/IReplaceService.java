@@ -7,7 +7,7 @@ import pers.tmw.booksharing.common.ServerResponse;
  */
 public interface IReplaceService {
 
-    ServerResponse getList(Long userId,int pageNum,int pageSize);
+    ServerResponse getList(Long userId,int pageNum,int pageSize,Short status);
 
     ServerResponse updateShipping(Long userId,Long shippingId,Long replaceId);
 

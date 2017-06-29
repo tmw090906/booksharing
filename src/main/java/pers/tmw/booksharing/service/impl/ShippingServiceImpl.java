@@ -44,7 +44,7 @@ public class ShippingServiceImpl implements IShippingService {
     public ServerResponse deleteShipping(Long userId, Long shippingId) {
         int rowCount = shippingMapper.deleteByUserIdShippingId(userId,shippingId);
         if(rowCount > 0 ){
-            return ServerResponse.createBySuccess("删除地址成功");
+            return ServerResponse.createBySuccessMessage("删除地址成功");
         }else {
             return ServerResponse.createByErrorMessage("删除地址失败");
         }
@@ -55,7 +55,7 @@ public class ShippingServiceImpl implements IShippingService {
         shipping.setUserId(userId);
         int rowCount = shippingMapper.updateByShipping(shipping);
         if(rowCount > 0 ){
-            return ServerResponse.createBySuccess("更新地址成功");
+            return ServerResponse.createBySuccessMessage("更新地址成功");
         }else {
             return ServerResponse.createByErrorMessage("更新地址失败");
         }
@@ -63,8 +63,8 @@ public class ShippingServiceImpl implements IShippingService {
 
 
     @Override
-    public ServerResponse<Shipping> selectShippingDetail(Long userId, Long shippingId) {
-        Shipping shipping = shippingMapper.selectByUserIdShippingId(userId, shippingId);
+    public ServerResponse<Shipping> selectShippingDetail(Long shippingId) {
+        Shipping shipping = shippingMapper.selectByPrimaryKey(shippingId);
         if(shipping == null){
             return ServerResponse.createByErrorMessage("无法查询到该地址");
         }

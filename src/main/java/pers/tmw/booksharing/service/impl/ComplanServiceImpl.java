@@ -1,7 +1,9 @@
 package pers.tmw.booksharing.service.impl;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +13,8 @@ import pers.tmw.booksharing.common.ServerResponse;
 import pers.tmw.booksharing.dao.*;
 import pers.tmw.booksharing.pojo.*;
 import pers.tmw.booksharing.service.IComplanService;
+import pers.tmw.booksharing.util.DateTimeUtil;
+import pers.tmw.booksharing.vo.ComplanVo;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -64,12 +68,47 @@ public class ComplanServiceImpl implements IComplanService {
     }
 
     @Override
-    public ServerResponse getList(Long userId,Short status,int pageNum,int pageSize){
+    public ServerResponse getList(Long userId,int pageNum,int pageSize){
         PageHelper.startPage(pageNum, pageSize);
-        List<Complan> complanList = complanMapper.getListByUserIdAndStatus(userId, status);
-        PageInfo pageInfo = new PageInfo(complanList);
+        PageHelper.orderBy("UPDATE_TIME desc");
+        List<Complan> complanList = complanMapper.getListByUserId(userId);
+        List<ComplanVo> complanVoList = this.assembleComplanVoList(complanList);
+        PageInfo pageInfo = new PageInfo(complanVoList);
         return ServerResponse.createBySuccess(pageInfo);
     }
+
+    private List<ComplanVo> assembleComplanVoList(List<Complan> complanList){
+        List<ComplanVo> complanVoList = Lists.newArrayList();
+        for(Complan complan : complanList){
+            ComplanVo complanVo = new ComplanVo();
+            complanVo.setComplanId(complan.getComplanId());
+            complanVo.setCreateTime(DateTimeUtil.dateToStr(complan.getCreateTime()));
+            complanVo.setReplaceId(complan.getReplaceId());
+            short status = complan.getStatus();
+            complanVo.setStatus(status);
+            complanVo.setUpdateTime(DateTimeUtil.dateToStr(complan.getUpdateTime()));
+            complanVo.setUserId(complan.getUserId());
+            String statusStr;
+            if(status == 1){
+                statusStr = "管理员未处理";
+            }else if(status == 2){
+                statusStr = "投诉成功";
+            }else {
+                statusStr = "投诉失败";
+            }
+            complanVo.setStatusStr(statusStr);
+            complanVoList.add(complanVo);
+        }
+        return complanVoList;
+    }
+
+
+
+
+
+
+
+
 
 
     //后台

@@ -8,6 +8,15 @@ public class AdviceListVo {
     private Long adviceId;
     private String createTime;
     private Short status;
+    private String statusStr;
+
+    public String getStatusStr() {
+        return statusStr;
+    }
+
+    public void setStatusStr(String statusStr) {
+        this.statusStr = statusStr;
+    }
 
     public Long getAdviceId() {
         return adviceId;

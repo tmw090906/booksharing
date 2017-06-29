@@ -191,9 +191,18 @@
     where REPLACE_ID = #{replaceId,jdbcType=DECIMAL}
   </update>
 
-  <select id="getListByUserId" resultMap="BaseResultMap" parameterType="long">
+  <select id="getListByUserIdStatus" resultMap="BaseResultMap" parameterType="map">
     SELECT <include refid="Base_Column_List"/>
-    FROM BOOK_REPLACE WHERE APPLY_USER=#{userId} OR APPLIED_USER=#{userId}
+    FROM BOOK_REPLACE WHERE (APPLY_USER=#{userId} OR APPLIED_USER=#{userId})
+    <if test="status == 1">
+      AND STATUS='1'
+    </if>
+    <if test="status == 2">
+      AND (STATUS='2' OR STATUS='5')
+    </if>
+    <if test="status == 3">
+      AND (STATUS='3' OR STATUS='4')
+    </if>
   </select>
 
 </mapper>

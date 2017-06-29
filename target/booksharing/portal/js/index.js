@@ -37,9 +37,7 @@ var vm = new Vue({
                 _this.isFirstPage = flag.date.isFirstPage;
                 _this.lastPage = flag.date.lastPage;
                 _this.pageNum =  flag.date.pageNum;
-                $("#bookDetail").hide();
-                $("#exchangeOneList").hide();
-                $("#exchangeList").hide();
+                $(".selfControl");
                 $("#pageList").show();
             }else {
                 alert(flag.msg);
@@ -78,9 +76,7 @@ var vm = new Vue({
                     _this.isFirstPage = flag.date.isFirstPage;
                     _this.lastPage = flag.date.lastPage;
                     _this.pageNum =  flag.date.pageNum;
-                    $("#bookDetail").hide();
-                    $("#exchangeOneList").hide();
-                    $("#exchangeList").hide();
+                    $(".selfControl");
                     $("#pageList").show();
                 }else {
                     alert(flag.msg);
@@ -93,9 +89,7 @@ var vm = new Vue({
             $.post('/book/info/get_book_detail.do',jsonData,function (flag) {
                 if(flag.status == 1){
                     _this.bookDetail = flag.date
-                    $("#pageList").hide();
-                    $("#exchangeOneList").hide();
-                    $("#exchangeList").hide();
+                    $(".selfControl");
                     $("#bookDetail").show();
                 }else {
                     alert(flag.msg);
@@ -103,6 +97,10 @@ var vm = new Vue({
             })
         },
         commitExchangeInfo : function (bookId,exchangeBookId,userId) {
+            var bool = confirm("确认提交置换申请？");
+            if(bool == false){
+                return false;
+            }
             var jsonData = "bookId=" + bookId + "&exchangeBookId=" + exchangeBookId + "&userId=" + userId;
             $.post('/book/apply/commit.do', jsonData, function (flag) {
                 if (flag.status == 1) {
@@ -120,9 +118,7 @@ var vm = new Vue({
             $.post('/book/info/exchange_one_info.do', jsonData, function (flag) {
                 if (flag.status == 1) {
                     _this.exchangeOnes = flag.date;
-                    $("#pageList").hide();
-                    $("#bookDetail").hide();
-                    $("#exchangeList").hide();
+                    $(".selfControl");
                     $("#exchangeOneList").show();
                 } else if(flag.status == 10) {
                     alert("请登录");
@@ -137,9 +133,7 @@ var vm = new Vue({
             $.post('/book/info/exchange_info.do', jsonData, function (flag) {
                 if (flag.status == 1) {
                     _this.exchanges = flag.date;
-                    $("#pageList").hide();
-                    $("#exchangeOneList").hide();
-                    $("#bookDetail").hide();
+                    $(".selfControl");
                     $("#exchangeList").show();
                 } else if(flag.status == 10) {
                     alert("请登录");
@@ -269,4 +263,27 @@ var logout =  function () {
             alert(flag.msg);
         }
     });
+};
+
+var showAdviceForm = function () {
+    $(".selfControl").hide();
+    $("#adviceAddBook").show();
+};
+
+var addBookAdvice = function () {
+    var bool = confirm("确认提交添加图书申请？");
+    if(bool == false){
+        return false;
+    }
+    var jsonData = $("#addBookAdviceForm").serialize();
+    $.post('/book/info/advice.do', jsonData, function (flag) {
+        if (flag.status == 1) {
+            alert("成功提交申请");
+        } else if(flag.status == 10) {
+            alert("请登录");
+        }else {
+            alert(flag.msg);
+        }
+    });
+    
 };

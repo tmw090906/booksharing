@@ -45,41 +45,39 @@ public class ApplyController {
     /**
      * 得到被申请列表，status为申请状态
      * @param session
-     * @param status
      * @param pageNum
      * @param pageSize
      * @return
      */
     @RequestMapping("applied_list.do")
     @ResponseBody
-    public ServerResponse getAppliedList(HttpSession session,Short status,
+    public ServerResponse getAppliedList(HttpSession session,
                                          @RequestParam(defaultValue = "1")int pageNum,
                                          @RequestParam(defaultValue = "10")int pageSize){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
         }
-        return iApplyService.getAppliedList(user.getUserId(),status,pageNum,pageSize);
+        return iApplyService.getAppliedList(user.getUserId(),pageNum,pageSize);
     }
 
     /**
      * 得到自己申请列表，status为申请状态
      * @param session
-     * @param status
      * @param pageNum
      * @param pageSize
      * @return
      */
     @RequestMapping("apply_list.do")
     @ResponseBody
-    public ServerResponse getApplyList(HttpSession session,Short status,
+    public ServerResponse getApplyList(HttpSession session,
                                          @RequestParam(defaultValue = "1")int pageNum,
                                          @RequestParam(defaultValue = "10")int pageSize){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
         }
-        return iApplyService.getApplyList(user.getUserId(),status,pageNum,pageSize);
+        return iApplyService.getApplyList(user.getUserId(),pageNum,pageSize);
     }
 
     /**
@@ -92,7 +90,7 @@ public class ApplyController {
      */
     @RequestMapping("manage_apply.do")
     @ResponseBody
-    public ServerResponse manageApply(HttpSession session,Long applyId,Short status,String reason){
+    public ServerResponse manageApply(HttpSession session,Long applyId,Short status,@RequestParam(value = "reason",required = false)String reason){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());

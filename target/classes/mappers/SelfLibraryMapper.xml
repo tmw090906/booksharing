@@ -111,7 +111,10 @@
 
   <select id="selectSelfLibraryList" parameterType="map" resultMap="BaseResultMap">
     SELECT <include refid="Base_Column_List"/>
-    FROM BOOK_SELF_LIBRARY WHERE USER_ID=#{userId} and STATUS=#{status}
+    FROM BOOK_SELF_LIBRARY WHERE USER_ID=#{userId}
+    <if test="status != null">
+      and STATUS=#{status}
+    </if>
   </select>
 
   <select id="selectSelfLibraryIdUserId" resultMap="BaseResultMap" parameterType="map">

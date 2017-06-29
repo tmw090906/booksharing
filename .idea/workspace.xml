@@ -2,87 +2,153 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b849e154-1c5a-4442-90b1-7e1f88aa4b6f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/HadBookListVo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/css/self_page.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/js/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/js/lib/ngjstree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/js/register.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/js/reset_pwd.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/js/self_page.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/reset_pwd.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/self_library.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/self_page.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/img/backgrounds/1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/img/backgrounds/2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/img/facebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/img/progress.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/img/twitter.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/img/content_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/img/pay_success.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/img/qr-14981483271578.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/ComplanVo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/OrderVo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/css/reset.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/css/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/css/supersized.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/js/jquery-1.8.2.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/js/scripts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/js/supersized-init.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/backend/assets/js/supersized.3.2.7.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/portal/js/self_library.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/portal/temp.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$AdviceStatus.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$AdviceStatus.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$ApplyStatus.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$ApplyStatus.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$ComplanStatus.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$ComplanStatus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$PayPlatformEnum.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$PayPlatformEnum.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$ReplaceStatus$SendStatus.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$ReplaceStatus$SendStatus.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$ReplaceStatus.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$ReplaceStatus.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$SelfLibraryStatus.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/common/Const$SelfLibraryStatus.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/BookController.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/BookController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/CategoryController.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/CategoryController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/ApplyController.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/ApplyController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/OrderController.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/OrderController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/ReplaceController.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/ReplaceController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/ShippingController.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/ShippingController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/UserController.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/controller/portal/UserController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/dao/ApplyMapper.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/dao/ApplyMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/dao/BookInfoMapper.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/dao/BookInfoMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/dao/SelfLibraryMapper.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/dao/SelfLibraryMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IBookInfoService.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IBookInfoService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/dao/ComplanMapper.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/dao/ComplanMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/dao/ReplaceMapper.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/dao/ReplaceMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/pojo/User.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/pojo/User.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IApplyService.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IApplyService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IComplanService.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IComplanService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IReplaceService.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IReplaceService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IShippingService.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IShippingService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IUserService.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/IUserService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/ApplyServiceImpl.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/ApplyServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/BookInfoServiceImpl.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/BookInfoServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/CategoryServiceImpl.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/CategoryServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/ComplanServiceImpl.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/ComplanServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/OrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/OrderServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/ReplaceServiceImpl.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/ReplaceServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/SelfLibraryServiceImpl.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/SelfLibraryServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/ShippingServiceImpl.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/ShippingServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/vo/CategoryTreeVo.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/vo/CategoryTreeVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/vo/AdviceListVo.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/vo/AdviceListVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/vo/AdviceVo.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/vo/AdviceVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/vo/ApplyListVo.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/vo/ApplyListVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/vo/SelfLibraryVo.class" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/pers/tmw/booksharing/vo/SelfLibraryVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$AdviceStatus.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$AdviceStatus.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$ApplyStatus.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$ApplyStatus.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$ComplanStatus.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$ComplanStatus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$PayPlatformEnum.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$PayPlatformEnum.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$ReplaceStatus$SendStatus.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$ReplaceStatus$SendStatus.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$ReplaceStatus.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$ReplaceStatus.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$SelfLibraryStatus.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/common/Const$SelfLibraryStatus.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/BookController.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/BookController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/CategoryController.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/CategoryController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/ApplyController.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/ApplyController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/OrderController.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/OrderController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/ReplaceController.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/ReplaceController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/ShippingController.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/ShippingController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/UserController.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/controller/portal/UserController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/dao/ApplyMapper.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/dao/ApplyMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/dao/BookInfoMapper.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/dao/BookInfoMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/dao/SelfLibraryMapper.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/dao/SelfLibraryMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IBookInfoService.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IBookInfoService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/dao/ComplanMapper.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/dao/ComplanMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/dao/ReplaceMapper.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/dao/ReplaceMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/pojo/User.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/pojo/User.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IApplyService.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IApplyService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IComplanService.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IComplanService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IReplaceService.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IReplaceService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IShippingService.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IShippingService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IUserService.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/IUserService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/ApplyServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/ApplyServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/BookInfoServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/BookInfoServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/CategoryServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/CategoryServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/ComplanServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/ComplanServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/OrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/OrderServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/ReplaceServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/ReplaceServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/SelfLibraryServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/SelfLibraryServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/ShippingServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/ShippingServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/vo/CategoryTreeVo.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/vo/CategoryTreeVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/vo/AdviceListVo.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/vo/AdviceListVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/vo/AdviceVo.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/vo/AdviceVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/vo/ApplyListVo.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/vo/ApplyListVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/vo/SelfLibraryVo.class" afterPath="$PROJECT_DIR$/target/classes/pers/tmw/booksharing/vo/SelfLibraryVo.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/common/Const.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/common/Const.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/BookController.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/BookController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/CategoryController.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/CategoryController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ApplyController.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ApplyController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/OrderController.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/OrderController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ReplaceController.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ReplaceController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ShippingController.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ShippingController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/UserController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ApplyMapper.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ApplyMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/BookInfoMapper.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/BookInfoMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/SelfLibraryMapper.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/SelfLibraryMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IBookInfoService.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IBookInfoService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ComplanMapper.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ComplanMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/PayInfoMapper.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/PayInfoMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ReplaceMapper.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ReplaceMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/pojo/User.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/pojo/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IApplyService.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IApplyService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IComplanService.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IComplanService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IOrderService.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IOrderService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IReplaceService.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IReplaceService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IShippingService.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IShippingService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IUserService.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IUserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ApplyServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ApplyServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/BookInfoServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/BookInfoServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/CategoryServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/CategoryServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ComplanServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ComplanServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/OrderServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/OrderServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ReplaceServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ReplaceServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/CategoryTreeVo.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/CategoryTreeVo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/SelfLibraryServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/SelfLibraryServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ShippingServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ShippingServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/UserServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/AdviceListVo.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/AdviceListVo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/AdviceVo.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/AdviceVo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/ApplyListVo.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/ApplyListVo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/SelfLibraryVo.java" afterPath="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/SelfLibraryVo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/book.properties" afterPath="$PROJECT_DIR$/src/main/resources/book.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/ApplyMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/ApplyMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/BookInfoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/BookInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/ComplanMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/ComplanMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/PayInfoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/PayInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/ReplaceMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/ReplaceMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/SelfLibraryMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/SelfLibraryMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/portal/css/index.css" afterPath="$PROJECT_DIR$/src/main/webapp/portal/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/portal/css/self_page.css" afterPath="$PROJECT_DIR$/src/main/webapp/portal/css/self_page.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/portal/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/portal/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/portal/login.html" afterPath="$PROJECT_DIR$/src/main/webapp/portal/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/portal/register.html" afterPath="$PROJECT_DIR$/src/main/webapp/portal/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/portal/temp.html" afterPath="$PROJECT_DIR$/src/main/webapp/portal/temp.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/jdbc.properties" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/jdbc.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/portal/js/index.js" afterPath="$PROJECT_DIR$/src/main/webapp/portal/js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/portal/js/self_page.js" afterPath="$PROJECT_DIR$/src/main/webapp/portal/js/self_page.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/portal/self_library.html" afterPath="$PROJECT_DIR$/src/main/webapp/portal/self_library.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/portal/self_page.html" afterPath="$PROJECT_DIR$/src/main/webapp/portal/self_page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/book.properties" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/book.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/ApplyMapper.xml" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/ApplyMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/BookInfoMapper.xml" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/BookInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/ComplanMapper.xml" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/ComplanMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/PayInfoMapper.xml" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/PayInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/ReplaceMapper.xml" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/ReplaceMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/SelfLibraryMapper.xml" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/SelfLibraryMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/portal/css/index.css" afterPath="$PROJECT_DIR$/target/booksharing/portal/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/UserMapper.xml" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/classes/mappers/UserMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/booksharing/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/portal/index.html" afterPath="$PROJECT_DIR$/target/booksharing/portal/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/portal/login.html" afterPath="$PROJECT_DIR$/target/booksharing/portal/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/portal/temp.html" afterPath="$PROJECT_DIR$/target/booksharing/portal/temp.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/jdbc.properties" afterPath="$PROJECT_DIR$/target/classes/jdbc.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/portal/js/index.js" afterPath="$PROJECT_DIR$/target/booksharing/portal/js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/booksharing/portal/js/reset_pwd.js" afterPath="$PROJECT_DIR$/target/booksharing/portal/js/reset_pwd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/book.properties" afterPath="$PROJECT_DIR$/target/classes/book.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mappers/ApplyMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mappers/ApplyMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mappers/BookInfoMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mappers/BookInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mappers/ComplanMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mappers/ComplanMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mappers/PayInfoMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mappers/PayInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mappers/ReplaceMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mappers/ReplaceMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mappers/SelfLibraryMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mappers/SelfLibraryMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mappers/UserMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mappers/UserMapper.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -108,78 +174,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="self_page.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/self_page.html">
+      <file leaf-file-name="scripts.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/backend/assets/js/scripts.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="109" selection-end-column="7" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="self_page.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/js/self_page.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
-              <folding>
-                <element signature="e#0#45#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="self_page.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/css/self_page.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="29" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="self_library.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/self_library.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="58" column="87" lean-forward="false" selection-start-line="58" selection-start-column="87" selection-end-line="58" selection-end-column="87" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="31" column="112" lean-forward="false" selection-start-line="31" selection-start-column="112" selection-end-line="31" selection-end-column="112" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -192,13 +192,19 @@
         <option value="HTML File" />
         <option value="JUnit4 Test Class" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Jsp File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="HTML4 File" />
+        <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>bookTable</find>
+      <find>replaceId</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -211,57 +217,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/backen/ComplanManageController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/UserMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ComplanServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IUserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/IllegalMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/IllegalMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/IllegalVo.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/ApplyListVo.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/book.properties" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/portal/login.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/portal/login.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/login.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/ngjstree.js" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/CategoryController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/js/ngjstree.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/CategoryTreeVo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/CategoryServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/js/lib/ngjstree.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/book_detail.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/js/book_detail.js" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/common/Const.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ReplaceServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ApplyMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/ApplyMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ApplyServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/HadBookListVo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IBookInfoService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/SelfLibraryMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/BookController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/SelfLibraryMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/BookInfoServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/BookInfoMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/BookInfoMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/css/index.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/js/index.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/register.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/js/register.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/temp.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/login.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/portal/reset_pwd.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/portal/js/reset_pwd.js" />
-        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/portal/js/self_page.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/js/self_page.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/portal/self_page.html" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IShippingService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/portal/css/self_page.css" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/pojo/User.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ShippingController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ShippingServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/book.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/PayInfoVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IOrderService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/PayInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/PayInfoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/OrderController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/OrderVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/OrderServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/SelfLibraryVo.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/portal/js/self_library.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/SelfLibraryMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/SelfLibraryMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/SelfLibraryServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/ApplyMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IApplyService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ApplyMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/ApplyListVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ApplyServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ApplyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IReplaceService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ReplaceMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/ReplaceMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ReplaceServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IComplanService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ComplanMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/ComplanMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/ComplanVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/AdviceListVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/common/Const.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IUserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ReplaceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ComplanServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/portal/js/index.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/portal/self_library.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/portal/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/AdviceVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/BookInfoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/portal/self_page.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/portal/js/self_page.js" />
       </list>
     </option>
   </component>
@@ -431,8 +437,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -503,7 +507,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemId" value="portal" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -529,7 +533,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="portal" />
+              <option name="myItemId" value="backend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -548,40 +552,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -608,130 +578,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booksharing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -760,6 +606,8 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -790,11 +638,11 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Development\javaProjects\booksharing\src\main\webapp\backend" />
       <recent name="D:\Development\javaProjects\booksharing\src\main\webapp\portal\img" />
       <recent name="D:\Development\javaProjects\booksharing\src\main\webapp" />
       <recent name="D:\Development\javaProjects\booksharing\src\main\webapp\WEB-INF" />
       <recent name="D:\javaTools\projects\booksharing\src\main\java\com\alipay\demo\trade" />
-      <recent name="D:\javaTools\projects\booksharing\src\main\java" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1334,6 +1182,7 @@
     </configuration>
     <configuration default="false" name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.44" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/book/portal/index.html" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="booksharing:war exploded">
@@ -1424,6 +1273,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b849e154-1c5a-4442-90b1-7e1f88aa4b6f" name="Default" comment="" />
@@ -1455,7 +1307,8 @@
       <workItem from="1498360365692" duration="8214000" />
       <workItem from="1498380165996" duration="25840000" />
       <workItem from="1498445081857" duration="33046000" />
-      <workItem from="1498538662407" duration="901000" />
+      <workItem from="1498538662407" duration="73275000" />
+      <workItem from="1498718063675" duration="677000" />
     </task>
     <servers />
   </component>
@@ -1492,7 +1345,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252577000" />
+    <option name="totallyTimeSpent" value="325628000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1520,17 +1373,17 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30010834" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4951246" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34236187" sideWeight="0.49573562" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3488624" sideWeight="0.49573562" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19989339" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20202559" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1552,7 +1405,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1561,434 +1414,549 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/img/head.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../javaTools/example/ssm_project/src/main/webapp/WEB-INF/view/index.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/OrderServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../javaTools/example/ssm_project/src/main/webapp/WEB-INF/view/bootstrap/bootstrapTest1.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2219">
-          <caret line="155" column="42" lean-forward="false" selection-start-line="155" selection-start-column="42" selection-end-line="155" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="40" lean-forward="false" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/ICategoryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/CategoryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/CategoryTreeVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/CategoryServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="149" column="39" lean-forward="false" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/js/book_detail.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/book_detail.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/js/lib/ngjstree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="13" column="83" lean-forward="false" selection-start-line="13" selection-start-column="83" selection-end-line="13" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/book.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/ExchangeOneListVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="33" lean-forward="true" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+        <state relative-caret-position="231">
+          <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/SelfLibraryServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="23" column="9" lean-forward="false" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ReplaceServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1607">
-          <caret line="185" column="26" lean-forward="false" selection-start-line="185" selection-start-column="26" selection-end-line="185" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IReplaceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ReplaceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="99" column="33" lean-forward="true" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
+        <state relative-caret-position="191">
+          <caret line="57" column="26" lean-forward="false" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/ApplyMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="169" column="132" lean-forward="false" selection-start-line="169" selection-start-column="132" selection-end-line="169" selection-end-column="132" />
+        <state relative-caret-position="375">
+          <caret line="161" column="2" lean-forward="false" selection-start-line="161" selection-start-column="2" selection-end-line="161" selection-end-column="2" />
           <folding>
-            <marker date="1498462917690" expanded="true" signature="1299:1416" ph="select from BOOK_APPLY" />
-            <marker date="1498462917690" expanded="true" signature="1500:1571" ph="delete from " />
-            <marker date="1498462917690" expanded="true" signature="4017:4772" ph="update BOOK_... " />
-            <marker date="1498462917690" expanded="true" signature="4873:5263" ph="update BOOK_... " />
-            <marker date="1498462917690" expanded="true" signature="5929:6066" ph="SELECT FROM BOOK_APPLY" />
-            <marker date="1498462917690" expanded="true" signature="6153:6318" ph="SELECT COUNT... BOOK_APPLY" />
+            <marker date="1498640844587" expanded="true" signature="1299:1416" ph="select from BOOK_APPLY" />
+            <marker date="1498640844587" expanded="true" signature="1500:1571" ph="delete from " />
+            <marker date="1498640844587" expanded="true" signature="4017:4772" ph="update BOOK_... " />
+            <marker date="1498640844587" expanded="true" signature="4873:5263" ph="update BOOK_... " />
+            <marker date="1498640844587" expanded="true" signature="5378:5476" ph="SELECT FROM BOOK_APPLY" />
+            <marker date="1498640844587" expanded="true" signature="5589:5683" ph="SELECT FROM BOOK_APPLY" />
+            <marker date="1498640844587" expanded="true" signature="5795:5932" ph="SELECT FROM BOOK_APPLY" />
+            <marker date="1498640844587" expanded="true" signature="6019:6184" ph="SELECT COUNT... BOOK_APPLY" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ApplyMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="23" />
+        <state relative-caret-position="288">
+          <caret line="22" column="86" lean-forward="false" selection-start-line="22" selection-start-column="86" selection-end-line="22" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="110" column="19" lean-forward="false" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/SelfLibraryVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ApplyServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1646">
-          <caret line="70" column="64" lean-forward="false" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
+        <state relative-caret-position="106">
+          <caret line="159" column="48" lean-forward="false" selection-start-line="159" selection-start-column="47" selection-end-line="159" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IApplyService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        <state relative-caret-position="280">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/ExchangeListVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/HadBookListVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding>
-            <element signature="e#253#254#0" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#331#332#0" expanded="true" />
-            <element signature="e#366#367#0" expanded="true" />
-            <element signature="e#397#398#0" expanded="true" />
-            <element signature="e#445#446#0" expanded="true" />
-            <element signature="e#485#486#0" expanded="true" />
-            <element signature="e#522#523#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#607#608#0" expanded="true" />
-            <element signature="e#651#652#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IBookInfoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/SelfLibraryMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="148" column="97" lean-forward="false" selection-start-line="148" selection-start-column="97" selection-end-line="148" selection-end-column="97" />
-          <folding>
-            <marker date="1498470684096" expanded="true" signature="1007:1120" ph="select from BOOK_SELF_LIBRARY" />
-            <marker date="1498470684096" expanded="true" signature="1204:1271" ph="delete from " />
-            <marker date="1498470684096" expanded="true" signature="3054:3482" ph="update BOOK_... " />
-            <marker date="1498470684096" expanded="true" signature="3589:3812" ph="update BOOK_... " />
-            <marker date="1498470684096" expanded="true" signature="3915:4029" ph="SELECT FROM BOOK_SELF_LIBRARY" />
-            <marker date="1498470684096" expanded="true" signature="4135:4241" ph="SELECT FROM BOOK_SELF_LIBRARY" />
-            <marker date="1498470684096" expanded="true" signature="4350:4465" ph="SELECT FROM BOOK_SELF_LIBRARY" />
-            <marker date="1498470684096" expanded="true" signature="4556:4636" ph="SELECT USER_... BOOK_SELF_LIBRARY" />
-            <marker date="1498470684096" expanded="true" signature="4729:4809" ph="SELECT BOOK_... BOOK_SELF_LIBRARY" />
-            <marker date="1498470684096" expanded="true" signature="4904:5000" ph="SELECT BOOK_... BOOK_SELF_LIBRARY" />
-            <marker date="1498470684096" expanded="true" signature="5094:5174" ph="SELECT USER_... BOOK_SELF_LIBRARY" />
-            <marker date="1498470684096" expanded="true" signature="5267:5328" ph="SELECT BOOK_... BOOK_SELF_LIBRARY" />
-            <marker date="1498470684096" expanded="true" signature="5267:5359" ph="SELECT BOOK_... BOOK_SELF_LIBRARY" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/SelfLibraryMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-99">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/BookInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="246" column="94" lean-forward="false" selection-start-line="246" selection-start-column="84" selection-end-line="246" selection-end-column="94" />
-          <folding>
-            <marker date="1498469820088" expanded="true" signature="1900:2014" ph="select from BOOK_INFO" />
-            <marker date="1498469820088" expanded="true" signature="2098:2166" ph="delete from " />
-            <marker date="1498469820088" expanded="true" signature="5899:7287" ph="update BOOK_... " />
-            <marker date="1498469820088" expanded="true" signature="7391:8098" ph="update BOOK_... " />
-            <marker date="1498469820088" expanded="true" signature="8735:8796" ph="SELECT FROM BOOK_INFO" />
-            <marker date="1498469820088" expanded="true" signature="8891:8946" ph="SELECT BOOK_... BOOK_INFO" />
-            <marker date="1498469820088" expanded="true" signature="9048:9109" ph="SELECT FROM BOOK_INFO" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/BookInfoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="346" column="84" lean-forward="false" selection-start-line="346" selection-start-column="74" selection-end-line="346" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/BookInfoMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="26" column="58" lean-forward="false" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/ApplyListVo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="120">
+          <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/ReplaceMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="203" column="34" lean-forward="false" selection-start-line="203" selection-start-column="34" selection-end-line="203" selection-end-column="34" />
+          <folding>
+            <marker date="1498659937604" expanded="true" signature="1742:1865" ph="select from BOOK_REPLACE" />
+            <marker date="1498659937604" expanded="true" signature="1949:2026" ph="delete from " />
+            <marker date="1498659937604" expanded="true" signature="5480:6729" ph="update BOOK_... " />
+            <marker date="1498659937604" expanded="true" signature="6832:7485" ph="update BOOK_... " />
+            <marker date="1498659937604" expanded="true" signature="7587:7706" ph="SELECT FROM BOOK_REPLACE" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ReplaceMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IReplaceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ApplyController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ReplaceServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="36" column="97" lean-forward="false" selection-start-line="36" selection-start-column="97" selection-end-line="36" selection-end-column="97" />
+        <state relative-caret-position="-169">
+          <caret line="161" column="26" lean-forward="false" selection-start-line="161" selection-start-column="26" selection-end-line="161" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/BookController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/pojo/Shipping.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="147" column="30" lean-forward="false" selection-start-line="147" selection-start-column="21" selection-end-line="147" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="240">
+          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/ReplaceListVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/ComplanMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="127" column="45" lean-forward="false" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
+          <folding>
+            <marker date="1498671981217" expanded="true" signature="1099:1222" ph="select from BOOK_COMPLAN" />
+            <marker date="1498671981217" expanded="true" signature="1305:1382" ph="delete from " />
+            <marker date="1498671981217" expanded="true" signature="3381:3913" ph="update BOOK_... " />
+            <marker date="1498671981217" expanded="true" signature="4017:4299" ph="update BOOK_... " />
+            <marker date="1498671981217" expanded="true" signature="4396:4484" ph="SELECT FROM BOOK_COMPLAN" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/dao/ComplanMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="20" column="33" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/pojo/Complan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/ComplanVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="43" column="5" lean-forward="false" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/IllegalVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/common/Const.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="50" />
+        <state relative-caret-position="320">
+          <caret line="30" column="25" lean-forward="false" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/js/register.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/AdviceListVo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/temp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="45" column="13" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="45" selection-end-column="13" />
-          <folding>
-            <element signature="e#323#331#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="142" column="48" lean-forward="false" selection-start-line="142" selection-start-column="29" selection-end-line="142" selection-end-column="48" />
-          <folding />
+        <state relative-caret-position="160">
+          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IUserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/reset_pwd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="45" column="80" lean-forward="false" selection-start-line="45" selection-start-column="80" selection-end-line="45" selection-end-column="80" />
+        <state relative-caret-position="395">
+          <caret line="30" column="70" lean-forward="false" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="104" column="28" lean-forward="false" selection-start-line="104" selection-start-column="28" selection-end-line="104" selection-end-column="28" />
+        <state relative-caret-position="468">
+          <caret line="187" column="54" lean-forward="false" selection-start-line="187" selection-start-column="54" selection-end-line="187" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/js/reset_pwd.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IComplanService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="33" column="108" lean-forward="false" selection-start-line="33" selection-start-column="108" selection-end-line="33" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/js/self_page.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-497">
-          <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/js/self_page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/css/self_page.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="29" />
+        <state relative-caret-position="260">
+          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/self_page.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/ComplanServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="109" selection-end-column="7" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="111">
+          <caret line="81" column="43" lean-forward="false" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/SelfLibraryController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-486">
-          <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-          <folding />
+        <state relative-caret-position="800">
+          <caret line="297" column="35" lean-forward="true" selection-start-line="297" selection-start-column="35" selection-end-line="297" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/js/self_library.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="66" column="10" lean-forward="true" selection-start-line="52" selection-start-column="7" selection-end-line="66" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="267" column="18" lean-forward="false" selection-start-line="267" selection-start-column="4" selection-end-line="267" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/self_library.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="58" column="87" lean-forward="false" selection-start-line="58" selection-start-column="87" selection-end-line="58" selection-end-column="87" />
+        <state relative-caret-position="363">
+          <caret line="38" column="91" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="91" />
           <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#button#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/pojo/Advice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="31" column="112" lean-forward="false" selection-start-line="31" selection-start-column="112" selection-end-line="31" selection-end-column="112" />
+        <state relative-caret-position="331">
+          <caret line="215" column="13" lean-forward="false" selection-start-line="187" selection-start-column="8" selection-end-line="215" selection-end-column="13" />
           <folding>
             <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#2;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#2;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#2;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#4;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#4;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#5;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#5;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#5;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/IBookInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="30" column="19" lean-forward="false" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/vo/AdviceVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="860">
+          <caret line="50" column="73" lean-forward="false" selection-start-line="50" selection-start-column="73" selection-end-line="50" selection-end-column="73" />
+          <folding>
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#594#595#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/service/impl/BookInfoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4720">
+          <caret line="261" column="39" lean-forward="false" selection-start-line="261" selection-start-column="39" selection-end-line="261" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/self_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="911" column="67" lean-forward="false" selection-start-line="911" selection-start-column="64" selection-end-line="911" selection-end-column="67" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#button#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#9;n#form#0;n#div#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#4;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#8;n#form#0;n#div#0;n#div#4;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#5;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#6;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#6;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#6;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#6;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#6;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#7;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#7;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#7;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#8;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#8;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#8;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#9;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#9;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#9;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#10;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#10;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#10;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#11;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#11;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#11;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#12;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#12;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#12;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#13;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#13;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#13;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#8;n#form#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#7;n#form#0;n#div#0;n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#10;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#10;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#10;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/portal/js/self_page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="512" column="55" lean-forward="false" selection-start-line="512" selection-start-column="55" selection-end-line="512" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/backen/BookManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/backen/CategoryManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1120">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/backen/ComplanManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/backen/OrderManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-430">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/backen/UserManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ApplyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1677">
+          <caret line="97" column="36" lean-forward="true" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/BookController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-250">
+          <caret line="112" column="39" lean-forward="false" selection-start-line="112" selection-start-column="39" selection-end-line="112" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/CategoryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ReplaceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2760">
+          <caret line="150" column="33" lean-forward="true" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="45" column="37" lean-forward="true" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/SelfLibraryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="980">
+          <caret line="60" column="40" lean-forward="false" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pers/tmw/booksharing/controller/portal/ShippingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-490">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/backend/assets/js/scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

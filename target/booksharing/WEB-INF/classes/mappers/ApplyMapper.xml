@@ -144,20 +144,14 @@
     where APPLY_ID = #{applyId,jdbcType=DECIMAL}
   </update>
 
-  <select id="getApplyListByAppliedUserIdStatus" parameterType="map" resultMap="BaseResultMap">
+  <select id="getApplyListByAppliedUserIdStatus" parameterType="long" resultMap="BaseResultMap">
     SELECT <include refid="Base_Column_List"/>
     FROM BOOK_APPLY WHERE APPLIED_USER=#{appliedUserId}
-    <if test="status != null">
-      AND STATUS=#{status}
-    </if>
   </select>
 
-  <select id="getApplyListByApplyUserIdStatus" parameterType="map" resultMap="BaseResultMap">
+  <select id="getApplyListByApplyUserIdStatus" parameterType="long" resultMap="BaseResultMap">
     SELECT <include refid="Base_Column_List"/>
     FROM BOOK_APPLY WHERE APPLY_USER=#{applyUserId}
-    <if test="status != null">
-      AND STATUS=#{status}
-    </if>
   </select>
 
   <select id="selectByApplyIdAndAppliedUserId" resultMap="BaseResultMap" parameterType="map">

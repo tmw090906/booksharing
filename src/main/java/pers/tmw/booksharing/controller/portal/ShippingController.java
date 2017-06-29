@@ -46,6 +46,8 @@ public class ShippingController {
     }
 
 
+
+
     @RequestMapping("update.do")
     @ResponseBody
     public ServerResponse update(HttpSession session, Shipping shipping){
@@ -63,7 +65,7 @@ public class ShippingController {
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
         }
-        return iShippingService.selectShippingDetail(user.getUserId(),shippingId);
+        return iShippingService.selectShippingDetail(shippingId);
     }
 
 

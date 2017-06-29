@@ -11,7 +11,7 @@ public class SelfLibraryVo {
     private String updateTime;
     private String publishTrim;
     private String bookAuthor;
-    private Short Status;
+    private String statusStr;
 
 
     public Long getSelfLibraryId() {
@@ -62,11 +62,12 @@ public class SelfLibraryVo {
         this.bookAuthor = bookAuthor;
     }
 
-    public Short getStatus() {
-        return Status;
+    public String getStatusStr() {
+        return statusStr;
     }
 
-    public void setStatus(Short status) {
-        Status = status;
+    public void setStatusStr(String statusStr) {
+        this.statusStr = statusStr;
     }
+
 }

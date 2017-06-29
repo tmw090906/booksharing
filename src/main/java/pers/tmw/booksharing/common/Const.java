@@ -27,9 +27,8 @@ public class Const {
 
     public interface AdviceStatus{
         short COMMIT = 1;
-        short WORKING = 2;
-        short NOT_FIND = 3;
-        short SUCCESS = 4;
+        short NOT_FIND = 2;
+        short SUCCESS = 3;
     }
 
     public interface OrderStatus{

@@ -14,6 +14,42 @@ public class ApplyListVo {
     private String applyBookName;
     private Long appliedBookId;
     private String appliedBookName;
+    private String updateTime;
+    private String statusStr;
+    private Short status;
+    private String reason;
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public Short getStatus() {
+        return status;
+    }
+
+    public void setStatus(Short status) {
+        this.status = status;
+    }
+
+    public String getStatusStr() {
+        return statusStr;
+    }
+
+    public void setStatusStr(String statusStr) {
+        this.statusStr = statusStr;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public Long getApplyId() {
         return applyId;

@@ -7,7 +7,7 @@
       <arg column="USERNAME" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="PWD" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="TRUE_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="IDCARD" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="IDCARD" jdbcType="DECIMAL" javaType="java.lang.String" />
       <arg column="EMAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="PHONE" jdbcType="DECIMAL" javaType="java.lang.Long" />
       <arg column="ROLE" jdbcType="DECIMAL" javaType="java.lang.Short" />
@@ -46,7 +46,7 @@
       DEPOSIT, APPROVE_DEPOSIT, UPDATE_TIME, 
       CREATE_TIME)
     values (#{userId,jdbcType=DECIMAL}, #{username,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
-      #{trueName,jdbcType=VARCHAR}, #{idcard,jdbcType=DECIMAL}, #{email,jdbcType=VARCHAR}, 
+      #{trueName,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
       #{phone,jdbcType=DECIMAL}, #{role,jdbcType=DECIMAL}, #{wechart,jdbcType=VARCHAR}, 
       #{qq,jdbcType=DECIMAL}, #{question,jdbcType=VARCHAR}, #{anwser,jdbcType=VARCHAR}, 
       #{deposit,jdbcType=DECIMAL}, #{approveDeposit,jdbcType=DECIMAL}, sysdate,
@@ -121,7 +121,7 @@
         #{trueName,jdbcType=VARCHAR},
       </if>
       <if test="idcard != null" >
-        #{idcard,jdbcType=DECIMAL},
+        #{idcard,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
@@ -171,7 +171,7 @@
         TRUE_NAME = #{trueName,jdbcType=VARCHAR},
       </if>
       <if test="idcard != null" >
-        IDCARD = #{idcard,jdbcType=DECIMAL},
+        IDCARD = #{idcard,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         EMAIL = #{email,jdbcType=VARCHAR},
@@ -211,7 +211,7 @@
     set USERNAME = #{username,jdbcType=VARCHAR},
       PWD = #{pwd,jdbcType=VARCHAR},
       TRUE_NAME = #{trueName,jdbcType=VARCHAR},
-      IDCARD = #{idcard,jdbcType=DECIMAL},
+      IDCARD = #{idcard,jdbcType=VARCHAR},
       EMAIL = #{email,jdbcType=VARCHAR},
       PHONE = #{phone,jdbcType=DECIMAL},
       ROLE = #{role,jdbcType=DECIMAL},

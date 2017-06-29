@@ -56,9 +56,6 @@ public class SelfLibraryServiceImpl implements ISelfLibraryService {
 
     @Override
     public ServerResponse getList(Long userId, Short status, int pageNum, int pageSize) {
-        if(status == null || !Const.SelfLibraryStatus.STATUS.contains(status)){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
-        }
         PageHelper.startPage(pageNum, pageSize);
         List<SelfLibrary> selfLibraryList = selfLibraryMapper.selectSelfLibraryList(userId,status);
         PageInfo pageInfo = new PageInfo(selfLibraryList);
@@ -73,7 +70,21 @@ public class SelfLibraryServiceImpl implements ISelfLibraryService {
             BookInfo bookInfo = bookInfoMapper.selectByPrimaryKey(selfLibraryItem.getBookId());
             SelfLibraryVo selfLibraryVo = new SelfLibraryVo();
             selfLibraryVo.setSelfLibraryId(selfLibraryItem.getId());
-            selfLibraryVo.setStatus(selfLibraryItem.getStatus());
+            short status = selfLibraryItem.getStatus();
+            //根据图书所占比例，比例越高，判断越靠前
+            String statusStr;
+            if(status == 1){
+                statusStr = "已读，指定交换";
+            }else if(status == 5){
+                statusStr = "未读，想拥有";
+            }else if(status == 2){
+                statusStr = "已读，不指定交换";
+            }else if(status == 3){
+                statusStr = "已读，无法交换";
+            }else {
+                statusStr = "未读，已拥有";
+            }
+            selfLibraryVo.setStatusStr(statusStr);
             selfLibraryVo.setBookAuthor(bookInfo.getBookAuthor());
             selfLibraryVo.setBookId(bookInfo.getBookId());
             selfLibraryVo.setBookName(bookInfo.getBookName());

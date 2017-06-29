@@ -15,7 +15,7 @@ public interface IShippingService {
 
     ServerResponse updateShipping(Long userId,Shipping shipping);
 
-    ServerResponse<Shipping> selectShippingDetail(Long userId,Long shippingId);
+    ServerResponse<Shipping> selectShippingDetail(Long shippingId);
 
     ServerResponse<PageInfo> getShippingList(Long userId, int pageNum, int pageSize);
 

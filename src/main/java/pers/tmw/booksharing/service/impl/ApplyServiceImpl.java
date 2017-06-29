@@ -13,6 +13,7 @@ import pers.tmw.booksharing.dao.*;
 import pers.tmw.booksharing.pojo.*;
 import pers.tmw.booksharing.service.IApplyService;
 import pers.tmw.booksharing.util.BigDecimalUtil;
+import pers.tmw.booksharing.util.DateTimeUtil;
 import pers.tmw.booksharing.vo.ApplyListVo;
 
 import java.math.BigDecimal;
@@ -80,12 +81,10 @@ public class ApplyServiceImpl implements IApplyService {
     }
 
     @Override
-    public ServerResponse getAppliedList(Long userId,Short status,int pageNum,int pageSize){
-        if(!Const.ApplyStatus.STATUS.contains(status)){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
-        }
+    public ServerResponse getAppliedList(Long userId,int pageNum,int pageSize){
         PageHelper.startPage(pageNum, pageSize);
-        List<Apply> applyList = applyMapper.getApplyListByAppliedUserIdStatus(userId,status);
+        PageHelper.orderBy("UPDATE_TIME desc");
+        List<Apply> applyList = applyMapper.getApplyListByAppliedUserIdStatus(userId);
         PageInfo pageInfo = new PageInfo(applyList);
         List<ApplyListVo> applyListVoList = this.assembleApplyListVoList(applyList);
         pageInfo.setList(applyListVoList);
@@ -105,18 +104,28 @@ public class ApplyServiceImpl implements IApplyService {
             applyListVo.setApplyBookName(bookInfoMapper.getBookNameByBookId(apply.getApplyBook()));
             applyListVo.setApplyUserId(apply.getApplyUser());
             applyListVo.setApplyUserName(userMapper.getUserNameByUserId(apply.getApplyUser()));
+            applyListVo.setUpdateTime(DateTimeUtil.dateToStr(apply.getUpdateTime()));
+            String statusStr;
+            short status = apply.getStatus();
+            if(status == 1){
+                statusStr = "申请未处理";
+            }else if (status == 2){
+                statusStr = "申请已经同意";
+            }else {
+                statusStr = "申请已被拒绝";
+            }
+            applyListVo.setStatusStr(statusStr);
+            applyListVo.setStatus(status);
+            applyListVo.setReason(apply.getReason());
             applyListVoList.add(applyListVo);
         }
         return applyListVoList;
     }
 
     @Override
-    public ServerResponse getApplyList(Long userId, Short status, int pageNum, int pageSize) {
-        if(!Const.ApplyStatus.STATUS.contains(status)){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
-        }
+    public ServerResponse getApplyList(Long userId, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        List<Apply> applyList = applyMapper.getApplyListByApplyUserIdStatus(userId,status);
+        List<Apply> applyList = applyMapper.getApplyListByApplyUserIdStatus(userId);
         PageInfo pageInfo = new PageInfo(applyList);
         List<ApplyListVo> applyListVoList = this.assembleApplyListVoList(applyList);
         pageInfo.setList(applyListVoList);

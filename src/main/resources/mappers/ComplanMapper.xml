@@ -123,15 +123,9 @@
     where COMPLAN_ID = #{complanId,jdbcType=DECIMAL}
   </update>
 
-  <select id="getListByUserIdAndStatus" resultMap="BaseResultMap" parameterType="map">
+  <select id="getListByUserId" resultMap="BaseResultMap" parameterType="long">
     SELECT <include refid="Base_Column_List"/>
     FROM BOOK_COMPLAN WHERE USER_ID=#{userId}
-    <if test="status == 1">
-      AND STATUS=#{status}
-    </if>
-    <if test="status != 1">
-      AND STATUS!=#{status}
-    </if>
   </select>
 
   <select id="getListByStatus" resultMap="BaseResultMap" parameterType="short">

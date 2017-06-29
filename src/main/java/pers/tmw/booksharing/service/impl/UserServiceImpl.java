@@ -1,5 +1,7 @@
 package pers.tmw.booksharing.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -154,6 +156,7 @@ public class UserServiceImpl implements IUserService{
         updateUser.setQuestion(user.getQuestion());
         updateUser.setQq(user.getQq());
         updateUser.setWechart(user.getWechart());
+        updateUser.setIdcard(user.getIdcard());
         int updateCount = userMapper.updateByPrimaryKeySelective(updateUser);
         if(updateCount > 0 ){
             updateUser = userMapper.selectByPrimaryKey(updateUser.getUserId());
@@ -176,10 +179,13 @@ public class UserServiceImpl implements IUserService{
 
 
     @Override
-    public ServerResponse getIllegalList(Long userId){
+    public ServerResponse getIllegalList(Long userId,int pageNum,int pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.orderBy("UPDATE_TIME desc");
         List<Illegal> illegalList = illegalMapper.getIllegalListByUserId(userId);
         List<IllegalVo> illegalVoList = assembleIllegalVoList(illegalList);
-        return ServerResponse.createBySuccess(illegalVoList);
+        PageInfo pageInfo = new PageInfo(illegalVoList);
+        return ServerResponse.createBySuccess(pageInfo);
     }
 
     private List<IllegalVo> assembleIllegalVoList(List<Illegal> illegalList){

@@ -18,7 +18,7 @@ public interface ComplanMapper {
 
     int updateByPrimaryKey(Complan record);
 
-    List<Complan> getListByUserIdAndStatus(@Param("userId") Long userId,@Param("status")  Short status);
+    List<Complan> getListByUserId(@Param("userId") Long userId);
 
     List<Complan> getListByStatus(@Param("status")  Short status);
 }

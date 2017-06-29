@@ -43,9 +43,10 @@ public class ReplaceServiceImpl implements IReplaceService {
 
 
     @Override
-    public ServerResponse getList(Long userId,int pageNum,int pageSize){
+    public ServerResponse getList(Long userId,int pageNum,int pageSize,Short status){
         PageHelper.startPage(pageNum, pageSize);
-        List<Replace> replaceList = replaceMapper.getListByUserId(userId);
+        PageHelper.orderBy("UPDATE_TIME desc");
+        List<Replace> replaceList = replaceMapper.getListByUserIdStatus(userId,status);
         PageInfo pageInfo = new PageInfo(replaceList);
         List<ReplaceListVo> replaceListVoList = Lists.newArrayList();
         ReplaceListVo replaceListVo;
@@ -78,7 +79,11 @@ public class ReplaceServiceImpl implements IReplaceService {
 
         replaceListVo.setBookId(apply.getApplyBook());
         replaceListVo.setBookName(bookInfoMapper.getBookNameByBookId(apply.getApplyBook()));
-        replaceListVo.setDeliverNo(replace.getApplyDeliverNo().longValue());
+        if(replace.getApplyDeliverNo() == null){
+            replaceListVo.setDeliverNo(null);
+        }else {
+            replaceListVo.setDeliverNo(replace.getApplyDeliverNo().longValue());
+        }
         replaceListVo.setUserId(replace.getApplyUser());
         replaceListVo.setStatus(replace.getApplyStatus());
         replaceListVo.setShippingId(replace.getApplyShipping());
@@ -96,7 +101,11 @@ public class ReplaceServiceImpl implements IReplaceService {
         replaceListVo.setApplyId(replace.getApplyId());
 
         replaceListVo.setOtherShippingId(replace.getApplyShipping());
-        replaceListVo.setOtherDeliverNo(replace.getApplyDeliverNo().longValue());
+        if(replace.getApplyDeliverNo() == null){
+            replaceListVo.setOtherDeliverNo(null);
+        }else {
+            replaceListVo.setOtherDeliverNo(replace.getApplyDeliverNo().longValue());
+        }
         replaceListVo.setOtherStatus(replace.getApplyStatus());
         replaceListVo.setOtherUserId(replace.getApplyUser());
         replaceListVo.setOtherUserName(userMapper.getUserNameByUserId(replace.getApplyUser()));
@@ -163,12 +172,18 @@ public class ReplaceServiceImpl implements IReplaceService {
             if(replace.getApplyStatus() >= Const.ReplaceStatus.SendStatus.SEND){
                 return ServerResponse.createByErrorMessage("请勿重复操作");
             }
+            if(replace.getAppliedShipping() == null){
+                return ServerResponse.createByErrorMessage("对方还未选择收货地址，无法发货");
+            }
             replace.setApplyStatus(Const.ReplaceStatus.SendStatus.SEND);
             replace.setApplyDeliverNo(new BigDecimal(deliverNo));
             rowCount = replaceMapper.updateByPrimaryKeySelective(replace);
         }else if(replace.getAppliedUser() == userId){
             if(replace.getAppliedStatus() >= Const.ReplaceStatus.SendStatus.SEND){
                 return ServerResponse.createByErrorMessage("请勿重复操作");
+            }
+            if(replace.getApplyShipping() == null){
+                return ServerResponse.createByErrorMessage("对方还未选择收货地址，无法发货");
             }
             replace.setAppliedStatus(Const.ReplaceStatus.SendStatus.SEND);
             replace.setAppliedDeliverNo(deliverNo);

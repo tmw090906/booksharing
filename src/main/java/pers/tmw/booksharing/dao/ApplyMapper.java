@@ -18,9 +18,9 @@ public interface ApplyMapper {
 
     int updateByPrimaryKey(Apply record);
 
-    List<Apply> getApplyListByAppliedUserIdStatus(@Param("appliedUserId") Long appliedUserId, @Param("status")Short status);
+    List<Apply> getApplyListByAppliedUserIdStatus(@Param("appliedUserId") Long appliedUserId);
 
-    List<Apply> getApplyListByApplyUserIdStatus(@Param("applyUserId") Long applyUserId, @Param("status")Short status);
+    List<Apply> getApplyListByApplyUserIdStatus(@Param("applyUserId") Long applyUserId);
 
     Apply selectByApplyIdAndAppliedUserId(@Param("applyId") Long applyId,@Param("appliedUserId") Long appliedUserId);
 

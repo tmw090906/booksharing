@@ -36,14 +36,14 @@ public class ReplaceController {
      */
     @RequestMapping("list.do")
     @ResponseBody
-    public ServerResponse getList(HttpSession session,
+    public ServerResponse getList(HttpSession session,Short status,
                                   @RequestParam(defaultValue = "1")int pageNum,
                                   @RequestParam(defaultValue = "10")int pageSize){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
         }
-        return iReplaceService.getList(user.getUserId(),pageNum,pageSize);
+        return iReplaceService.getList(user.getUserId(),pageNum,pageSize,status);
 
     }
 
@@ -137,19 +137,18 @@ public class ReplaceController {
     /**
      * 得到投诉列表接口
      * @param session
-     * @param status
      * @return
      */
     @RequestMapping("complan_list.do")
     @ResponseBody
-    public ServerResponse getComplanList(HttpSession session,Short status,
+    public ServerResponse getComplanList(HttpSession session,
                                          @RequestParam(defaultValue = "1")int pageNum,
                                          @RequestParam(defaultValue = "10")int pageSize){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
         }
-        return icomplanService.getList(user.getUserId(),status,pageNum,pageSize);
+        return icomplanService.getList(user.getUserId(),pageNum,pageSize);
     }
 
 

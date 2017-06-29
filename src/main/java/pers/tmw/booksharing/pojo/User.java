@@ -12,7 +12,7 @@ public class User {
 
     private String trueName;
 
-    private Long idcard;
+    private String idcard;
 
     private String email;
 
@@ -36,7 +36,7 @@ public class User {
 
     private Date createTime;
 
-    public User(Long userId, String username, String pwd, String trueName, Long idcard, String email, Long phone, Short role, String wechart, Long qq, String question, String anwser, BigDecimal deposit, BigDecimal approveDeposit, Date updateTime, Date createTime) {
+    public User(Long userId, String username, String pwd, String trueName, String idcard, String email, Long phone, Short role, String wechart, Long qq, String question, String anwser, BigDecimal deposit, BigDecimal approveDeposit, Date updateTime, Date createTime) {
         this.userId = userId;
         this.username = username;
         this.pwd = pwd;
@@ -91,11 +91,11 @@ public class User {
         this.trueName = trueName == null ? null : trueName.trim();
     }
 
-    public Long getIdcard() {
+    public String getIdcard() {
         return idcard;
     }
 
-    public void setIdcard(Long idcard) {
+    public void setIdcard(String idcard) {
         this.idcard = idcard;
     }
 

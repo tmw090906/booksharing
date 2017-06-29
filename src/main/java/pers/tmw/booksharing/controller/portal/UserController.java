@@ -43,7 +43,7 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     /**
-     * 登陆接口
+     * 登陆接口 1
      * @param username
      * @param pwd
      * @param session
@@ -60,7 +60,7 @@ public class UserController {
     }
 
     /**
-     * 登出接口
+     * 登出接口 1
      * @param session
      * @return
      */
@@ -73,7 +73,7 @@ public class UserController {
 
 
     /**
-     * 注册接口
+     * 注册接口 1
      * @param user
      * @return
      */
@@ -83,7 +83,7 @@ public class UserController {
         return iUserService.register(user);
     }
 
-    /**
+    /** 1
      * 校验用户名和邮箱是否存在接口
      * @param str
      * @param type
@@ -95,7 +95,7 @@ public class UserController {
         return iUserService.checkValid(str,type);
     }
 
-    /**
+    /** 1
      * 获取用户信息接口
      * @param session
      * @return
@@ -110,7 +110,7 @@ public class UserController {
         return ServerResponse.createByErrorMessage("用户未登陆，无法获取信息");
     }
 
-    /**
+    /** 1
      * 获取用户的问题提示接口
      * @param username
      * @return
@@ -121,7 +121,7 @@ public class UserController {
         return iUserService.selectQuestion(username);
     }
 
-    /**
+    /** 1
      * 用户根据问题回答接口
      * @param username
      * @param question
@@ -134,7 +134,7 @@ public class UserController {
         return iUserService.checkAnswer(username,question,answer);
     }
 
-    /**
+    /** 1
      * 未登录状态下重置密码接口
      * @param username
      * @param passwordNew
@@ -146,7 +146,7 @@ public class UserController {
         return iUserService.resetPasswordByAnswer(username,passwordNew);
     }
 
-    /**
+    /** 1
      * 登陆状态下修改密码接口
      * @param passwordOld
      * @param passwordNew
@@ -163,7 +163,7 @@ public class UserController {
         return iUserService.resetPassword(user,passwordOld,passwordNew);
     }
 
-    /**
+    /** 1
      * 修改个人信息接口
      * @param session
      * @param user
@@ -185,7 +185,7 @@ public class UserController {
         return response;
     }
 
-    /**
+    /** 1
      * 获取用户详细信息接口
      * @param session
      * @return
@@ -275,11 +275,8 @@ public class UserController {
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
         }
-        ServerResponse serverResponse = iDepositService.queryOrderPayStatus(user.getUserId(),orderNo);
-        if(serverResponse.isSuccess()){
-            return ServerResponse.createBySuccess(true);
-        }
-        return ServerResponse.createBySuccess(false);
+        return iDepositService.queryOrderPayStatus(user.getUserId(),orderNo);
+
     }
 
 
@@ -291,12 +288,14 @@ public class UserController {
 
     @RequestMapping("illegal.do")
     @ResponseBody
-    public ServerResponse getIllegalList(HttpSession session){
+    public ServerResponse getIllegalList(HttpSession session,
+                                         @RequestParam(defaultValue = "1")int pageNum,
+                                         @RequestParam(defaultValue = "10")int pageSize){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
         }
-        return iUserService.getIllegalList(user.getUserId());
+        return iUserService.getIllegalList(user.getUserId(),pageNum,pageSize);
     }
 
 

@@ -28,6 +28,6 @@ public interface IUserService {
 
     ServerResponse checkAdminRole(User user);
 
-    ServerResponse getIllegalList(Long userId);
+    ServerResponse getIllegalList(Long userId,int pageNum,int pageSize);
 
 }
