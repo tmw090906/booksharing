@@ -25,4 +25,6 @@ public interface BookInfoMapper {
     String getBookNameByBookId(Long bookId);
 
     List<BookInfo> getBookListByBookIds(@Param("bookIdList")List<Long> bookIdList);
+
+    int updateCategoryForCategoryDelete(@Param("oldCategoryId")Long oldCategoryId,@Param("newCategoryId")Long newCategoryId);
 }

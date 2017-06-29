@@ -764,6 +764,8 @@ $(function() {
     var accordion = new Accordion($('#accordion'), false);
 });
 
+
+
 $("#email").blur(function () {
     var str = $("#email").val();
     var type = "EMAIL";

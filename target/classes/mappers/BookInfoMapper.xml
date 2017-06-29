@@ -248,4 +248,8 @@
       #{item}
     </foreach>
   </select>
+
+  <update id="updateCategoryForCategoryDelete" parameterType="map">
+    UPDATE BOOK_INFO SET CATEGORY_ID=#{newCategoryId} WHERE CATEGORY_ID=#{oldCategoryId}
+  </update>
 </mapper>

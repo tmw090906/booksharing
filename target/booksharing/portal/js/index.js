@@ -37,7 +37,7 @@ var vm = new Vue({
                 _this.isFirstPage = flag.date.isFirstPage;
                 _this.lastPage = flag.date.lastPage;
                 _this.pageNum =  flag.date.pageNum;
-                $(".selfControl");
+                $(".selfControl").hide();
                 $("#pageList").show();
             }else {
                 alert(flag.msg);
@@ -76,7 +76,7 @@ var vm = new Vue({
                     _this.isFirstPage = flag.date.isFirstPage;
                     _this.lastPage = flag.date.lastPage;
                     _this.pageNum =  flag.date.pageNum;
-                    $(".selfControl");
+                    $(".selfControl").hide();
                     $("#pageList").show();
                 }else {
                     alert(flag.msg);
@@ -89,7 +89,7 @@ var vm = new Vue({
             $.post('/book/info/get_book_detail.do',jsonData,function (flag) {
                 if(flag.status == 1){
                     _this.bookDetail = flag.date
-                    $(".selfControl");
+                    $(".selfControl").hide();
                     $("#bookDetail").show();
                 }else {
                     alert(flag.msg);
@@ -118,7 +118,7 @@ var vm = new Vue({
             $.post('/book/info/exchange_one_info.do', jsonData, function (flag) {
                 if (flag.status == 1) {
                     _this.exchangeOnes = flag.date;
-                    $(".selfControl");
+                    $(".selfControl").hide();
                     $("#exchangeOneList").show();
                 } else if(flag.status == 10) {
                     alert("请登录");
@@ -133,7 +133,7 @@ var vm = new Vue({
             $.post('/book/info/exchange_info.do', jsonData, function (flag) {
                 if (flag.status == 1) {
                     _this.exchanges = flag.date;
-                    $(".selfControl");
+                    $(".selfControl").hide();
                     $("#exchangeList").show();
                 } else if(flag.status == 10) {
                     alert("请登录");

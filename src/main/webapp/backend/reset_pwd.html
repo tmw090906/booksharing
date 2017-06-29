@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>图书交换平台重置密码页</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/js/supersized.3.2.7.min.js"></script>
+    <script src="assets/js/supersized-init.js"></script>
+    <script src="assets/js/scripts.js"></script>
+
+
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/supersized.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
+
+</head>
+
+<body>
+<div id="app">
+    <div class="page-container" id="inputUsername">
+        <h1>重置密码</h1>
+        <form>
+            <label for="username">用户名</label>
+            <input type="text" id="username" class="username" placeholder="用户名">
+            <button type="button" id="submitUsername" @click="getQuestion()">确认</button>
+            <div class="error"><span>+</span></div>
+        </form>
+        <div class="connect">
+            <p> </p>
+            <p> </p>
+        </div>
+    </div>
+    <div id="confirm">
+        <h1>重置密码</h1>
+        <form>
+            <h2>帐号：{{username}}</h2>
+            <label for="anwser">找回密码问题：{{question}}</label>
+            <input type="hidden" id="question" v-bind="">
+            <input type="text" id="anwser" class="username" placeholder="问题答案">
+            <button type="button" id="confirmQuestion" @click="confirmQuestion()">确认</button>
+            <div class="error"><span>+</span></div>
+        </form>
+        <div class="connect">
+            <p> </p>
+            <p> </p>
+        </div>
+    </div>
+    <div class="page-container" id="reset">
+        <h2>重置密码</h2>
+        <form>
+            <h2>帐号：{{username}}</h2>
+            <label for="newPwd">新密码：</label>
+            <input type="password" id="newPwd" placeholder="请输入密码">
+            <label for="againPwd">再次输入：</label>
+            <input type="password" id="againPwd" placeholder="再次输入">
+            <button type="button" @click="resetPassword()">确认</button>
+            <div class="error"><span>+</span></div>
+        </form>
+        <div class="connect">
+            <p> </p>
+            <p> </p>
+        </div>
+    </div>
+    <div align="center">
+        <a class="btn" href="login.html">登陆页面</a>
+    </div>
+</div>
+
+
+</body>
+<script src="js/lib/vue.min.js"></script>
+<script src="js/reset_pwd.js"></script>
+</html>

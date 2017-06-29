@@ -75,26 +75,6 @@ public class BookManageController {
         }
     }
 
-    /**
-     * 查看所有商品列表
-     * @param session
-     * @param pageNum
-     * @param pageSize
-     * @return
-     */
-    @RequestMapping("list.do")
-    @ResponseBody
-    public ServerResponse getList(HttpSession session, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "10")int pageSize){
-        User user = (User)session.getAttribute(Const.CURRENT_USER);
-        if(user == null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"请先登陆");
-        }
-        if(iUserService.checkAdminRole(user).isSuccess()){
-            return iBookInfoService.getBookList(pageNum, pageSize);
-        }else {
-            return ServerResponse.createByErrorMessage("用户无权限");
-        }
-    }
 
     /**
      * 根据关键字，分类，查询图书列表
@@ -111,8 +91,17 @@ public class BookManageController {
                                       @RequestParam(value = "categoryId",required = false)Long categoryId,
                                       @RequestParam(defaultValue = "1")int pageNum,
                                       @RequestParam(defaultValue = "10")int pageSize,
-                                      @RequestParam(value = "orderBy",defaultValue = "CREATE_TIME") String orderBy){
-        return iBookInfoService.getBookList(textSearch, categoryId, pageNum, pageSize, orderBy);
+                                      @RequestParam(value = "orderBy",defaultValue = "CREATE_TIME") String orderBy,
+                                      HttpSession session){
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+        if(user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"请先登陆");
+        }
+        if(iUserService.checkAdminRole(user).isSuccess()){
+            return iBookInfoService.getBookList(textSearch, categoryId, pageNum, pageSize, orderBy);
+        }else {
+            return ServerResponse.createByErrorMessage("用户无权限");
+        }
     }
 
 
@@ -212,6 +201,13 @@ public class BookManageController {
     }
 
 
+    /**
+     * 获取自己处理的Advice列表
+     * @param session
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @RequestMapping("self_advice_list.do")
     @ResponseBody
     public ServerResponse getAdviceListBySelf(HttpSession session,

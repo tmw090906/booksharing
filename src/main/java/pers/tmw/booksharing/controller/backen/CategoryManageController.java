@@ -94,21 +94,21 @@ public class CategoryManageController {
     }
 
     /**
-     * 得到当前节点和其所有子节点接口
+     * 删除分类，该分类下所有书籍分类转到该分类的父分类下
      * @param session
      * @param categoryId
      * @return
      */
-    @RequestMapping("get_deep_category.do")
+    //添加一个删除分类功能
+    @RequestMapping("delete.do")
     @ResponseBody
-    public ServerResponse getCategoryAndDeepChildrenCategory(HttpSession session,@RequestParam(value = "categoryId",defaultValue = "0")Long categoryId){
+    public ServerResponse deleteCategory(HttpSession session,Long categoryId){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
             return ServerResponse.createByErrorMessage("用户未登录,请登录");
         }
         if(iUserService.checkAdminRole(user).isSuccess()){
-            //查询当前和递归子节点的Id
-            return iCategoryService.selectCategoryAndDeepChildrenCategory(categoryId);
+            return iCategoryService.manageDeleteCategory(categoryId);
         }else {
             return ServerResponse.createByErrorMessage("无权限操作，需要管理员权限");
         }

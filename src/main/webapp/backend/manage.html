@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="css/self_page.css">
+    <title>后台管理系统</title>
+</head>
+<body>
+    <div id="app" style="width: 100%;height: auto">
+
+        <div id="head" style="width: 100%;height: 45px;background-color:#232323">
+            <div style="float: left;line-height: 45px;margin-left: 10px">
+                <span style="color: aliceblue;font-size: 16px;font-family: 微软雅黑">图书分享平台后台管理系统</span>
+            </div>
+            <div style="float: right;line-height: 45px;margin-right: 15px">
+                <span style="color: aliceblue;font-size: 16px;font-family: 微软雅黑">管理员：{{trueName}}</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#" onclick="logout()" style="color: aliceblue;font-size: 16px;font-family: 微软雅黑">注销</a>
+            </div>
+        </div> <!-- head -->
+
+        <div id="content" style="width: 100%;height: auto">
+            <div id="menuTree" style="float: left;border-right: solid silver 1px;width: 15%;background-color: #e2e2e2">
+                <ul id="accordion" class="accordion" style="background-color:transparent;margin-top: 10%">
+                    <li>
+                        <div class="link"><i class="fa fa-paint-brush"></i>图书分类管理<i class="fa fa-chevron-down"></i></div>
+                        <ul class="submenu">
+                            <li><a href="#" @click="getCategoryList(0)">分类维护</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="link"><i class="fa fa-paint-brush"></i>图书管理<i class="fa fa-chevron-down"></i></div>
+                        <ul class="submenu">
+                            <li><a href="#" @click="firstGetBookList(0)">图书维护</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div> <!-- menuTree -->
+
+            <div id="category" style="float: right;width: 85%" class="selfControl">
+                <div style="width: 20%">
+                    <h2>分类维护：</h2>
+                </div>
+                <div style="width: 60%;margin-left: 10%">
+                    <ul class="list-group">
+                        <li class="list-group-item">当前分类父分类名称：
+                            <span v-if="parentCategory.categoryId != 0"><a href="#" @click="getCategoryList(parentCategory.categoryId)">{{parentCategory.categoryName}}</a></span>
+                            <span v-if="parentCategory.categoryId == 0"><a href="#" @click="getCategoryList(0)">当前分类无父分类，点击返回根分类</a></span>
+                        </li>
+                        <li> &nbsp;</li>
+                        <li> &nbsp;</li>
+                        <li> &nbsp;</li>
+                        <li class="list-group-item">当前分类名称:
+                            <span v-if="category.categoryId != 0">
+                                <a href="#" @click="getCategoryList(category.categoryId)">{{category.categoryName}}</a>
+                                <div style="float: right">
+                                    <a type="button" class="btn btn-success" @click="addCategory(category.categoryId)">新增子节点</a>
+                                    <a type="button" class="btn btn-success" @click="updateCategory(category.categoryId)">修改节点名称</a>
+                                </div>
+                            </span>
+                            <span v-if="category.categoryId == 0">
+                                <a href="#" @click="getCategoryList(0)">当前分类为根分类</a>
+                                <div style="float: right">
+                                    <a type="button" class="btn btn-success" @click="addCategory(0)">新增子节点</a>
+                                </div>
+                            </span>
+                        </li>
+                        <li> &nbsp;</li>
+
+                        <li class="list-group-item">
+                            当前分类子分类:
+                            <ul class="list-group" style="border: none;margin-left: 8%;">
+                                <li class="list-group-item" style="border: none" v-for="categoryItem in categoryList">
+                                    <a href="#" class="btn" @click="getCategoryList(categoryItem.categoryId)">{{categoryItem.categoryName}}</a>
+                                    <a here="#" class="btn" @click="deleteCategory(categoryItem.categoryId,parentCategory.categoryId)">删除</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="bookList" style="float: right;width: 85%" class="selfControl">
+                <div style="width: 20%">
+                    <h2>图书维护：</h2>
+                </div>
+                <div id="book" style="width: 100%;float: right">
+                    <table class="table table-striped" id="bookTable">
+                        <tr>
+                            <th>书名</th>
+                            <th>封面</th>
+                            <th>作者</th>
+                            <th>查看详情</th>
+                        </tr>
+                        <tr v-for="book in bookList">
+                            <td style="line-height: 158px">{{book.bookName}}</td>
+                            <td style="background-size: cover"><img v-bind:src="book.imageHost + book.bookImage" width="129px" height="158px"></td>
+                            <td style="line-height: 158px">{{book.bookAuthor}}</td>
+                            <td style="line-height: 158px"><span><a class="btn" href="#" @click="getBookDetail(book.bookId)">查看详情</a></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="float: right">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isFirstPage}">
+                                <a href="#" @click="bookListPageChoice(pageNum-1)" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="pagination" v-for="n in lastPage">
+                            <li v-bind:class="{active : n == pageNum}"><a href="#" @click="bookListPageChoice(n)">{{n}}</a></li>
+                        </ul>
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isLastPage}">
+                                <a href="#" @click="bookListPageChoice(pageNum+1)" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div> <!-- content -->
+
+        <div id="addCategoryPopWindow" style="width: 350px;height: 250px;z-index: 9999;position: absolute;background: white;border: solid 1px;display: none">
+            <div style="margin-top: 20%;width: 80%;margin-left: 10%">
+                <label for="categoryName">请输入新节点名称</label>
+                <input type="text" class="form-control" id="categoryName">
+                <input type="hidden" id="parentId"/>
+            </div>
+            <div style="margin-top: 10%;text-align: center">
+                <button class="btn btn-success" onclick="confirmAddCategory()">确认添加</button>
+                <button class="btn btn-success" onclick="hideAddCategoryPopWindow()">取消</button>
+            </div>
+        </div>
+
+        <div id="updateCategoryPopWindow" style="width: 350px;height: 250px;z-index: 9999;position: absolute;background: white;border: solid 1px;display: none">
+            <div style="margin-top: 20%;width: 80%;margin-left: 10%">
+                <label for="categoryName">请输入新节点名称</label>
+                <input type="text" class="form-control" id="newCategoryName">
+                <input type="hidden" id="categoryId"/>
+            </div>
+            <div style="margin-top: 10%;text-align: center">
+                <button class="btn btn-success" onclick="confirmUpdateCategory()">确认修改</button>
+                <button class="btn btn-success" onclick="hideUpdateCategoryPopWindow()">取消</button>
+            </div>
+        </div>
+
+        <div id="saveBookInfoPopWindow"  style="width: 900px;height: 550px;z-index: 9999;position: absolute;background: white;border: solid 1px;display: block">
+
+            <div style="width: 60%;margin-left: 40%;margin-top: 5%;float: right">
+                <form class="form-horizontal" id="updateShippingForm">
+                    <div class="form-group">
+                        <label for="receiveNameUpdate" class="col-sm-2 control-label">收货人</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="receiveNameUpdate" name="receiveName" placeholder="收货人">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receivePhoneUpdate" class="col-sm-2 control-label">联系电话</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="receivePhoneUpdate" name="receivePhone" placeholder="联系电话" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiveProvinceUpdate" class="col-sm-2 control-label">省份</label>
+                        <div class="col-xs-9">
+                            <input type="email" class="form-control" id="receiveProvinceUpdate" name="receiveProvince" placeholder="省份">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiveCityUpdate" class="col-sm-2 control-label">市</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="receiveCityUpdate" name="receiveCity" placeholder="市">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiveBlockUpdate" class="col-sm-2 control-label">区</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="receiveBlockUpdate" name="receiveBlock" placeholder="区" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiveAddressUpdate" class="col-sm-2 control-label">详细地址</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="receiveAddressUpdate" name="receiveAddress" placeholder="详细地址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiveZipUpdate" class="col-sm-2 control-label">邮编</label>
+                        <div class="col-xs-9">
+                            <textarea class="form-control" id="receiveZipUpdate" name="receiveZip" placeholder="邮编"></textarea>
+                        </div>
+                    </div>
+                    <input type="hidden" id="shippingId" name="shippingId" >
+                    <div class="form-group" style="text-align: center;">
+                        <div class="col-sm-offset-2 col-xs-9">
+                            <button type="button" class="btn btn-success" onclick="updateShippingInfo()">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> <!-- app -->
+
+</body>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="js/lib/vue.min.js"></script>
+<script src="js/manage.js"></script>
+</html>

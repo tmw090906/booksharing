@@ -1,6 +1,7 @@
 package pers.tmw.booksharing.service.impl;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -10,12 +11,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import pers.tmw.booksharing.common.Const;
 import pers.tmw.booksharing.common.ServerResponse;
+import pers.tmw.booksharing.dao.BookInfoMapper;
 import pers.tmw.booksharing.dao.CategoryMapper;
 import pers.tmw.booksharing.pojo.Category;
 import pers.tmw.booksharing.service.ICategoryService;
 import pers.tmw.booksharing.vo.CategoryTreeVo;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -28,6 +31,8 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Autowired
     private CategoryMapper categoryMapper;
+    @Autowired
+    private BookInfoMapper bookInfoMapper;
 
 
 
@@ -65,12 +70,51 @@ public class CategoryServiceImpl implements ICategoryService {
     }
 
     @Override
-    public ServerResponse getChildrenParallelCategory(Long categoryId){
+    public ServerResponse manageDeleteCategory(Long categoryId){
+        if(categoryId == null){
+            return ServerResponse.createByErrorMessage("添加品类参数错误");
+        }
         List<Category> categoryList = categoryMapper.selectCategoryChildrenByParentId(categoryId);
-        if(CollectionUtils.isEmpty(categoryList)){
+        if(categoryList != null && categoryList.size() >0){
+            return ServerResponse.createByErrorMessage("无法删除该分类，该分类下还有子分类");
+        }
+        Category category = categoryMapper.selectByPrimaryKey(categoryId);
+        int rowCount = categoryMapper.deleteByPrimaryKey(categoryId);
+        if(rowCount > 0){
+            Long newCategoryId = category.getParentId();
+            bookInfoMapper.updateCategoryForCategoryDelete(categoryId,newCategoryId);
+            return ServerResponse.createBySuccessMessage("删除分类成功");
+        }
+        return ServerResponse.createByErrorMessage("删除分类失败");
+    }
+
+    @Override
+    public ServerResponse getChildrenParallelCategory(Long categoryId){
+        List<Category> childCategoryList = categoryMapper.selectCategoryChildrenByParentId(categoryId);
+        Category category = categoryMapper.selectByPrimaryKey(categoryId);
+
+        Map responseMap = Maps.newHashMap();
+        responseMap.put("list",childCategoryList);
+        if(category == null){
+            category = new Category();
+            category.setCategoryId(0L);
+            responseMap.put("category",category);
+            responseMap.put("parentCategory",category);
+        }else {
+            responseMap.put("category",category);
+            Category parentCategory = categoryMapper.selectByPrimaryKey(category.getParentId());
+            if(parentCategory == null){
+                parentCategory = new Category();
+                parentCategory.setCategoryId(0L);
+                responseMap.put("parentCategory",parentCategory);
+            }else {
+                responseMap.put("parentCategory",parentCategory);
+            }
+        }
+        if(CollectionUtils.isEmpty(childCategoryList)){
             logger.info("未找到当前分类的子分类");
         }
-        return ServerResponse.createBySuccess(categoryList);
+        return ServerResponse.createBySuccess(responseMap);
     }
 
     /**

@@ -510,7 +510,7 @@ var vm = new Vue({
             $.post('/book/info/get_advice_detail.do',jsonData,function (flag) {
                 if(flag.status == 1){
                     _this.adviceDetail = flag.date;
-                    adviceDetailPopWindowCenter(600,250);
+                    adviceDetailPopWindowCenter(600,300);
                     $("#adviceDetailPopWindow").show();
                 }else if(flag == 10){
                     alert("登陆后才能查看，请登录");
@@ -763,6 +763,8 @@ $(function() {
 
     var accordion = new Accordion($('#accordion'), false);
 });
+
+
 
 $("#email").blur(function () {
     var str = $("#email").val();

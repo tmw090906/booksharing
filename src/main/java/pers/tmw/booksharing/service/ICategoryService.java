@@ -17,4 +17,6 @@ public interface ICategoryService {
 
     ServerResponse getTreeCategory();
 
+    ServerResponse manageDeleteCategory(Long categoryId);
+
 }
