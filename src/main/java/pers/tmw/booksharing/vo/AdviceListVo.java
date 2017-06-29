@@ -8,7 +8,25 @@ public class AdviceListVo {
     private Long adviceId;
     private String createTime;
     private Short status;
+    private String username;
     private String statusStr;
+    private String updateTime;
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getStatusStr() {
         return statusStr;

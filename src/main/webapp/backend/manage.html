@@ -34,6 +34,21 @@
                         <div class="link"><i class="fa fa-paint-brush"></i>图书管理<i class="fa fa-chevron-down"></i></div>
                         <ul class="submenu">
                             <li><a href="#" @click="firstGetBookList(0)">图书维护</a></li>
+                            <li><a href="#" @click="firstGetAdviceList()">用户添加图书申请</a></li>
+                            <li><a href="#" @click="firstGetSelfAdviceList()">已处理申请</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="link"><i class="fa fa-paint-brush"></i>投诉管理<i class="fa fa-chevron-down"></i></div>
+                        <ul class="submenu">
+                            <li><a href="#" @click="firstGetComplanList()">未处理投诉</a></li>
+                            <li><a href="#" @click="firstGetManagedComplanList()">已处理投诉</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="link"><i class="fa fa-paint-brush"></i>用户订单管理<i class="fa fa-chevron-down"></i></div>
+                        <ul class="submenu">
+                            <li><a href="#" @click="firstGetOrderList()">订单列表</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -83,22 +98,35 @@
             </div>
 
             <div id="bookList" style="float: right;width: 85%" class="selfControl">
-                <div style="width: 20%">
+                <div style="width: 100%">
                     <h2>图书维护：</h2>
+                </div>
+                <div style="width: 40%">
+                    <div class="col-lg-10">
+                        <button type="button" class="btn btn-success" style="margin-top: auto;float: right" onclick="addBook()">&nbsp;增加图书&nbsp;</button>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="ISBN,书名，作者" v-model="textSearch">
+                            <span class="input-group-btn">
+                    <button class="btn btn-success" type="button" @click="textSearchBookList(textSearch)">&nbsp &nbsp &nbsp &nbsp搜索&nbsp &nbsp &nbsp &nbsp</button>
+                </span>
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
                 </div>
                 <div id="book" style="width: 100%;float: right">
                     <table class="table table-striped" id="bookTable">
                         <tr>
                             <th>书名</th>
+                            <th>ISBN</th>
                             <th>封面</th>
                             <th>作者</th>
                             <th>查看详情</th>
                         </tr>
                         <tr v-for="book in bookList">
                             <td style="line-height: 158px">{{book.bookName}}</td>
+                            <td style="line-height: 158px">{{book.isbn}}</td>
                             <td style="background-size: cover"><img v-bind:src="book.imageHost + book.bookImage" width="129px" height="158px"></td>
                             <td style="line-height: 158px">{{book.bookAuthor}}</td>
-                            <td style="line-height: 158px"><span><a class="btn" href="#" @click="getBookDetail(book.bookId)">查看详情</a></span></td>
+                            <td style="line-height: 158px"><span style="line-height: 158px"><a class="btn" href="#" @click="getBookDetail(book.bookId)" style="line-height: 158px">查看详情</a></span></td>
                         </tr>
                     </table>
                 </div>
@@ -117,6 +145,241 @@
                         <ul class="pagination">
                             <li v-bind:class="{disabled : isLastPage}">
                                 <a href="#" @click="bookListPageChoice(pageNum+1)" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div id="adviceList" class="selfControl" style="float: right;width: 85%">
+                <div style="width: 100%">
+                    <h2>未处理添加图书申请：</h2>
+                </div>
+                <div>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>编号</th>
+                            <th>申请时间</th>
+                            <th>申请用户</th>
+                            <th>处理</th>
+                            <th>查看详情</th>
+                        </tr>
+                        <tr v-for="(advice,index) in adviceList">
+                            <td>{{index}}</td>
+                            <td>{{advice.createTime}}</td>
+                            <td>{{advice.username}}</td>
+                            <td><a href="#" class="btn" @click="showManageAdvice(advice.adviceId)">处理</a></td>
+                            <td><a href="#" @click="getAdviceDetail(advice.adviceId)">查看详情</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="float: right">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isFirstPage}">
+                                <a href="#" @click="adviceListPageChoice(pageNum-1)" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="pagination" v-for="n in lastPage">
+                            <li v-bind:class="{active : n == pageNum}"><a href="#" @click="adviceListPageChoice(n)">{{n}}</a></li>
+                        </ul>
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isLastPage}">
+                                <a href="#" @click="adviceListPageChoice(pageNum+1)" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div id="selfAdviceList" class="selfControl" style="float: right;width: 85%">
+                <div style="width: 100%">
+                    <h2>您处理的图书申请：</h2>
+                </div>
+                <div>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>编号</th>
+                            <th>申请时间</th>
+                            <th>申请用户</th>
+                            <th>处理时间</th>
+                            <th>处理结果</th>
+                            <th>查看详情</th>
+                        </tr>
+                        <tr v-for="(advice,index) in selfAdviceList">
+                            <td>{{index}}</td>
+                            <td>{{advice.createTime}}</td>
+                            <td>{{advice.username}}</td>
+                            <td>{{advice.updateTime}}</td>
+                            <td>{{advice.statusStr}}</td>
+                            <td><a href="#" @click="getAdviceDetail(advice.adviceId)">查看详情</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="float: right">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isFirstPage}">
+                                <a href="#" @click="selfAdviceListPageChoice(pageNum-1)" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="pagination" v-for="n in lastPage">
+                            <li v-bind:class="{active : n == pageNum}"><a href="#" @click="selfAdviceListPageChoice(n)">{{n}}</a></li>
+                        </ul>
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isLastPage}">
+                                <a href="#" @click="selfAdviceListPageChoice(pageNum+1)" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div id="complanList" class="selfControl" style="float: right;width: 85%">
+                <div style="width: 100%">
+                    <h2>未处理的用户投诉：</h2>
+                </div>
+                <div>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>编号</th>
+                            <th>投诉时间</th>
+                            <th>投诉用户</th>
+                            <th>查看置换申请</th>
+                            <th>处理投诉</th>
+                        </tr>
+                        <tr v-for="(compaln,index) in complanList">
+                            <td>{{index}}</td>
+                            <td>{{compaln.createTime}}</td>
+                            <td>{{compaln.username}}</td>
+                            <td><a href="#" class="btn">查看置换申请</a></td>
+                            <td><a href="#" class="btn" @click="showManageComplanPopWindow(compaln.complanId)">处理投诉</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="float: right">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isFirstPage}">
+                                <a href="#" @click="complanListPageChoice(pageNum-1)" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="pagination" v-for="n in lastPage">
+                            <li v-bind:class="{active : n == pageNum}"><a href="#" @click="complanListPageChoice(n)">{{n}}</a></li>
+                        </ul>
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isLastPage}">
+                                <a href="#" @click="complanListPageChoice(pageNum+1)" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div id="managedComplanList" class="selfControl" style="float: right;width: 85%">
+                <div style="width: 100%">
+                    <h2>已处理的用户投诉：</h2>
+                </div>
+                <div>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>编号</th>
+                            <th>投诉时间</th>
+                            <th>投诉用户</th>
+                            <th>查看置换申请</th>
+                            <th>处理结果</th>
+                        </tr>
+                        <tr v-for="(compaln,index) in managedComplanList">
+                            <td>{{index}}</td>
+                            <td>{{compaln.createTime}}</td>
+                            <td>{{compaln.username}}</td>
+                            <td><a href="#" class="btn">查看置换申请</a></td>
+                            <td>{{compaln.statusStr}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="float: right">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isFirstPage}">
+                                <a href="#" @click="managedComplanListPageChoice(pageNum-1)" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="pagination" v-for="n in lastPage">
+                            <li v-bind:class="{active : n == pageNum}"><a href="#" @click="managedComplanListPageChoice(n)">{{n}}</a></li>
+                        </ul>
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isLastPage}">
+                                <a href="#" @click="managedComplanListPageChoice(pageNum+1)" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div id="orderList" style="float: right;width: 85%" class="selfControl">
+                <div style="width: 100%">
+                    <h2>用户订单列表：</h2>
+                </div>
+                <div style="width: 40%">
+                    <div class="col-lg-10">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="订单号精准搜索" v-model="orderNo">
+                            <span class="input-group-btn">
+                    <button class="btn btn-success" type="button" @click="orderNoSearch(orderNo)">&nbsp &nbsp &nbsp &nbsp搜索&nbsp &nbsp &nbsp &nbsp</button>
+                </span>
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div>
+                <div style="width: 100%;float: right">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>订单号</th>
+                            <th>订单金额</th>
+                            <th>支付时间</th>
+                            <th>是否支付</th>
+                        </tr>
+                        <tr v-for="order in orderList">
+                            <td>{{order.orderNumber}}</td>
+                            <td>{{order.orderMoney}}</td>
+                            <td>{{order.paymentTime}}</td>
+                            <td>{{order.status}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="float: right">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isFirstPage}">
+                                <a href="#" @click="orderListPageChoice(pageNum-1)" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="pagination" v-for="n in lastPage">
+                            <li v-bind:class="{active : n == pageNum}"><a href="#" @click="orderListPageChoice(n)">{{n}}</a></li>
+                        </ul>
+                        <ul class="pagination">
+                            <li v-bind:class="{disabled : isLastPage}">
+                                <a href="#" @click="orderListPageChoice(pageNum+1)" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
@@ -151,61 +414,152 @@
             </div>
         </div>
 
-        <div id="saveBookInfoPopWindow"  style="width: 900px;height: 550px;z-index: 9999;position: absolute;background: white;border: solid 1px;display: block">
+        <div id="saveBookInfoPopWindow"  style="width: 900px;height: 600px;z-index: 9999;position: absolute;background: white;border: solid 1px;display: none">
 
-            <div style="width: 60%;margin-left: 40%;margin-top: 5%;float: right">
-                <form class="form-horizontal" id="updateShippingForm">
+            <div style="width: 32%;float: left;margin-top: 100px;margin-left: 8%">
+                <h3>封面预览</h3>
+                <img v-bind:src="bookDetail.imageHost + bookDetail.bookImage" style="width: 240px;height: 300px" id="img"/>
+                <span><input type="file" id="file" name="file" onchange="imageChange(event)"/></span>
+            </div>
+            <div style="width: 60%;margin-top: 4%;float: right">
+                <form class="form-horizontal" id="saveBookDetailForm">
                     <div class="form-group">
-                        <label for="receiveNameUpdate" class="col-sm-2 control-label">收货人</label>
+                        <label for="bookName" class="col-sm-2 control-label">书名</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="receiveNameUpdate" name="receiveName" placeholder="收货人">
+                            <input type="text" class="form-control" id="bookName" name="bookName" placeholder="书名" v-bind:value="bookDetail.bookName">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="receivePhoneUpdate" class="col-sm-2 control-label">联系电话</label>
+                        <label for="isbn" class="col-sm-2 control-label">ISBN</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="receivePhoneUpdate" name="receivePhone" placeholder="联系电话" >
+                            <input type="text" class="form-control" id="isbn" name="isbn" placeholder="ISBN" v-bind:value="bookDetail.isbn">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="receiveProvinceUpdate" class="col-sm-2 control-label">省份</label>
+                        <label for="categoryIdSelector" class="col-sm-2 control-label">分类</label>
                         <div class="col-xs-9">
-                            <input type="email" class="form-control" id="receiveProvinceUpdate" name="receiveProvince" placeholder="省份">
+                            <select class="form-control" id="categoryIdSelector" name="categoryId">
+                                <option v-for="category in categoryList" v-bind:value="category.categoryId">{{category.categoryName}}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="receiveCityUpdate" class="col-sm-2 control-label">市</label>
+                        <label for="bookAuthor" class="col-sm-2 control-label">作者</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="receiveCityUpdate" name="receiveCity" placeholder="市">
+                            <input type="email" class="form-control" id="bookAuthor" name="bookAuthor" placeholder="作者" v-bind:value="bookDetail.bookAuthor">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="receiveBlockUpdate" class="col-sm-2 control-label">区</label>
+                        <label for="publishTrim" class="col-sm-2 control-label">出版社</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="receiveBlockUpdate" name="receiveBlock" placeholder="区" >
+                            <input type="text" class="form-control" id="publishTrim" name="publishTrim" placeholder="出版社" v-bind:value="bookDetail.publishTrim">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="receiveAddressUpdate" class="col-sm-2 control-label">详细地址</label>
+                        <label for="publishTrim" class="col-sm-2 control-label">出版时间</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="receiveAddressUpdate" name="receiveAddress" placeholder="详细地址">
+                            <input type="text" class="form-control" id="publishTime" name="publishTime" placeholder="出版时间" v-bind:value="bookDetail.publishTime">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="receiveZipUpdate" class="col-sm-2 control-label">邮编</label>
+                        <label for="publishEdition" class="col-sm-2 control-label">版次</label>
                         <div class="col-xs-9">
-                            <textarea class="form-control" id="receiveZipUpdate" name="receiveZip" placeholder="邮编"></textarea>
+                            <input type="text" class="form-control" id="publishEdition" name="publishEdition" placeholder="版次" v-bind:value="bookDetail.publishEdition">
                         </div>
                     </div>
-                    <input type="hidden" id="shippingId" name="shippingId" >
+                    <div class="form-group">
+                        <label for="bookPrice" class="col-sm-2 control-label">价格</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="bookPrice" name="bookPrice" placeholder="价格" v-bind:value="bookDetail.bookPrice">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookDeposit" class="col-sm-2 control-label">保证金</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="bookDeposit" name="bookDeposit" placeholder="保证金" v-bind:value="bookDetail.bookDeposit">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookDetail" class="col-sm-2 control-label">简介</label>
+                        <div class="col-xs-9">
+                            <textarea class="form-control" id="bookDetail" name="bookDetail" placeholder="简介" v-bind:value="bookDetail.bookDetail"></textarea>
+                        </div>
+                    </div>
+                    <input type="hidden" id="bookImage" name="bookImage" v-bind:value="bookDetail.bookImage"/>
                     <div class="form-group" style="text-align: center;">
                         <div class="col-sm-offset-2 col-xs-9">
-                            <button type="button" class="btn btn-success" onclick="updateShippingInfo()">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+                            <button type="button" class="btn btn-success" onclick="confirmSaveBookDetail()">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+                            <button type="button" class="btn btn-success" onclick="hideSaveBookDetailPopWindow()">&nbsp;&nbsp;关闭&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </form>
+                <input type="hidden" id="bookId" v-bind:value="bookDetail.bookId"/>
+            </div>
+        </div>
+
+        <div id="adviceDetailPopWindow" style="width: 600px;height: 300px;z-index: 9999;position: absolute;background: white;border: solid 1px;display:none">
+            <div style="width: 80%;margin-top: 20px;margin-left: 10%">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">申请添加图书名</label>
+                        <div class="col-sm-6">
+                            <p class="form-control-static">{{adviceDetail.bookName}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">申请添加图书作者</label>
+                        <div class="col-sm-6">
+                            <p class="form-control-static">{{adviceDetail.bookauthor}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">申请添加图书ISBN号</label>
+                        <div class="col-sm-6">
+                            <p class="form-control-static">{{adviceDetail.isbn}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">申请状态</label>
+                        <div class="col-sm-6">
+                            <p class="form-control-static">{{adviceDetail.statusStr}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center;">
+                        <div class="col-sm-10">
+                            <button type="button" class="btn btn-success" onclick="hideAdviceDetailPopWindow()">&nbsp;&nbsp;关闭&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+
+        <div id="manageAdvicePopWindow" style="width: 350px;height: 250px;z-index: 9999;position: absolute;background: white;border: solid 1px;display: none">
+            <div style="margin-top: 20%;width: 80%;margin-left: 10%">
+                <select class="form-control" id="adviceStatus">
+                    <option value="2">未找到该书</option>
+                    <option value="3">成功添加</option>
+                </select>
+                <input v-if="bookDetail != null" type="hidden" id="adviceId"/>
+            </div>
+            <div style="margin-top: 10%;text-align: center">
+                <button class="btn btn-success" onclick="confirmManageAdvice()">确认添加</button>
+                <button class="btn btn-success" onclick="hideManageAdvicePopWindow()">取消</button>
+            </div>
+        </div>
+
+        <div id="manageComplanPopWindow" style="width: 350px;height: 250px;z-index: 9999;position: absolute;background: white;border: solid 1px;display: none">
+            <div style="margin-top: 20%;width: 80%;margin-left: 10%">
+                <select class="form-control" id="complanStatus">
+                    <option value="2">投诉成功</option>
+                    <option value="3">投诉失败</option>
+                </select>
+                <input v-if="bookDetail != null" type="hidden" id="complanId"/>
+            </div>
+            <div style="margin-top: 10%;text-align: center">
+                <button class="btn btn-success" onclick="confirmManageComplan()">确认添加</button>
+                <button class="btn btn-success" onclick="hideManageComplanPopWindow()">取消</button>
+            </div>
+        </div
     </div> <!-- app -->
 
 </body>
@@ -213,6 +567,7 @@
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- 新 Bootstrap 核心 CSS 文件 -->
 <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="js/lib/ajaxFileUpload.js"></script>
 <script src="js/lib/vue.min.js"></script>
 <script src="js/manage.js"></script>
 </html>

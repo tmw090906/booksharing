@@ -272,8 +272,7 @@
   <update id="subMoneyByIllegal" parameterType="map">
     UPDATE BOOK_USER
     SET
-    DEPOSIT=DEPOSIT-#{deposit},
-    APPROVE_DEPOSIT=APPROVE_DEPOSIT-#{deposit}
+    DEPOSIT=DEPOSIT-#{deposit}
     WHERE USER_ID=#{userId}
   </update>
 

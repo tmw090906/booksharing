@@ -29,15 +29,26 @@ var vm = new Vue({
         selfHadBooks:[]
     },
     mounted: function () {
+        var thisUrl = document.URL;
+        var getTextSearch = thisUrl.split('?')[1];
+        var showVal = "";
+        if(getTextSearch != null && getTextSearch != "" && getTextSearch != undefined){
+            showVal = getTextSearch.split("=")[1];
+        }
+        var jsonData = "";
+        var textSearch = decodeURIComponent(showVal);
+        if(textSearch != null && textSearch != "" && textSearch != undefined){
+            jsonData = jsonData + "textSearch=" + showVal;
+        }
+        $(".selfControl").hide();
         _this = this;
-        $.post('/book/info/get_book_list.do',null,function (flag) {
+        $.post('/book/info/get_book_list.do',jsonData,function (flag) {
             if(flag.status == 1){
                 _this.books = flag.date.list;
                 _this.isLastPage = flag.date.isLastPage;
                 _this.isFirstPage = flag.date.isFirstPage;
                 _this.lastPage = flag.date.lastPage;
                 _this.pageNum =  flag.date.pageNum;
-                $(".selfControl").hide();
                 $("#pageList").show();
             }else {
                 alert(flag.msg);

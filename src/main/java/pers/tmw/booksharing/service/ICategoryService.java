@@ -19,4 +19,6 @@ public interface ICategoryService {
 
     ServerResponse manageDeleteCategory(Long categoryId);
 
+    ServerResponse manageGetAllCategory();
+
 }

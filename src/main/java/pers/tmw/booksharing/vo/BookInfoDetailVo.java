@@ -22,7 +22,15 @@ public class BookInfoDetailVo {
     private String createTime;
     private String bookImage;
     private String imageHost;
+    private Long categoryId;
 
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
 
     public String getCategoryName() {
         return categoryName;

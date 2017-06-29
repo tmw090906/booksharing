@@ -87,7 +87,8 @@ public class OrderServiceImpl implements IOrderService{
     public ServerResponse manageList(int pageNum,int pageSize){
         PageHelper.startPage(pageNum,pageSize);
         List<Order> orderList = orderMapper.getAllOrder();
-        PageInfo pageInfo = new PageInfo(orderList);
+        List<OrderVo> orderVoList = this.assembleOrderVoList(orderList);
+        PageInfo pageInfo = new PageInfo(orderVoList);
         return ServerResponse.createBySuccess(pageInfo);
     }
 
@@ -95,8 +96,9 @@ public class OrderServiceImpl implements IOrderService{
     public ServerResponse manageSearch(String orderNo,int pageNum,int pageSize){
         PageHelper.startPage(pageNum,pageSize);
         Order order = orderMapper.selectByOrderNo(orderNo);
+        List<OrderVo> orderVoList = this.assembleOrderVoList(Lists.newArrayList(order));
         if(order != null){
-            PageInfo pageInfo = new PageInfo(Lists.newArrayList(order));
+            PageInfo pageInfo = new PageInfo(orderVoList);
             return ServerResponse.createBySuccess(pageInfo);
         }
         return ServerResponse.createByErrorMessage("订单不存在");

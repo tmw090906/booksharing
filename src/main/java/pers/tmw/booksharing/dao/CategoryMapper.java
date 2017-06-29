@@ -19,4 +19,6 @@ public interface CategoryMapper {
 
     List<Category> selectCategoryChildrenByParentId(Long categoryId);
 
+    List<Category> getAllCategory();
+
 }

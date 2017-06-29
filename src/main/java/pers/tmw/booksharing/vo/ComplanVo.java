@@ -11,6 +11,8 @@ public class ComplanVo {
 
     private Long userId;
 
+    private String username;
+
     private String updateTime;
 
     private String createTime;
@@ -18,6 +20,14 @@ public class ComplanVo {
     private Short status;
 
     private String statusStr;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Long getComplanId() {
         return complanId;

@@ -201,5 +201,11 @@ public class CategoryServiceImpl implements ICategoryService {
         return;
     }
 
+    @Override
+    public ServerResponse manageGetAllCategory(){
+        List<Category> categoryList = categoryMapper.getAllCategory();
+        return ServerResponse.createBySuccess(categoryList);
+    }
+
 
 }

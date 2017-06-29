@@ -172,6 +172,7 @@ public class BookInfoServiceImpl implements IBookInfoService {
         bookInfoDetailVo.setPublishEdition(bookInfo.getPublishEdition());
         bookInfoDetailVo.setPublishTime(bookInfo.getPublishTime());
         bookInfoDetailVo.setPublishTrim(bookInfo.getPublishTrim());
+        bookInfoDetailVo.setCategoryId(bookInfo.getCategoryId());
         return bookInfoDetailVo;
     }
 
@@ -199,7 +200,7 @@ public class BookInfoServiceImpl implements IBookInfoService {
     }
 
     @Override
-    public ServerResponse manageAdvice(Long userId,Long adviceId,Short status){
+    public ServerResponse   manageAdvice(Long userId,Long adviceId,Short status){
         if(userId==null || adviceId==null || status==null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
         }
@@ -236,6 +237,9 @@ public class BookInfoServiceImpl implements IBookInfoService {
                 }else {
                     statusStr = "成功添加";
                 }
+                String username = userMapper.getUserNameByUserId(adviceItem.getUserId());
+                adviceListVo.setUsername(username);
+                adviceListVo.setUpdateTime(DateTimeUtil.dateToStr(adviceItem.getUpdateTime()));
                 adviceListVo.setStatusStr(statusStr);
                 adviceListVoList.add(adviceListVo);
             }

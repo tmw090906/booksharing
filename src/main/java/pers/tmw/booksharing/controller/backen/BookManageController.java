@@ -110,20 +110,20 @@ public class BookManageController {
     /**
      * 上传图片接口
      * @param session
-     * @param upload_image
+     * @param file
      * @param request
      * @return
      */
     @RequestMapping("upload.do")
     @ResponseBody
-    public ServerResponse uploadBookImage(HttpSession session, MultipartFile upload_image, HttpServletRequest request){
+    public ServerResponse uploadBookImage(HttpSession session, MultipartFile file, HttpServletRequest request){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"请先登陆");
         }
         if(iUserService.checkAdminRole(user).isSuccess()){
             String path  = request.getSession().getServletContext().getRealPath("upload");
-            String targetFileName = iBookInfoService.upload(upload_image,path,user.getUsername());
+            String targetFileName = iBookInfoService.upload(file,path,user.getUsername());
             String url = PropertiesUtil.getProperty("ftp.server.http.prefix") + targetFileName;
             Map fileMap = Maps.newHashMap();
             fileMap.put("uri",targetFileName);

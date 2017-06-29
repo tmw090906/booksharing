@@ -778,3 +778,8 @@ $("#email").blur(function () {
         }
     });
 });
+
+var locationHref = function () {
+    var textSearch = $("#textSearch").val();
+    window.location.href = "index.html?textSearch=" + encodeURIComponent(textSearch);
+};

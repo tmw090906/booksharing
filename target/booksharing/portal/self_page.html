@@ -21,9 +21,9 @@
             <div class="col-lg-6" style="float: right">
                 <button class="btn btn-success" style="float: right" onclick="window.location.href = 'self_library.html'" style="margin-top: auto">查看个人图书库</button>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="ISBN,书名，作者" >
+                    <input type="text" class="form-control" placeholder="ISBN,书名，作者" id="textSearch">
                     <span class="input-group-btn">
-                    <button class="btn btn-success" type="button" >&nbsp &nbsp &nbsp &nbsp搜索&nbsp &nbsp &nbsp &nbsp</button>
+                    <button class="btn btn-success" type="button" onclick="locationHref()">&nbsp &nbsp &nbsp &nbsp搜索&nbsp &nbsp &nbsp &nbsp</button>
                 </span>
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
@@ -595,7 +595,7 @@
                         <td>{{index}}</td>
                         <td>{{illegal.victimUserName}}</td>
                         <td>{{illegal.deposit}}</td>
-                        <td>{{applied.illegalTime}}</td>
+                        <td>{{illegal.illegalTime}}</td>
                     </tr>
                 </table>
             </div>

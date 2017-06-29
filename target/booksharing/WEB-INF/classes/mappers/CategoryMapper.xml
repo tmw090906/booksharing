@@ -135,4 +135,10 @@
     SELECT <include refid="Base_Column_List"/>
     FROM BOOK_CATEGORY WHERE PARENT_ID=#{categoryId}
   </select>
+
+  <select id="getAllCategory" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM BOOK_CATEGORY
+  </select>
+
 </mapper>

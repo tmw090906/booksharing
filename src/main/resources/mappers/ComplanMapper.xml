@@ -135,7 +135,7 @@
       STATUS=#{status}
     </if>
     <if test="status != 1">
-      STATUS!=#{status}
+      STATUS!='1'
     </if>
   </select>
 

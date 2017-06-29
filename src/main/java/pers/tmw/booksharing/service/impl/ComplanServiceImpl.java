@@ -88,6 +88,8 @@ public class ComplanServiceImpl implements IComplanService {
             complanVo.setStatus(status);
             complanVo.setUpdateTime(DateTimeUtil.dateToStr(complan.getUpdateTime()));
             complanVo.setUserId(complan.getUserId());
+            String username = userMapper.getUserNameByUserId(complan.getUserId());
+            complanVo.setUsername(username);
             String statusStr;
             if(status == 1){
                 statusStr = "管理员未处理";
@@ -116,9 +118,12 @@ public class ComplanServiceImpl implements IComplanService {
     public ServerResponse manageGetList(Short status,int pageNum,int pageSize){
         PageHelper.startPage(pageNum, pageSize);
         List<Complan> complanList = complanMapper.getListByStatus(status);
-        PageInfo pageInfo = new PageInfo(complanList);
+        List<ComplanVo> complanVoList = this.assembleComplanVoList(complanList);
+        PageInfo pageInfo = new PageInfo(complanVoList);
         return ServerResponse.createBySuccess(pageInfo);
     }
+
+
 
 
     @Transactional
@@ -127,6 +132,7 @@ public class ComplanServiceImpl implements IComplanService {
         //投诉成功时，对被投诉用户添加违规信息
         //同时，将被投诉用户保证金存入投诉用户中   这里的保证金是：投诉用户书籍所需保证金
         //释放投诉用户的保证金  这里的保证金是：被投诉用户书籍所需的保证金
+        //同时不需要扣掉被投诉用户的可用保证金
         if(status == Const.ComplanStatus.COMPLAN_SUCCESS){
             Complan complan = complanMapper.selectByPrimaryKey(complanId);
             if(complan == null){

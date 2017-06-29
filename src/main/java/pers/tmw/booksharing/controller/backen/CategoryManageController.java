@@ -93,6 +93,20 @@ public class CategoryManageController {
         }
     }
 
+    @RequestMapping("all_list.do")
+    @ResponseBody
+    public ServerResponse getChildrenParallelCategory(HttpSession session){
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+        if(user == null){
+            return ServerResponse.createByErrorMessage("用户未登录,请登录");
+        }
+        if(iUserService.checkAdminRole(user).isSuccess()){
+            return iCategoryService.manageGetAllCategory();
+        }else {
+            return ServerResponse.createByErrorMessage("无权限操作，需要管理员权限");
+        }
+    }
+
     /**
      * 删除分类，该分类下所有书籍分类转到该分类的父分类下
      * @param session
