@@ -37,10 +37,11 @@ var vm = new Vue({
                 _this.isFirstPage = flag.date.isFirstPage;
                 _this.lastPage = flag.date.lastPage;
                 _this.pageNum =  flag.date.pageNum;
+                _this.trueName = sessionStorage.trueName;
                 $("#bookList").show();
             }else if(flag.status == 10){
                 alert("未登录，即将返回登录页");
-              //  window.location.href = "login.html";
+                window.location.href = "login.html";
             }else {
                 alert(flag.msg);
             }
@@ -343,19 +344,10 @@ var vm = new Vue({
 
 });
 
-$("#login_btn").click(
-    function () {
-        $.post('/book/manage/user/login.do',$("#login").serialize(),function (flag) {
-            if(flag.status == 1){
-                var customerId = flag.date.userId;
-                vm.trueName = flag.date.trueName;
-                sessionStorage.customerId = customerId;
-                window.location.href = "manage.html";
-            }else {
-                alert(flag.msg);
-            }
-    });
-});
+
+var setTrueName = function (trueName) {
+    vm.trueName =  trueName;
+};
 
 var logout =  function () {
     $.post('/book/user/logout.do', null, function (flag) {

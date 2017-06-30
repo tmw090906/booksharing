@@ -139,9 +139,6 @@ public class BookController {
     @ResponseBody
     public ServerResponse getExchangeInfo(HttpSession session,Long bookId){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
-        if(user == null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
-        }
         return iBookInfoService.getExchangeInfo(user.getUserId(),bookId);
     }
 

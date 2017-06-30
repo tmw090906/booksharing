@@ -44,14 +44,28 @@
         <script src="assets/js/supersized.3.2.7.min.js"></script>
         <script src="assets/js/supersized-init.js"></script>
         <script src="assets/js/scripts.js"></script>
-        <script src="js/manage.js"/>
     </body>
 <script>
+    $("#login_btn").click(
+        function () {
+            $.post('/book/manage/user/login.do',$("#login").serialize(),function (flag) {
+                if(flag.status == 1){
+                    var customerId = flag.date.userId;
+                    sessionStorage.customerId = customerId;
+                    sessionStorage.trueName = flag.date.trueName;
+                    window.location.href = "manage.html";
+                }else {
+                    alert(flag.msg);
+                }
+            });
+        });
+
     $("body").keydown(function() {
         if (event.keyCode == "13") {//keyCode=13是回车键
             $('#login_btn').click();
         }
     });
+
 </script>
 </html>
 

@@ -26,21 +26,21 @@ public class UserManageController {
     /**
      * 后台管理员登陆
      * @param username
-     * @param password
+     * @param pwd
      * @param session
      * @return
      */
     @RequestMapping(value = "login.do",method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<User> login(String username, String password, HttpSession session){
-        ServerResponse<User> response = iUserService.login(username, password);
+    public ServerResponse<User> login(String username, String pwd, HttpSession session){
+        ServerResponse<User> response = iUserService.login(username, pwd);
         if(response.isSuccess()){
             User user = response.getDate();
             if(user.getRole() == Const.Role.ROLE_ADMIN){
                 session.setAttribute(Const.CURRENT_USER,user);
                 return response;
             }else {
-                return ServerResponse.createBySuccessMessage("权限低，无法登陆");
+                return ServerResponse.createByErrorMessage("权限低，无法登陆");
             }
         }
         return response;

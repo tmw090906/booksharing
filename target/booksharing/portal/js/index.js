@@ -37,7 +37,6 @@ var vm = new Vue({
         }
         var jsonData = "";
         var textSearch = decodeURIComponent(showVal);
-        alert(textSearch);
         if(textSearch != null && textSearch != "" && textSearch != undefined){
             jsonData = jsonData + "textSearch=" + showVal;
         }
